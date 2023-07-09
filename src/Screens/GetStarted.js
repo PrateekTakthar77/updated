@@ -24,7 +24,9 @@ function GetStarted({ navigation }) {
                     circleLoop={true} />
             </View>
             <View>
-                <TouchableOpacity onPress={() => navigation.navigate('loginsignup')}>
+                <TouchableOpacity onPress={() => {
+                    console.log('login')
+                    navigation.navigate('loginsignup')}}>
                     <View >
                         <Text style={styles.GetStartedButtton}>Get Started</Text>
                     </View>

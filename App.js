@@ -1,4 +1,4 @@
-import React,{useContext,useEffect} from 'react'
+import React, { useContext, useEffect } from 'react'
 import Navigation from './src/navigation/Navigation'
 import Product from './src/Screens/Product'
 import WelcomeScreen from './src/Screens/WelcomeScreen'
@@ -16,22 +16,10 @@ const App = () => {
   // Display a splash screen while the isLoading state is true
   if (isLoading) {
     return <Wait />;
-  }else
+  } else
     return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {userToken ? (
-          <Stack.Screen name="Hello" component={WelcomeScreen} />
-        ) : (
-          <Stack.Screen
-            name="SignUp"
-            component={LogIn}
-            options={{ headerShown: false }}
-          />
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
-  )
+      <Navigation />
+    )
 }
 
 export default () => {
@@ -41,3 +29,4 @@ export default () => {
     </AuthProvider>
   );
 };
+

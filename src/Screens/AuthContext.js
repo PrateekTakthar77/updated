@@ -26,6 +26,7 @@ export const AuthProvider = ({ children }) => {
             AsyncStorage.setItem('userinfo', JSON.stringify(userInfo));
             AsyncStorage.setItem('userToken', userInfo.token);
             console.log('userToken' + userInfo.token);
+            setIsLoading(false);
         })
             .catch(e => {
                 console.log(`Login error hello ${e}`);

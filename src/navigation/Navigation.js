@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { StyleSheet } from "react-native";
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Splash from '../Screens/Splash';
 import GetStarted from '../Screens/GetStarted';
 import LogInSignUp from '../Screens/LogInSignUp';
@@ -19,30 +19,41 @@ import Product from '../Screens/Product';
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
+    const [showSplashScreen, setShowSplashScreen] = useState(true);
+
+    useEffect(() => {       
+        AsyncStorage.getItem("userToken").then((value) => {
+            console.log('value..m', value)
+            if (value) {
+                setShowSplashScreen(false);
+            }
+        });
+
+    }, []);
+
     return (
         <NavigationContainer >
-            <Stack.Navigator initialRouteName='splash' options={{ headerShown: false }}>
+            <Stack.Navigator options={{ headerShown: false }}>
 
-                {/* SPLASH */}
-                <Stack.Screen
+          
+            {showSplashScreen ? (
+                    <>
+                    <Stack.Screen
                     name="splash"
                     component={Splash}
                     options={{ headerShown: false, title: 'My home' }} />
 
-                {/* GET STARTED*/}
-                <Stack.Screen
+                    <Stack.Screen
                     name="getstarted"
                     component={GetStarted}
                     options={{ headerShown: false, title: 'My home' }} />
 
-                {/* LOGIN-SIGNUP */}
-                <Stack.Screen
+                    <Stack.Screen
                     name="loginsignup"
                     component={LogInSignUp}
                     options={{ headerShown: false }} />
 
-                {/* LOG IN */}
-                <Stack.Screen
+<Stack.Screen
                     name="login"
                     component={LogIn}
                     options={{
@@ -51,9 +62,7 @@ const Navigation = () => {
                         headerTintColor: '#bc9954',
                         headerTitleStyle: { color: '#bc9954' }
                     }} />
-
-                {/* SIGN UP */}
-                <Stack.Screen
+      <Stack.Screen
                     name="signup"
                     component={SignUp}
                     options={{
@@ -64,8 +73,8 @@ const Navigation = () => {
                     }}
                 />
 
-                {/* FORM DETAILS */}
-                <Stack.Screen
+
+<Stack.Screen
                     name="formdetails"
                     component={FormDetails}
                     options={{
@@ -74,8 +83,14 @@ const Navigation = () => {
                         headerTintColor: '#bc9954',
                         headerTitleStyle: { color: '#bc9954' }
                     }} />
+                    </>
+                     ) : null
+                }
+                
 
-                {/* WELCOME SCREEN */}
+                {showSplashScreen == false ? (
+                    <>
+
                 <Stack.Screen
                     name="welcomeScreen"
                     component={WelcomeScreen} options={{
@@ -85,7 +100,6 @@ const Navigation = () => {
                         headerTitleStyle: { color: '#bc9954' }
                     }} />
 
-                {/* TAX INVOICE */}
                 <Stack.Screen
                     name="taxinvoice"
                     component={TaxInvoice}
@@ -97,7 +111,6 @@ const Navigation = () => {
                     }} />
 
 
-                {/* OTP */}
                 <Stack.Screen
                     name="otp"
                     component={OTP}
@@ -108,7 +121,6 @@ const Navigation = () => {
                         headerTitleStyle: { color: '#bc9954' }
                     }} />
 
-                {/* CART */}
                 <Stack.Screen
                     name="cart"
                     component={Cart}
@@ -119,7 +131,6 @@ const Navigation = () => {
                         headerTitleStyle: { color: '#bc9954' }
                     }} />
 
-                {/* SINGLE PRODUCT */}
                 <Stack.Screen
                     name="singleproduct"
                     component={SingleProduct}
@@ -130,7 +141,6 @@ const Navigation = () => {
                         headerTitleStyle: { color: '#bc9954' }
                     }} />
 
-                {/* Product */}
                 <Stack.Screen
                     name="product"
                     component={Product}
@@ -140,6 +150,14 @@ const Navigation = () => {
                         headerTintColor: '#bc9954',
                         headerTitleStyle: { color: '#bc9954' }
                     }} />
+
+                    </>
+                     ) : null
+                }
+                
+               
+               
+             
             </Stack.Navigator>
         </NavigationContainer>
     )
