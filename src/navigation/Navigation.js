@@ -18,6 +18,7 @@ import Product from '../Screens/Product';
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from "../Screens/AuthContext";
 import WastageChart from '../Screens/WastageChart';
+import Thankyou from '../Screens/Thankyou';
 
 const Stack = createNativeStackNavigator();
 
@@ -150,6 +151,8 @@ const Navigation = () => {
                             }} />
 
                         {/* ---- */}
+
+                        {/* wastagechart */}
                         <Stack.Screen
                             name="wastage"
                             component={WastageChart}
@@ -159,6 +162,12 @@ const Navigation = () => {
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
                             }} />
+
+                        {/* thanyou */}
+                        <Stack.Screen
+                            name="thankyou"
+                            component={Thankyou}
+                            options={{ headerShown: false }} />
 
                     </>
                 ) : null
