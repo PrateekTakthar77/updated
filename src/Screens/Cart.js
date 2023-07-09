@@ -108,6 +108,7 @@ const Cart = () => {
 
 
                     </View> */}
+                    
                 </View>
 
             </ScrollView>
@@ -145,6 +146,8 @@ const Cart = () => {
                                 <Text style={styles.signuptext}>PROCEED TO PAY</Text>
                             </View>
                         </TouchableOpacity>
+
+                        
                     </View>
                 </View>
             </Modal>
@@ -197,7 +200,7 @@ const styles = StyleSheet.create({
         marginTop: 30,
     },
     View2: {
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     View3: {
         height: 130,
@@ -369,7 +372,7 @@ const styles = StyleSheet.create({
     TotalAlignment: {
         flexDirection: "row",
         justifyContent: "space-around",
-        marginHorizontal: -120,
+        marginHorizontal: -100,
     },
     TotalPaddingAlignment: {
         marginVertical: 5,
@@ -403,7 +406,7 @@ const styles = StyleSheet.create({
         marginBottom: 25,
     },
     line: {
-        width: "90%",
+        width: "100%",
         height: 1.5,
         backgroundColor: "#a4a4a4",
         alignSelf: 'center'
@@ -463,5 +466,24 @@ const styles = StyleSheet.create({
     MOdallogintext: {
         fontSize: 15,
         color: "#eec06b",
+    },
+    FinaleSubmit: {
+        backgroundColor: "#eec06b",
+        padding: 15,
+        marginTop: 20,
+        borderRadius: 80,
+        width: 190,
+        height: 60,
+        justifyContent: 'center',
+        // alignItems: 'center',
+        alignSelf: "center"
+        // marginLeft: 75,
+    },
+    FinaleSubmitText: {
+        fontSize: 15,
+        color: "black",
+        textAlign: "center",
+        fontWeight: "bold",
     }
+
 })

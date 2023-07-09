@@ -24,27 +24,35 @@ const WelcomeScreen = ({ navigation }) => {
     return (
         <>
             <ScrollView>
-
                 <View style={styles.main}>
-
                     <View style={styles.goldenBoxAlignment}>
                         <View style={styles.BoxStyle}>
                             <View style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                                 {/* <View style={{flex:"1 1 0"}}> */}
                                 <View style={styles.align}>
-                                    <Text style={styles.Welcome}>Welcome,</Text>
-                                    <Text style={styles.name}>{user.name}</Text>
+
+                                    <View style={styles.logoutButton}>
+                                        <Text style={styles.Welcome}>Welcome,</Text>
+                                        <View style={{ marginLeft: 10 }}>
+                                            <TouchableOpacity onPress={logout}>
+                                                <Text style={styles.logoutText}>Logout</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
+
+
+                                    <Text style={styles.name}>{user?.name}</Text>
                                     <Text style={styles.abcjw}>Abc jewellers private limited</Text>
                                 </View>
                                 <View style={styles.align2}>
                                     <Text style={styles.toapp}>Welcome to our app! we have thrilled to have you here.</Text>
                                     <Text style={styles.toapp2}>Enjoy Shopping!</Text>
                                 </View>
-                                <View style={{ marginLeft: 10 }}>
+                                {/* <View style={{ marginLeft: 10 }}>
                                     <TouchableOpacity onPress={logout}>
                                         <Text style={{ fontSize: 20, marginLeft: 15 }}>Logout</Text>
                                     </TouchableOpacity>
-                                </View>
+                                </View> */}
                                 {/* </View> */}
                             </View>
 
@@ -94,9 +102,9 @@ const WelcomeScreen = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('product')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('wastage')}>
                         <View style={styles.button} onPress={check} >
-                            <Text style={styles.buttontext}>PRODUCTS</Text>
+                            <Text style={styles.buttontext}>WASTAGE CHART</Text>
                         </View>
                     </TouchableOpacity>
                     {/* <TouchableOpacity>
@@ -158,7 +166,19 @@ const styles = StyleSheet.create({
     main: {
         // backgroundColor: "white",
     },
-
+    logoutButton: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+        marginHorizontal: -97,
+    },
+    logoutText: {
+        fontSize: 15,
+        marginRight: 35,
+        color: "#eec06b",
+        backgroundColor: "black",
+        padding: 5,
+        borderRadius: 10
+    },
     goldenBoxAlignment: {
         justifyContent: "center",
         alignItems: "center",
@@ -193,6 +213,7 @@ const styles = StyleSheet.create({
     },
     Welcome: {
         fontSize: 20,
+        marginLeft: 5,
         // marginBottom: 10
         // fontWeight: 500,
         // marginTop: -10,
@@ -206,24 +227,30 @@ const styles = StyleSheet.create({
         // marginRight: 210,
         marginLeft: -1,
         marginBottom: 2,
-        fontWeight: "500",
+        fontWeight: "600",
+        color: "black",
+        // fontWeight: "bold",
+
     },
     abcjw: {
         fontSize: 13,
         marginLeft: -1,
         marginBottom: 17,
+        fontWeight: "bold",
     },
     toapp: {
         fontSize: 12,
         // marginTop: 12,
         marginLeft: -1,
         marginBottom: 10,
+        fontWeight: "bold",
     },
     toapp2: {
         fontSize: 12,
         marginTop: -6,
         marginLeft: -1,
         marginBottom: 7,
+        fontWeight: "bold",
     },
 
     // COLOMN 2---------------------------
@@ -291,7 +318,7 @@ const styles = StyleSheet.create({
     buttontext: {
         fontSize: 14,
         color: "#eec06b",
-        // fontWeight: "bold",
+        fontWeight: "bold",
         // fontWeight: 500,
     },
 
