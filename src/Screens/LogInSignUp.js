@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     body: {
         display: "flex",
         flex: 1,
-        backgroundColor: "white",
+        // backgroundColor: "white",
     },
 
     image: {
@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
     },
 
     loginbutton: {
+        marginTop:150,
         backgroundColor: "#eec06b",
         padding: 15,
         alignItems: "center",
@@ -103,6 +104,8 @@ const styles = StyleSheet.create({
         height: 70,
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop:20,
+
         // marginLeft: 60,
     },
     logintext: {
