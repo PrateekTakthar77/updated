@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { SliderBox } from 'react-native-image-slider-box';
+import { AuthContext, AuthProvider } from "./AuthContext";
 const images = [
     require('../assets/logo.png'),
     require('../assets/logo.png'),
@@ -8,6 +9,17 @@ const images = [
 ]
 
 function GetStarted({ navigation }) {
+    const { userToken, isLoading } = useContext(AuthContext);
+    //TODO: Need to find a better place
+    useEffect(() => {
+        console.log("userToken", userToken);
+        if (userToken) {
+            navigation.navigate('welcomeScreen');
+        } else {
+            navigation.navigate('login');
+        }
+    }, [userToken]);
+
     return (
         <View>
             <View >
@@ -25,7 +37,8 @@ function GetStarted({ navigation }) {
             </View>
             <View>
                 <TouchableOpacity onPress={() => {
-                    navigation.navigate('loginsignup')}}>
+                    navigation.navigate('loginsignup')
+                }}>
                     <View >
                         <Text style={styles.GetStartedButtton}>Get Started</Text>
                     </View>

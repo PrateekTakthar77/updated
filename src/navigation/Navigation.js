@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { StyleSheet } from "react-native";
@@ -15,15 +15,29 @@ import WelcomeScreen from '../Screens/WelcomeScreen';
 import Cart from '../Screens/Cart';
 import SingleProduct from '../Screens/SingleProduct';
 import Product from '../Screens/Product';
+import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from "../Screens/AuthContext";
 
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
     const [showSplashScreen, setShowSplashScreen] = useState(true);
 
+    // const { navigation } = useNavigation();
+    // console.log('', navigation);
+
+    // useEffect(() => {
+    //     console.log("userToken", userToken);
+    //     if (userToken) {
+    //         // navigation.navigate('welcomeScreen');
+    //     } else {
+    //         // navigation.navigate('login');
+    //     }
+    // }, [userToken]);
+
     useEffect(() => {
         AsyncStorage.getItem("userToken").then((value) => {
-            console.log('value..m', value)
+            console.log('value..m', value);
             if (value) {
                 setShowSplashScreen(false);
             }
@@ -31,8 +45,9 @@ const Navigation = () => {
     }, []);
 
     return (
-        <NavigationContainer >
-            <Stack.Navigator options={{ headerShown: false }}>
+        // <NavigationContainer >
+        <Stack.Navigator options={{ headerShown: false }}>
+            <>
                 {showSplashScreen ? (
                     <>
                         <Stack.Screen
@@ -151,12 +166,13 @@ const Navigation = () => {
                     </>
                 ) : null
                 }
+            </>
 
 
 
 
-            </Stack.Navigator>
-        </NavigationContainer>
+        </Stack.Navigator>
+        // </NavigationContainer>
     )
 }
 

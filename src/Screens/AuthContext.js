@@ -35,7 +35,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     const register = (name, email, password, mobile, role) => {
-        
         console.log('Name', name, 'Mobile', mobile, 'Email', email, 'Role', role, 'Password', password);
         const data = {
             mobile,
@@ -48,13 +47,13 @@ export const AuthProvider = ({ children }) => {
         axios.post(`${BASE_URL}api/auth/register`, data)
             .then(res => {
                 let userInfo = res.data;
-                setIsLoading(false)
                 setUserInfo(userInfo);
                 setUserToken(userInfo.token);
                 AsyncStorage.setItem('userinfo', JSON.stringify(userInfo));
                 AsyncStorage.setItem('userToken', userInfo.token);
                 // UserToken is Getting console log
                 console.log('userToken-->' + userInfo.token);
+                setIsLoading(false);
             })
             .catch(e => {
                 console.log(`hello: ${e}`);
@@ -70,7 +69,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(true)
         setUserToken(null)
         await AsyncStorage.removeItem('userToken');
-        await  AsyncStorage.removeItem('userinfo');
+        await AsyncStorage.removeItem('userinfo');
         setIsLoading(false);
     }
 

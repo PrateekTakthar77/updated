@@ -6,7 +6,7 @@ import { SliderBox } from "react-native-image-slider-box";
 import { AuthContext } from './AuthContext';
 
 const WelcomeScreen = ({ navigation }) => {
-    const {logout} = useContext(AuthContext);
+    const { logout, userInfo } = useContext(AuthContext);
     const images = [
         require("../assets/logo.png"),
         require("../assets/logo.png"),
@@ -15,6 +15,8 @@ const WelcomeScreen = ({ navigation }) => {
         // require("../assets/img2.jpg"),
         // require("../assets/img3.jpg"),
     ];
+    console.log(userInfo);
+    const { User: user } = userInfo;
     const check = () => {
         console.log("hello checked");
     }
@@ -27,20 +29,20 @@ const WelcomeScreen = ({ navigation }) => {
 
                     <View style={styles.goldenBoxAlignment}>
                         <View style={styles.BoxStyle}>
-                            <View style={{display:"flex", flexDirection: "column", justifyContent:"space-between"}}>
+                            <View style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                                 {/* <View style={{flex:"1 1 0"}}> */}
                                 <View style={styles.align}>
-                                    <Text style={styles.Welcome}>Welcome ,</Text>
-                                    <Text style={styles.name}>Amir Alvi</Text>
+                                    <Text style={styles.Welcome}>Welcome,</Text>
+                                    <Text style={styles.name}>{user.name}</Text>
                                     <Text style={styles.abcjw}>Abc jewellers private limited</Text>
                                 </View>
                                 <View style={styles.align2}>
                                     <Text style={styles.toapp}>Welcome to our app! we have thrilled to have you here.</Text>
                                     <Text style={styles.toapp2}>Enjoy Shopping!</Text>
                                 </View>
-                                <View style={{marginLeft: 10}}>
+                                <View style={{ marginLeft: 10 }}>
                                     <TouchableOpacity onPress={logout}>
-                                        <Text style={{fontSize: 20, marginLeft: 15}}>Logout</Text>
+                                        <Text style={{ fontSize: 20, marginLeft: 15 }}>Logout</Text>
                                     </TouchableOpacity>
                                 </View>
                                 {/* </View> */}
@@ -160,7 +162,8 @@ const styles = StyleSheet.create({
     goldenBoxAlignment: {
         justifyContent: "center",
         alignItems: "center",
-
+        paddingLeft: 10,
+        paddingRight: 10,
     },
     BoxStyle: {
         borderRadius: 40,
@@ -190,6 +193,7 @@ const styles = StyleSheet.create({
     },
     Welcome: {
         fontSize: 20,
+        // marginBottom: 10
         // fontWeight: 500,
         // marginTop: -10,
         // marginLeft: -1,
@@ -198,28 +202,25 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 20,
         // fontWeight: 500,
-        marginTop: -10,
+        // marginTop: -10,
         // marginRight: 210,
         marginLeft: -1,
-        marginBottom: 7,
-        fontWeight: "bold",
+        marginBottom: 2,
+        fontWeight: "500",
     },
     abcjw: {
         fontSize: 13,
-        marginTop: -10,
         marginLeft: -1,
         marginBottom: 17,
     },
     toapp: {
         fontSize: 12,
-        marginTop: 12,
+        // marginTop: 12,
         marginLeft: -1,
-        marginBottom: 7,
-        fontWeight: "bold",
+        marginBottom: 10,
     },
     toapp2: {
         fontSize: 12,
-        fontWeight: "bold",
         marginTop: -6,
         marginLeft: -1,
         marginBottom: 7,
@@ -309,7 +310,7 @@ const styles = StyleSheet.create({
         // marginLeft: 50,
         // marginBottom: 8,
         marginTop: 50,
-        alignSelf:'center'
+        alignSelf: 'center'
         //   COLOMN 7---------------------------
     },
     span: {
@@ -317,7 +318,7 @@ const styles = StyleSheet.create({
         // alignItems:"center",
         // paddingHorizontal: 20,
         // marginRight: 20,
-        alignItems:"center",
+        alignItems: "center",
         // justifyContent:'center'
     },
     span2: {
@@ -325,8 +326,8 @@ const styles = StyleSheet.create({
         // paddingHorizontal: 10,
         // marginLeft: 80,
         // marginBottom: 5,
-        alignItems:"center",
-        justifyContent:'center'
+        alignItems: "center",
+        justifyContent: 'center'
     },
     size: {
         width: 100,
@@ -362,7 +363,7 @@ const styles = StyleSheet.create({
         color: "black",
         fontWeight: "bold",
         marginLeft: 43,
-        textAlign:'center'
+        textAlign: 'center'
         // justifyContent: "center",
     },
 });    

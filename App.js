@@ -4,14 +4,18 @@ import Product from './src/Screens/Product'
 import WelcomeScreen from './src/Screens/WelcomeScreen'
 import Wait from './src/Screens/Wait'
 // import LogIn from './src/Screens/LogIn'
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AuthContext, AuthProvider } from "./src/Screens/AuthContext";
-import LogIn from './src/Screens/LogIn'
-
+import LogIn from './src/Screens/LogIn';
+import { useNavigation } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 const Stack = createNativeStackNavigator();
+
+// const Stack = createNativeStackNavigator();
 const App = () => {
   const { userToken, isLoading } = useContext(AuthContext);
+  const { navigation } = useNavigation();
+  console.log('navigation', navigation);
 
   // Display a splash screen while the isLoading state is true
   if (isLoading) {
@@ -24,9 +28,11 @@ const App = () => {
 
 export default () => {
   return (
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <NavigationContainer >
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </NavigationContainer>
   );
 };
 

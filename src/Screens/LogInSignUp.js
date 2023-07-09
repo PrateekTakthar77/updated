@@ -3,7 +3,6 @@ import { View, Text, Image, StatusBar, Button, StyleSheet, TouchableOpacity, Mod
 
 function LogInSignUp({ navigation }) {
     const OpenSignup = () => {
-        console.log('in modal');
         setShowModal(true);
     }
     const [showModal, setShowModal] = useState(false);

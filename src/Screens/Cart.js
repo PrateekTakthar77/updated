@@ -192,10 +192,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: '#eec06b',
         borderRadius: 10,
-        width: 380,
+        width: "100%",
         alignItems: 'center',
-        marginLeft: 20,
-        marginTop: 30
+        marginTop: 30,
     },
     View2: {
         flexDirection: 'row'
