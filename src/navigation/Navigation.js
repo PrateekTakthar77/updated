@@ -15,29 +15,14 @@ import WelcomeScreen from '../Screens/WelcomeScreen';
 import Cart from '../Screens/Cart';
 import SingleProduct from '../Screens/SingleProduct';
 import Product from '../Screens/Product';
-import { useNavigation } from '@react-navigation/native';
-import { AuthContext } from "../Screens/AuthContext";
 
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
     const [showSplashScreen, setShowSplashScreen] = useState(true);
 
-    // const { navigation } = useNavigation();
-    // console.log('', navigation);
-
-    // useEffect(() => {
-    //     console.log("userToken", userToken);
-    //     if (userToken) {
-    //         // navigation.navigate('welcomeScreen');
-    //     } else {
-    //         // navigation.navigate('login');
-    //     }
-    // }, [userToken]);
-
     useEffect(() => {
         AsyncStorage.getItem("userToken").then((value) => {
-            console.log('value..m', value);
             if (value) {
                 setShowSplashScreen(false);
             }
@@ -84,8 +69,13 @@ const Navigation = () => {
                                 headerTitleStyle: { color: '#bc9954' }
                             }}
                         />
+                    </>
+                ) : null
+                }
 
 
+                {showSplashScreen == false ? (
+                    <>
                         <Stack.Screen
                             name="formdetails"
                             component={FormDetails}
@@ -95,13 +85,6 @@ const Navigation = () => {
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
                             }} />
-                    </>
-                ) : null
-                }
-
-
-                {showSplashScreen == false ? (
-                    <>
 
                         <Stack.Screen
                             name="welcomeScreen"

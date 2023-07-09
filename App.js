@@ -13,9 +13,7 @@ const Stack = createNativeStackNavigator();
 
 // const Stack = createNativeStackNavigator();
 const App = () => {
-  const { userToken, isLoading } = useContext(AuthContext);
-  const { navigation } = useNavigation();
-  console.log('navigation', navigation);
+  const { isLoading } = useContext(AuthContext);
 
   // Display a splash screen while the isLoading state is true
   if (isLoading) {

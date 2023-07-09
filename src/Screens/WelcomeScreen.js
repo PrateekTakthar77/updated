@@ -1,12 +1,12 @@
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import MarqueeView from "react-native-marquee-view";
 import { SliderBox } from "react-native-image-slider-box";
 
 import { AuthContext } from './AuthContext';
 
 const WelcomeScreen = ({ navigation }) => {
-    const { logout, userInfo } = useContext(AuthContext);
+    const { logout, userInfo, userDetails, userToken } = useContext(AuthContext);
     const images = [
         require("../assets/logo.png"),
         require("../assets/logo.png"),
@@ -15,11 +15,13 @@ const WelcomeScreen = ({ navigation }) => {
         // require("../assets/img2.jpg"),
         // require("../assets/img3.jpg"),
     ];
-    console.log(userInfo);
-    const { User: user } = userInfo;
+    // console.log(userInfo);
+    const { payload: user } = userInfo;
     const check = () => {
         console.log("hello checked");
     }
+
+    console.log("userInfo - Welcomescreen", userInfo);
 
     return (
         <>
@@ -33,7 +35,7 @@ const WelcomeScreen = ({ navigation }) => {
                                 {/* <View style={{flex:"1 1 0"}}> */}
                                 <View style={styles.align}>
                                     <Text style={styles.Welcome}>Welcome,</Text>
-                                    <Text style={styles.name}>{user.name}</Text>
+                                    <Text style={styles.name}>{user?.name}</Text>
                                     <Text style={styles.abcjw}>Abc jewellers private limited</Text>
                                 </View>
                                 <View style={styles.align2}>

@@ -9,15 +9,6 @@ const images = [
 ]
 
 function GetStarted({ navigation }) {
-    const { userToken, isLoading } = useContext(AuthContext);
-    //TODO: Need to find a better place
-    useEffect(() => {
-        console.log("userToken", userToken);
-        if (userToken) {
-            navigation.navigate('welcomeScreen');
-        }
-    }, [userToken]);
-
     return (
         <View>
             <View >
