@@ -15,8 +15,6 @@ function GetStarted({ navigation }) {
         console.log("userToken", userToken);
         if (userToken) {
             navigation.navigate('welcomeScreen');
-        } else {
-            navigation.navigate('login');
         }
     }, [userToken]);
 
