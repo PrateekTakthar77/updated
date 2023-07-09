@@ -15,6 +15,9 @@ import WelcomeScreen from '../Screens/WelcomeScreen';
 import Cart from '../Screens/Cart';
 import SingleProduct from '../Screens/SingleProduct';
 import Product from '../Screens/Product';
+import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from "../Screens/AuthContext";
+import WastageChart from '../Screens/WastageChart';
 
 const Stack = createNativeStackNavigator();
 
@@ -140,8 +143,19 @@ const Navigation = () => {
                             name="product"
                             component={Product}
                             options={{
-                                title: '',
+                                title: 'Products',
                                 headerStyle: { backgroundColor: 'black' },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }} />
+
+                        {/* ---- */}
+                        <Stack.Screen
+                            name="wastage"
+                            component={WastageChart}
+                            options={{
+                                title: '',
+                                headerStyle: { backgroundColor: 'white' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
                             }} />

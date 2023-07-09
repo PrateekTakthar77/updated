@@ -66,10 +66,10 @@ const SingleProduct = ({ navigation }) => {
                         <Text style={styles.logintext}>ADD TO CART</Text>
                     </View>
                 </TouchableOpacity>
-                <View style={styles.View7}>
+                {/* <View style={styles.View7}>
                     <Text style={styles.View6}>Product specification</Text>
                     <Text style={styles.View6}>↓</Text>
-                </View>
+                </View> */}
             </ScrollView>
         </View>
     )
@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
     logintext: {
         fontSize: 15,
         color: "black",
-        textAlign: "center"
+        textAlign: "center",
+        fontWeight: "bold",
     },
     View1: {
         height: 300,
@@ -115,12 +116,14 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     View3: {
-        color: 'black'
+        color: 'black',
+        fontWeight: "bold",
     },
     View4: {
         color: 'black',
         // backgroundColor: 'black',
-        padding: 1
+        padding: 1,
+        fontWeight: "bold",
     },
     View5: {
         marginTop: 20,
