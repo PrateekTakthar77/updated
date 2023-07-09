@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image, StatusBar, Button, StyleSheet, TouchableOpacity, Modal, TextInput } from 'react-native';
+import { View, Text, Image, StatusBar, Button, StyleSheet, TouchableOpacity, Modal, TextInput, ScrollView } from 'react-native';
 
 function LogInSignUp({ navigation }) {
     const OpenSignup = () => {
@@ -8,27 +8,30 @@ function LogInSignUp({ navigation }) {
     const [showModal, setShowModal] = useState(false);
     return (
         <View>
-            <View style={styles.body}>
+            <ScrollView>
+                <View style={styles.body}>
 
-                <View style={styles.image}>
-                    <Image style={styles.imageSize} source={require('../assets/logo.png')} />
-                </View>
+                    <View style={styles.image}>
+                        <Image style={styles.imageSize} source={require('../assets/logo.png')} />
+                    </View>
 
-                <View style={styles.ButtonContainer}>
+                    <View style={styles.ButtonContainer}>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('login')}>
                         <View style={styles.loginbutton}>
-                            <Text style={styles.logintext}>LOGIN</Text>
+                            <TouchableOpacity onPress={() => navigation.navigate('login')}>
+                                <Text style={styles.logintext}>LOGIN</Text>
+                            </TouchableOpacity>
                         </View>
-                    </TouchableOpacity>
 
-                    <TouchableOpacity onPress={OpenSignup}>
                         <View style={styles.signupbutton}>
-                            <Text style={styles.signuptext}>SIGNUP </Text>
+                            <TouchableOpacity onPress={OpenSignup}>
+                                <Text style={styles.signuptext}>SIGNUP </Text>
+                            </TouchableOpacity>
                         </View>
-                    </TouchableOpacity>
+                        <View style={{ height: 200 }}></View>
+                    </View>
                 </View>
-            </View>
+            </ScrollView>
 
             <Modal Modal visible={showModal} animationType="slide" onRequestClose={() => setShowModal(false)} >
                 <View style={styles.modalAlignMent}>
@@ -60,6 +63,7 @@ export default LogInSignUp;
 
 const styles = StyleSheet.create({
     body: {
+        display: "flex",
         flex: 1,
         backgroundColor: "white",
     },
@@ -81,19 +85,18 @@ const styles = StyleSheet.create({
     loginbutton: {
         backgroundColor: "#eec06b",
         padding: 15,
-        marginTop: 480,
         alignItems: "center",
         borderRadius: 80,
         width: 240,
         height: 70,
         justifyContent: 'center',
         alignItems: 'center',
+        marginBottom: 20
         // marginLeft: 60,
     },
     signupbutton: {
         backgroundColor: "black",
         padding: 15,
-        marginTop: 590,
         alignItems: "center",
         borderRadius: 80,
         width: 240,

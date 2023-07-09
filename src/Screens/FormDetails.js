@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import {
     StyleSheet,
@@ -9,11 +9,49 @@ import {
     TextInput,
     ScrollView
 } from "react-native";
+import { AuthContext } from "./AuthContext";
 
-const FormDetails = ({navigation}) => {
+const FormDetails = ({ navigation }) => {
+    const { userDetails, userToken } = useContext(AuthContext);
+    const { updateUserDetails } = useContext(AuthContext);
+    const [brandName, setBrandName] = useState(null);
+    const [address, setAddress] = useState(null);
+    const [pincode, setPincode] = useState(null);
+    const [city, setCity] = useState(null);
+    const [state, setState] = useState(null);
+    const [locality, setLocality] = useState(null);
+    const [gstNo, setGstno] = useState(null);
+    const [storePersonName, setstorePersonName] = useState(null);
+    const [contactNo, setContactNo] = useState(null);
+    const [gpsLocation, setGpsLocation] = useState(null);
+
+    useEffect(() => {
+        if (!userToken) {
+            return;
+        }
+
+        console.log("userToken", userToken);
+        console.log("userDetails", userDetails);
+        if (userDetails) {
+            navigation.replace('welcomeScreen');
+            return;
+        }
+    }, [userToken, userDetails]);
 
     const handleSkip = () => {
         console.log('Skip button pressed!');
+        updateUserDetails({
+            brandName,
+            address,
+            pincode,
+            city,
+            state,
+            locality,
+            gstNo,
+            storePersonName,
+            contactNo,
+            gpsLocation
+        })
     };
 
     return (
@@ -50,6 +88,7 @@ const FormDetails = ({navigation}) => {
                             autoCorrect={false}
                             placeholder="Brand name"
                             placeholderTextColor="#a4a4a4"
+                            onChangeText={setBrandName}
                         />
                         {/*Address*/}
                         <TextInput
@@ -58,6 +97,7 @@ const FormDetails = ({navigation}) => {
                             autoCorrect={false}
                             placeholder="Address"
                             placeholderTextColor="#a4a4a4"
+                            onChangeText={setAddress}
                         />
                         {/* ----------------------------------------------------------------------------- */}
 
@@ -70,6 +110,7 @@ const FormDetails = ({navigation}) => {
                                 autoCorrect={false}
                                 placeholder="Pincode"
                                 placeholderTextColor="#a4a4a4"
+                                onChangeText={setPincode}
                             />
 
                             {/* Locality */}
@@ -80,6 +121,7 @@ const FormDetails = ({navigation}) => {
                                 autoCorrect={false}
                                 placeholder="Locality"
                                 placeholderTextColor="#a4a4a4"
+                                onChangeText={setLocality}
                             />
                         </View>
 
@@ -94,6 +136,7 @@ const FormDetails = ({navigation}) => {
                                 autoCorrect={false}
                                 placeholder="City"
                                 placeholderTextColor="#a4a4a4"
+                                onChangeText={setCity}
                             />
 
                             {/*State*/}
@@ -104,6 +147,7 @@ const FormDetails = ({navigation}) => {
                                 autoCorrect={false}
                                 placeholder="State"
                                 placeholderTextColor="#a4a4a4"
+                                onChangeText={setState}
                             />
                         </View>
 
@@ -118,6 +162,7 @@ const FormDetails = ({navigation}) => {
                             autoCorrect={false}
                             placeholder="GST no."
                             placeholderTextColor="#a4a4a4"
+                            onChangeText={setGstno}
                         />
 
 
@@ -133,6 +178,7 @@ const FormDetails = ({navigation}) => {
                                 autoCorrect={false}
                                 placeholder="Store Person Name"
                                 placeholderTextColor="#a4a4a4"
+                                onChangeText={setstorePersonName}
                             />
 
                             {/* Contact No */}
@@ -143,6 +189,7 @@ const FormDetails = ({navigation}) => {
                                 autoCorrect={false}
                                 placeholder="contact no."
                                 placeholderTextColor="#a4a4a4"
+                                onChangeText={setContactNo}
                             />
                         </View>
 
@@ -203,6 +250,8 @@ const FormDetails = ({navigation}) => {
                             autoCorrect={false}
                             placeholder="GPS Location"
                             placeholderTextColor="#a4a4a4"
+                            onChangeText={setGpsLocation}
+
                         />
                     </View>
 
