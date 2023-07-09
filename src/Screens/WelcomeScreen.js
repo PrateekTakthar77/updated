@@ -1,9 +1,12 @@
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import MarqueeView from "react-native-marquee-view";
 import { SliderBox } from "react-native-image-slider-box";
 
+import { AuthContext } from './AuthContext';
+
 const WelcomeScreen = ({ navigation }) => {
+    const {logout} = useContext(AuthContext);
     const images = [
         require("../assets/logo.png"),
         require("../assets/logo.png"),
@@ -24,16 +27,25 @@ const WelcomeScreen = ({ navigation }) => {
 
                     <View style={styles.goldenBoxAlignment}>
                         <View style={styles.BoxStyle}>
+                            <View style={{display:"flex", flexDirection: "column", justifyContent:"space-between"}}>
+                                {/* <View style={{flex:"1 1 0"}}> */}
+                                <View style={styles.align}>
+                                    <Text style={styles.Welcome}>Welcome ,</Text>
+                                    <Text style={styles.name}>Amir Alvi</Text>
+                                    <Text style={styles.abcjw}>Abc jewellers private limited</Text>
+                                </View>
+                                <View style={styles.align2}>
+                                    <Text style={styles.toapp}>Welcome to our app! we have thrilled to have you here.</Text>
+                                    <Text style={styles.toapp2}>Enjoy Shopping!</Text>
+                                </View>
+                                <View style={{marginLeft: 10}}>
+                                    <TouchableOpacity onPress={logout}>
+                                        <Text style={{fontSize: 20, marginLeft: 15}}>Logout</Text>
+                                    </TouchableOpacity>
+                                </View>
+                                {/* </View> */}
+                            </View>
 
-                            <View style={styles.align}>
-                                <Text style={styles.Welcome}>Welcome ,</Text>
-                                <Text style={styles.name}>Amir Alvi</Text>
-                                <Text style={styles.abcjw}>Abc jewellers private limited</Text>
-                            </View>
-                            <View style={styles.align2}>
-                                <Text style={styles.toapp}>Welcome to our app! we have thrilled to have you here.</Text>
-                                <Text style={styles.toapp2}>Enjoy Shopping!</Text>
-                            </View>
 
                         </View>
                     </View>
@@ -126,11 +138,11 @@ const WelcomeScreen = ({ navigation }) => {
                     </View>
 
                     {/* COLOMN 8 -------------------------------*/}
-                    <TouchableOpacity>
+                    {/* <TouchableOpacity>
                         <View style={styles.appointmentbutton}>
                             <Text style={styles.appointmentlogintext}>Request Appointment</Text>
                         </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
             </ScrollView>
         </>
@@ -154,17 +166,19 @@ const styles = StyleSheet.create({
         borderRadius: 40,
         marginTop: 30,
         backgroundColor: "#eec06b",
-        height: 170,
+        height: 200,
         width: 380,
     },
 
     align: {
-        flexDirection: "colomn",
+        display: 'flex',
+        flexDirection: "column",
         marginLeft: 25,
         marginTop: 15,
     },
     align2: {
-        flexDirection: "colomn",
+        display: 'flex',
+        flexDirection: "column",
         marginLeft: 25,
         marginTop: 15,
     },
@@ -288,26 +302,31 @@ const styles = StyleSheet.create({
 
     //   COLOMN 6---------------------------
     line: {
-        width: 320,
+        width: "80%",
         height: 1,
         backgroundColor: "#a4a4a4",
-        textAlign: "center",
-        marginLeft: 50,
+        // textAlign: "center",
+        // marginLeft: 50,
         // marginBottom: 8,
         marginTop: 50,
+        alignSelf:'center'
         //   COLOMN 7---------------------------
     },
     span: {
         flexDirection: "row",
         // alignItems:"center",
-        paddingHorizontal: 20,
-        marginRight: 20,
+        // paddingHorizontal: 20,
+        // marginRight: 20,
+        alignItems:"center",
+        // justifyContent:'center'
     },
     span2: {
         flexDirection: "row",
-        paddingHorizontal: 10,
-        marginLeft: 80,
-        marginBottom: 5,
+        // paddingHorizontal: 10,
+        // marginLeft: 80,
+        // marginBottom: 5,
+        alignItems:"center",
+        justifyContent:'center'
     },
     size: {
         width: 100,

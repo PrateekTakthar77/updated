@@ -3,6 +3,8 @@ import { View, Text, Image, TouchableOpacity, ScrollView, FlatList } from 'react
 import { useDispatch } from 'react-redux'
 import { setActiveItem } from '../redux/action';
 import { StyleSheet } from 'react-native';
+import { moderateScale } from '../utils/responsive';
+
 
 // TODO: GET THE PRODUCTS FROM STORE
 const Product = ({ navigation }) => {
@@ -34,7 +36,7 @@ const Product = ({ navigation }) => {
                 renderItem={({ item, index }) => <View key={index} style={styles.View1}>
                     <TouchableOpacity onPress={() => handlePress(item)} style={styles.View2}>
                         <View style={styles.View3}>
-                            <Image style={styles.View4} source={require('../assets/logo.png')} />
+                            <Image style={styles.View4} source={{ uri: item.images[0] }} />
                             <Text style={styles.View5}>{item?.name}</Text>
                         </View>
                     </TouchableOpacity>
@@ -49,30 +51,35 @@ export default Product
 
 const styles = StyleSheet.create({
     View1: {
-        margin: 30,
+        margin: moderateScale(10),
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
+        // justifyContent: 'space-evenly',
         justifyContent: 'center'
     },
     View2: {
         backgroundColor: 'black',
         justifyContent: 'space-evenly',
-        marginRight: 20,
+        marginRight: moderateScale(10),
         borderRadius: 50
     },
     View3: {
-        backgroundColor: 'black',
+        // backgroundColor: 'black',
         borderRadius: 35
     },
     View4: {
         height: 150,
-        width: 100,
+        width: 150,
         alignSelf: 'center',
-        borderRadius: 50
+        borderRadius: 0,
+        borderTopRightRadius: 20,
+        borderTopLeftRadius: 20,
+        // padding:5,
     },
     View5: {
         width: 150,
-        color: 'white',
+        color: 'black',
+        padding:5,
+        // fontWeight:500,
         backgroundColor: '#ECC440',
         textAlign: 'center',
         borderBottomLeftRadius: 50,

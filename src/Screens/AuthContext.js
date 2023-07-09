@@ -33,11 +33,44 @@ export const AuthProvider = ({ children }) => {
                 setIsLoading(false);
             })
     }
-    const logout = () => {
+
+    const register = (name, email, password, mobile, role) => {
+        
+        console.log('Name', name, 'Mobile', mobile, 'Email', email, 'Role', role, 'Password', password);
+        const data = {
+            mobile,
+            password,
+            name,
+            email,
+            role,
+        };
+        setIsLoading(true);
+        axios.post(`${BASE_URL}api/auth/register`, data)
+            .then(res => {
+                let userInfo = res.data;
+                setIsLoading(false)
+                setUserInfo(userInfo);
+                setUserToken(userInfo.token);
+                AsyncStorage.setItem('userinfo', JSON.stringify(userInfo));
+                AsyncStorage.setItem('userToken', userInfo.token);
+                // UserToken is Getting console log
+                console.log('userToken-->' + userInfo.token);
+            })
+            .catch(e => {
+                console.log(`hello: ${e}`);
+                // console.log(`Response #####: ${e.response}`);
+                console.log(`Response: ${JSON.stringify(e.response)}`);
+                // console.log(`hello: ${e.data.message}`);
+                setIsLoading(false);
+            });
+    };
+
+    const logout = async () => {
+        console.log('logout');
         setIsLoading(true)
         setUserToken(null)
-        AsyncStorage.removeItem('userToken');
-        AsyncStorage.removeItem('userinfo');
+        await AsyncStorage.removeItem('userToken');
+        await  AsyncStorage.removeItem('userinfo');
         setIsLoading(false);
     }
 
@@ -59,9 +92,9 @@ export const AuthProvider = ({ children }) => {
     }
     useEffect(() => {
         isLogedIn();
-    }, [])
+    }, []);
     return (
-        <AuthContext.Provider value={{ login, logout, isLoading, userToken, userInfo }}>
+        <AuthContext.Provider value={{ login, logout, isLoading, userToken, userInfo, register }}>
             {children}
         </AuthContext.Provider>
     )

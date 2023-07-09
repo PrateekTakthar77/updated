@@ -25,7 +25,6 @@ function GetStarted({ navigation }) {
             </View>
             <View>
                 <TouchableOpacity onPress={() => {
-                    console.log('login')
                     navigation.navigate('loginsignup')}}>
                     <View >
                         <Text style={styles.GetStartedButtton}>Get Started</Text>

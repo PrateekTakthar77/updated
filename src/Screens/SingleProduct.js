@@ -50,7 +50,7 @@ const SingleProduct = ({ navigation }) => {
                         <Text style={styles.View3}>4.5</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.View5}>
+                {/* <View style={styles.View5}>
                     <Text style={styles.View60}>Ratings</Text>
                     <TouchableOpacity style={{ flexDirection: 'row' }}>
                         <Text style={styles.View6}>⭐</Text>
@@ -60,7 +60,7 @@ const SingleProduct = ({ navigation }) => {
                         <Text style={styles.View6}>⭐</Text>
                     </TouchableOpacity>
                     <Text style={styles.View60}>4.5</Text>
-                </View>
+                </View> */}
                 <TouchableOpacity onPress={() => handlePress(activeItem)}>
                     <View style={styles.loginbutton}>
                         <Text style={styles.logintext}>ADD TO CART</Text>

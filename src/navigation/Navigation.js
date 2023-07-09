@@ -21,143 +21,140 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
     const [showSplashScreen, setShowSplashScreen] = useState(true);
 
-    useEffect(() => {       
+    useEffect(() => {
         AsyncStorage.getItem("userToken").then((value) => {
             console.log('value..m', value)
             if (value) {
                 setShowSplashScreen(false);
             }
         });
-
     }, []);
 
     return (
         <NavigationContainer >
             <Stack.Navigator options={{ headerShown: false }}>
-
-          
-            {showSplashScreen ? (
+                {showSplashScreen ? (
                     <>
-                    <Stack.Screen
-                    name="splash"
-                    component={Splash}
-                    options={{ headerShown: false, title: 'My home' }} />
+                        <Stack.Screen
+                            name="splash"
+                            component={Splash}
+                            options={{ headerShown: false, title: 'My home' }} />
 
-                    <Stack.Screen
-                    name="getstarted"
-                    component={GetStarted}
-                    options={{ headerShown: false, title: 'My home' }} />
+                        <Stack.Screen
+                            name="getstarted"
+                            component={GetStarted}
+                            options={{ headerShown: false, title: 'My home' }} />
 
-                    <Stack.Screen
-                    name="loginsignup"
-                    component={LogInSignUp}
-                    options={{ headerShown: false }} />
+                        <Stack.Screen
+                            name="loginsignup"
+                            component={LogInSignUp}
+                            options={{ headerShown: false }} />
 
-<Stack.Screen
-                    name="login"
-                    component={LogIn}
-                    options={{
-                        title: '',
-                        headerStyle: { backgroundColor: 'white' },
-                        headerTintColor: '#bc9954',
-                        headerTitleStyle: { color: '#bc9954' }
-                    }} />
-      <Stack.Screen
-                    name="signup"
-                    component={SignUp}
-                    options={{
-                        title: '',
-                        headerStyle: { backgroundColor: 'black' },
-                        headerTintColor: '#bc9954',
-                        headerTitleStyle: { color: '#bc9954' }
-                    }}
-                />
+                        <Stack.Screen
+                            name="login"
+                            component={LogIn}
+                            options={{
+                                title: '',
+                                headerStyle: { backgroundColor: 'white' },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }} />
+                        <Stack.Screen
+                            name="signup"
+                            component={SignUp}
+                            options={{
+                                title: '',
+                                headerStyle: { backgroundColor: 'black' },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }}
+                        />
 
 
-<Stack.Screen
-                    name="formdetails"
-                    component={FormDetails}
-                    options={{
-                        title: '',
-                        headerStyle: { backgroundColor: 'black', },
-                        headerTintColor: '#bc9954',
-                        headerTitleStyle: { color: '#bc9954' }
-                    }} />
+                        <Stack.Screen
+                            name="formdetails"
+                            component={FormDetails}
+                            options={{
+                                title: '',
+                                headerStyle: { backgroundColor: 'black', },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }} />
                     </>
-                     ) : null
+                ) : null
                 }
-                
+
 
                 {showSplashScreen == false ? (
                     <>
 
-                <Stack.Screen
-                    name="welcomeScreen"
-                    component={WelcomeScreen} options={{
-                        title: '',
-                        headerStyle: { backgroundColor: 'black', },
-                        headerTintColor: '#bc9954',
-                        headerTitleStyle: { color: '#bc9954' }
-                    }} />
+                        <Stack.Screen
+                            name="welcomeScreen"
+                            component={WelcomeScreen} options={{
+                                title: '',
+                                headerStyle: { backgroundColor: 'black', },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }} />
 
-                <Stack.Screen
-                    name="taxinvoice"
-                    component={TaxInvoice}
-                    options={{
-                        title: '',
-                        headerStyle: { backgroundColor: 'black' },
-                        headerTintColor: '#bc9954',
-                        headerTitleStyle: { color: '#bc9954' }
-                    }} />
+                        <Stack.Screen
+                            name="taxinvoice"
+                            component={TaxInvoice}
+                            options={{
+                                title: '',
+                                headerStyle: { backgroundColor: 'black' },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }} />
 
 
-                <Stack.Screen
-                    name="otp"
-                    component={OTP}
-                    options={{
-                        title: '',
-                        headerStyle: { backgroundColor: 'black' },
-                        headerTintColor: '#bc9954',
-                        headerTitleStyle: { color: '#bc9954' }
-                    }} />
+                        <Stack.Screen
+                            name="otp"
+                            component={OTP}
+                            options={{
+                                title: '',
+                                headerStyle: { backgroundColor: 'black' },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }} />
 
-                <Stack.Screen
-                    name="cart"
-                    component={Cart}
-                    options={{
-                        title: '',
-                        headerStyle: { backgroundColor: 'black' },
-                        headerTintColor: '#bc9954',
-                        headerTitleStyle: { color: '#bc9954' }
-                    }} />
+                        <Stack.Screen
+                            name="cart"
+                            component={Cart}
+                            options={{
+                                title: '',
+                                headerStyle: { backgroundColor: 'black' },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }} />
 
-                <Stack.Screen
-                    name="singleproduct"
-                    component={SingleProduct}
-                    options={{
-                        title: '',
-                        headerStyle: { backgroundColor: 'black' },
-                        headerTintColor: '#bc9954',
-                        headerTitleStyle: { color: '#bc9954' }
-                    }} />
+                        <Stack.Screen
+                            name="singleproduct"
+                            component={SingleProduct}
+                            options={{
+                                title: '',
+                                headerStyle: { backgroundColor: 'black' },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }} />
 
-                <Stack.Screen
-                    name="product"
-                    component={Product}
-                    options={{
-                        title: '',
-                        headerStyle: { backgroundColor: 'black' },
-                        headerTintColor: '#bc9954',
-                        headerTitleStyle: { color: '#bc9954' }
-                    }} />
+                        <Stack.Screen
+                            name="product"
+                            component={Product}
+                            options={{
+                                title: '',
+                                headerStyle: { backgroundColor: 'black' },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }} />
 
                     </>
-                     ) : null
+                ) : null
                 }
-                
-               
-               
-             
+
+
+
+
             </Stack.Navigator>
         </NavigationContainer>
     )

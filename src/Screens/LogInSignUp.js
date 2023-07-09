@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { View, Text, Image, StatusBar, Button, StyleSheet, TouchableOpacity, Modal, TextInput } from 'react-native';
 
 function LogInSignUp({ navigation }) {
-    const Navigator = () => {
+    const OpenSignup = () => {
+        console.log('in modal');
         setShowModal(true);
     }
     const [showModal, setShowModal] = useState(false);
@@ -22,9 +23,9 @@ function LogInSignUp({ navigation }) {
                         </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={Navigator}>
+                    <TouchableOpacity onPress={OpenSignup}>
                         <View style={styles.signupbutton}>
-                            <Text style={styles.signuptext}>SIGNUP</Text>
+                            <Text style={styles.signuptext}>SIGNUP </Text>
                         </View>
                     </TouchableOpacity>
                 </View>

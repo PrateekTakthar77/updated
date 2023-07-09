@@ -99,7 +99,7 @@ const SignUp = ({ navigation }) => {
     
               <TouchableOpacity onPress={handleRegister}>
                 <View style={styles.SignUpButton}>
-                  <Text style={styles.SignUpButtonText}>SIGN IN</Text>
+                  <Text style={styles.SignUpButtonText}>SIGN UP</Text>
                 </View>
               </TouchableOpacity>
     

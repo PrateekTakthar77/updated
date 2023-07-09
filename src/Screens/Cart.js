@@ -87,8 +87,12 @@ const Cart = () => {
                             </TouchableOpacity>
                         </View>
                     </View> */}
+                    <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 30 }}>
+                        <TouchableOpacity onPress={Navigator}><Text style={{ backgroundColor: "#eec06b", padding: 10, borderRadius: 20, marginRight: 5, fontWeight: '700', color: 'black', width: '100%' }}>CONTINUE SHOPPING</Text></TouchableOpacity>
+                        <TouchableOpacity onPress={Navigator}><Text style={{ backgroundColor: "#eec06b", padding: 10, borderRadius: 20, marginLeft: 5, fontWeight: '700', color: 'black', width: '100%' }}>PROCEED TO PAY</Text></TouchableOpacity>
+                    </View>
 
-                    <View style={styles.View16}>
+                    {/* <View style={styles.View16}>
                         <View style={styles.Button}>
                             <TouchableOpacity style={styles.Buttons} onPress={Navigator}>
                                 <Text style={styles.View17}>CONTINUE SHOPPING</Text>
@@ -103,7 +107,7 @@ const Cart = () => {
 
 
 
-                    </View>
+                    </View> */}
                 </View>
 
             </ScrollView>
@@ -120,13 +124,13 @@ const Cart = () => {
                             <Text style={styles.View21}>Advance Payment 28900.00</Text>
                         </View>
 
-                        <TouchableOpacity style={styles.View22}>
+                        {/* <TouchableOpacity style={styles.View22}>
 
                             <View style={styles.MOdalloginbutton}>
                                 <Text style={styles.MOdallogintext}>ENTER ADVANCE AMOUNT</Text>
                             </View>
 
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
 
 
                         <View style={styles.View23}>
@@ -150,10 +154,8 @@ const Cart = () => {
 
 export default Cart
 
+
 const styles = StyleSheet.create({
-    body: {
-        backgroundColor: "white",
-    },
     signupbutton: {
         backgroundColor: "black",
         padding: 15,
@@ -407,5 +409,60 @@ const styles = StyleSheet.create({
         backgroundColor: "#a4a4a4",
         alignSelf: 'center'
     },
-
+    body: {
+        backgroundColor: "white",
+    },
+    logo: {
+        marginTop: 150,
+        marginLeft: 135,
+        marginBottom: 150,
+    },
+    loginbutton: {
+        backgroundColor: "#eec06b",
+        padding: 15,
+        marginTop: 30,
+        alignItems: "center",
+        borderRadius: 80,
+        width: 240,
+        height: 70,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 60,
+    },
+    signupbutton: {
+        backgroundColor: "black",
+        padding: 15,
+        marginTop: 30,
+        alignItems: "center",
+        borderRadius: 80,
+        width: 240,
+        height: 70,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 60,
+    },
+    logintext: {
+        fontSize: 20,
+        color: "black",
+    },
+    signuptext: {
+        fontSize: 20,
+        color: "#eec06b",
+    },
+    MOdalloginbutton: {
+        backgroundColor: "black",
+        padding: 15,
+        marginTop: 10,
+        alignItems: "center",
+        borderRadius: 10,
+        width: 270,
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 60,
+    },
+    MOdallogintext: {
+        fontSize: 15,
+        color: "#eec06b",
+    }
 })
