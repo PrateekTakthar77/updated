@@ -108,7 +108,7 @@ const Cart = () => {
 
 
                     </View> */}
-                    
+
                 </View>
 
             </ScrollView>
@@ -147,7 +147,7 @@ const Cart = () => {
                             </View>
                         </TouchableOpacity>
 
-                        
+
                     </View>
                 </View>
             </Modal>
@@ -195,9 +195,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: '#eec06b',
         borderRadius: 10,
-        width: "100%",
+        width: '90%',
         alignItems: 'center',
-        marginTop: 30,
+        alignSelf: 'center',
+        marginTop: 30
     },
     View2: {
         flexDirection: 'row',
