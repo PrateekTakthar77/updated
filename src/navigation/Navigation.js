@@ -83,12 +83,16 @@ const Navigation = () => {
                         <Stack.Screen
                             name="formdetails"
                             component={FormDetails}
-                            options={{ headerShown: false }}  />
+                            options={{
+                                title: '',
+                                headerStyle: { backgroundColor: 'black', },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }} />
 
                         <Stack.Screen
                             name="welcomeScreen"
-                            component={WelcomeScreen} 
-                            options={{
+                            component={WelcomeScreen} options={{
                                 title: '',
                                 headerStyle: { backgroundColor: 'black', },
                                 headerTintColor: '#bc9954',
@@ -140,7 +144,7 @@ const Navigation = () => {
                             name="product"
                             component={Product}
                             options={{
-                                title: '',
+                                title: 'Products',
                                 headerStyle: { backgroundColor: 'black' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }

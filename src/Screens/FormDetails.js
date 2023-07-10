@@ -60,7 +60,7 @@ const FormDetails = ({ navigation }) => {
 
                 {/* Skip button */}
 
-                <TouchableOpacity style={styles.SkipButton} onPress={() => navigation.navigate('welcomeScreen')}>
+                <TouchableOpacity style={styles.SkipButton} onPress={handleSkip}>
                     <Text style={styles.SkipButtonText}>Skip&nbsp;{">>"}</Text>
                 </TouchableOpacity>
 
@@ -272,7 +272,7 @@ export default FormDetails;
 
 const styles = StyleSheet.create({
     body: {
-        // backgroundColor: "white",
+        backgroundColor: "white",
         // marginLeft:40,
         // marginRight:40,
     },
@@ -297,7 +297,7 @@ const styles = StyleSheet.create({
 
     image: {
         alignSelf: 'center',
-        marginTop: -45,
+        marginTop: -20,
     },
 
     imageSize: {
@@ -535,7 +535,7 @@ const styles = StyleSheet.create({
     submitButton: {
         backgroundColor: "#eec06b",
         padding: 20,
-        marginTop: 40,
+        marginTop: 50,
         alignItems: "center",
         borderRadius: 70,
         width: 240,
