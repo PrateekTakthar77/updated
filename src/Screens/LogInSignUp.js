@@ -17,18 +17,20 @@ function LogInSignUp({ navigation }) {
 
                     <View style={styles.ButtonContainer}>
 
-                        <View style={styles.loginbutton}>
-                            <TouchableOpacity onPress={() => navigation.navigate('login')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('login')}>
+                            <View style={styles.loginbutton}>
                                 <Text style={styles.logintext}>LOGIN</Text>
-                            </TouchableOpacity>
-                        </View>
+                            </View>
+                        </TouchableOpacity>
 
-                        <View style={styles.signupbutton}>
-                            <TouchableOpacity onPress={OpenSignup}>
+                        <TouchableOpacity onPress={OpenSignup}>
+                            <View style={styles.signupbutton}>
                                 <Text style={styles.signuptext}>SIGNUP </Text>
-                            </TouchableOpacity>
-                        </View>
+                            </View>
+                        </TouchableOpacity>
+
                         <View style={{ height: 200 }}></View>
+
                     </View>
                 </View>
             </ScrollView>
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
     },
 
     loginbutton: {
-        marginTop:150,
+        marginTop: 150,
         backgroundColor: "#eec06b",
         padding: 15,
         alignItems: "center",
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
         height: 70,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop:20,
+        marginTop: 20,
 
         // marginLeft: 60,
     },

@@ -9,6 +9,7 @@ import { AuthContext, AuthProvider } from "./src/Screens/AuthContext";
 import LogIn from './src/Screens/LogIn';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
+import "react-native-gesture-handler";
 const Stack = createNativeStackNavigator();
 
 // const Stack = createNativeStackNavigator();

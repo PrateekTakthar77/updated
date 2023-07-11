@@ -44,7 +44,7 @@ const SignUp = ({ navigation }) => {
           {/* name */}
           <TextInput
             style={styles.NameInputbotton}
-            autoCapitalize="none"
+            autoCapitalize
             autoCorrect={false}
             placeholder="Name"
             onChangeText={setName}
@@ -53,7 +53,7 @@ const SignUp = ({ navigation }) => {
           {/* Mobile No */}
           <TextInput
             style={styles.MobileNoInputbotton}
-            autoCapitalize="none"
+            autoCapitalize
             autoCorrect={false}
             placeholder="Mobile No."
             onChangeText={setMobile}
@@ -62,7 +62,7 @@ const SignUp = ({ navigation }) => {
           {/* Email Id */}
           <TextInput
             style={styles.EmailIdInputbotton}
-            autoCapitalize="none"
+            autoCapitalize
             autoCorrect={false}
             placeholder="Email Id"
             onChangeText={setEmail}
@@ -71,7 +71,7 @@ const SignUp = ({ navigation }) => {
           {/* role */}
           <TextInput
             style={styles.NameInputbotton}
-            autoCapitalize="none"
+            autoCapitalize
             autoCorrect={false}
             placeholder="Role"
             onChangeText={setRole}
@@ -80,7 +80,7 @@ const SignUp = ({ navigation }) => {
           {/* password*/}
           <TextInput
             style={styles.PasswordInputbotton}
-            autoCapitalize="none"
+            autoCapitalize
             autoCorrect={false}
             placeholder="Password"
             // value={password}
@@ -90,7 +90,7 @@ const SignUp = ({ navigation }) => {
           {/* Confirm Password*/}
           <TextInput
             style={styles.ConfirmPasswordInputbotton}
-            autoCapitalize="none"
+            autoCapitalize
             autoCorrect={false}
             placeholder="Confirm password"
             onChangeText={setPassword}
@@ -292,6 +292,6 @@ const styles = StyleSheet.create({
     paddingTop: 6,
     textDecorationLine: 'underline',
     fontWeight: 'bold',
-    
+
   }
 });

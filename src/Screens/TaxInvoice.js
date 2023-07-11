@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
         //    backgroundColor: "white",
         // width: 300,
         // alignItems:"center"
-        justifyContent:"center"
+        justifyContent: "center"
     },
     parent: {
         // alignItems: "center",

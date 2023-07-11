@@ -1,11 +1,7 @@
 import { Dimensions, StyleSheet, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 const { height, width } = Dimensions.get("window")
-const Headerr = ({
-    Search,
-    leftIcon,
-    onClickLeftIcon,
-}) => {
+const Headerr = ({ Search, leftIcon, onClickLeftIcon}) => {
     return (
         <View style={styles.header}>
             <TouchableOpacity style={styles.btn} onPress={() => {

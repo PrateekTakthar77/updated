@@ -84,7 +84,7 @@ const FormDetails = ({ navigation }) => {
 
                         <TextInput
                             style={styles.Brandnameinputbottom}
-                            autoCapitalize="none"
+                            autoCapitalize
                             autoCorrect={false}
                             placeholder="Brand name"
                             placeholderTextColor="#a4a4a4"
@@ -93,7 +93,7 @@ const FormDetails = ({ navigation }) => {
                         {/*Address*/}
                         <TextInput
                             style={styles.Addressinputbottom}
-                            autoCapitalize="none"
+                            autoCapitalize
                             autoCorrect={false}
                             placeholder="Address"
                             placeholderTextColor="#a4a4a4"
@@ -106,7 +106,7 @@ const FormDetails = ({ navigation }) => {
                         <View style={styles.span}>
                             <TextInput
                                 style={styles.Pincodeinputbottom}
-                                autoCapitalize="none"
+                                autoCapitalize
                                 autoCorrect={false}
                                 placeholder="Pincode"
                                 placeholderTextColor="#a4a4a4"
@@ -117,7 +117,7 @@ const FormDetails = ({ navigation }) => {
 
                             <TextInput
                                 style={styles.Localityinputbottom}
-                                autoCapitalize="none"
+                                autoCapitalize
                                 autoCorrect={false}
                                 placeholder="Locality"
                                 placeholderTextColor="#a4a4a4"
@@ -132,7 +132,7 @@ const FormDetails = ({ navigation }) => {
                         <View style={styles.span}>
                             <TextInput
                                 style={styles.Cityinputbottom}
-                                autoCapitalize="none"
+                                autoCapitalize
                                 autoCorrect={false}
                                 placeholder="City"
                                 placeholderTextColor="#a4a4a4"
@@ -143,7 +143,7 @@ const FormDetails = ({ navigation }) => {
 
                             <TextInput
                                 style={styles.Stateinputbottom}
-                                autoCapitalize="none"
+                                autoCapitalize
                                 autoCorrect={false}
                                 placeholder="State"
                                 placeholderTextColor="#a4a4a4"
@@ -158,7 +158,7 @@ const FormDetails = ({ navigation }) => {
 
                         <TextInput
                             style={styles.GSTinputbottom}
-                            autoCapitalize="none"
+                            autoCapitalize
                             autoCorrect={false}
                             placeholder="GST no."
                             placeholderTextColor="#a4a4a4"
@@ -174,7 +174,7 @@ const FormDetails = ({ navigation }) => {
                         <View style={styles.span}>
                             <TextInput
                                 style={styles.StorePersonNameinputbottom1}
-                                autoCapitalize="none"
+                                autoCapitalize
                                 autoCorrect={false}
                                 placeholder="Store Person Name"
                                 placeholderTextColor="#a4a4a4"
@@ -185,7 +185,7 @@ const FormDetails = ({ navigation }) => {
 
                             <TextInput
                                 style={styles.contactnoinputbottom1}
-                                autoCapitalize="none"
+                                autoCapitalize
                                 autoCorrect={false}
                                 placeholder="contact no."
                                 placeholderTextColor="#a4a4a4"
@@ -200,7 +200,7 @@ const FormDetails = ({ navigation }) => {
                         <View style={styles.span}>
                             <TextInput
                                 style={styles.StorePersonNameinputbottom2}
-                                autoCapitalize="none"
+                                autoCapitalize
                                 autoCorrect={false}
                                 placeholder="Store Person Name"
                                 placeholderTextColor="#a4a4a4"
@@ -210,7 +210,7 @@ const FormDetails = ({ navigation }) => {
 
                             <TextInput
                                 style={styles.contactnoinputbottom2}
-                                autoCapitalize="none"
+                                autoCapitalize
                                 autoCorrect={false}
                                 placeholder="contact no."
                                 placeholderTextColor="#a4a4a4"
@@ -226,7 +226,7 @@ const FormDetails = ({ navigation }) => {
                         <View style={styles.span}>
                             <TextInput
                                 style={styles.StorePersonNameinputbottom3}
-                                autoCapitalize="none"
+                                autoCapitalize
                                 autoCorrect={false}
                                 placeholder="Store Person Name"
                                 placeholderTextColor="#a4a4a4"
@@ -236,7 +236,7 @@ const FormDetails = ({ navigation }) => {
 
                             <TextInput
                                 style={styles.contactnoinputbottom3}
-                                autoCapitalize="none"
+                                autoCapitalize
                                 autoCorrect={false}
                                 placeholder="contact no"
                                 placeholderTextColor="#a4a4a4"

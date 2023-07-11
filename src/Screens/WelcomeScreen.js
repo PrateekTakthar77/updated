@@ -1,30 +1,39 @@
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import MarqueeView from "react-native-marquee-view";
 import { SliderBox } from "react-native-image-slider-box";
-
 import { AuthContext } from './AuthContext';
+import { useNavigation } from '@react-navigation/native';
 
-const WelcomeScreen = ({ navigation }) => {
+import Headerr from './Header';
+
+const WelcomeScreen = () => {
+
+    const navigation = useNavigation()
+
     const { logout, userInfo, userDetails, userToken } = useContext(AuthContext);
     const images = [
         require("../assets/logo.png"),
         require("../assets/logo.png"),
         require("../assets/logo.png"),
-        // require("../assets/img1.jpg"),
-        // require("../assets/img2.jpg"),
-        // require("../assets/img3.jpg"),
     ];
-    // console.log(userInfo);
+
     const { payload: user } = userInfo;
     const check = () => {
         console.log("hello checked");
     }
 
     console.log("userInfo - Welcomescreen", userInfo);
-
     return (
         <>
+
+            <Headerr leftIcon={require("../assets/menu.png")}
+             onClickLeftIcon={() => {
+                navigation.openDrawer();
+            }} />
+
+
+
             <ScrollView>
                 <View style={styles.main}>
                     <View style={styles.goldenBoxAlignment}>

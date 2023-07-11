@@ -89,13 +89,17 @@ const Cart = ({ navigation }) => {
                     </View> */}
                     <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 30, marginHorizontal: -20, }}>
 
-                        <TouchableOpacity onPress={Navigator}>
+                        {/* <TouchableOpacity onPress={Navigator}>
+                            <Text style={{ backgroundColor: "#eec06b", padding: 10, borderRadius: 20, marginRight: 5, fontWeight: '700', color: 'black' }}>CONTINUE SHOPPING</Text>
+                        </TouchableOpacity> */}
+
+                        <TouchableOpacity onPress={() => navigation.navigate('product')}>
                             <Text style={{ backgroundColor: "#eec06b", padding: 10, borderRadius: 20, marginRight: 5, fontWeight: '700', color: 'black' }}>CONTINUE SHOPPING</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={Navigator}>
+                        {/* <TouchableOpacity onPress={Navigator}>
                             <Text style={{ backgroundColor: "#eec06b", padding: 10, borderRadius: 20, marginLeft: 5, fontWeight: '700', color: 'black' }}>PROCEED TO PAY</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
 
                     </View>
 

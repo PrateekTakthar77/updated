@@ -29,15 +29,14 @@ const LogIn = ({ navigation }) => {
                     {/* mobile no input */}
                     <TextInput
                         style={styles.MobileNoInput}
-                        autoCapitalize="none"
-                        autoCorrect={false}
+                        autoCapitalize                        autoCorrect={false}
                         placeholder="Mobile No."
                         onChangeText={(text) => setMobile(text)}
                     />
                     {/* password input */}
                     <TextInput
                         style={styles.PasswordInput}
-                        autoCapitalize="none"
+                        autoCapitalize
                         autoCorrect={false}
                         placeholder="Password"
                         onChangeText={(text) => setPassword(text)}

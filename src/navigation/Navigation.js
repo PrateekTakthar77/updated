@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { NavigationContainer } from '@react-navigation/native'
+// import { NavigationContainer } from '@react-navigation/native'
+// import { useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { StyleSheet } from "react-native";
+import { StyleSheet, Pressable, Image } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Splash from '../Screens/Splash';
 import GetStarted from '../Screens/GetStarted';
@@ -9,21 +10,26 @@ import LogInSignUp from '../Screens/LogInSignUp';
 import LogIn from '../Screens/LogIn';
 import SignUp from '../Screens/SignUp';
 import FormDetails from '../Screens/FormDetails';
-import TaxInvoice from '../Screens/TaxInvoice';
+// import TaxInvoice from '../Screens/TaxInvoice';
 import OTP from '../Screens/OTP';
 import WelcomeScreen from '../Screens/WelcomeScreen';
 import Cart from '../Screens/Cart';
 import SingleProduct from '../Screens/SingleProduct';
 import Product from '../Screens/Product';
-import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from "../Screens/AuthContext";
 import WastageChart from '../Screens/WastageChart';
 import Thankyou from '../Screens/Thankyou';
+import Drawer from "../navigation/Drawer";
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+// import { createDrawerNavigator } from '@react-navigation/drawer'
 
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
     const [showSplashScreen, setShowSplashScreen] = useState(true);
+
+    // const navigation = useNavigation(),
+    const navigation = useNavigation();
 
     useEffect(() => {
         AsyncStorage.getItem("userToken").then((value) => {
@@ -32,6 +38,7 @@ const Navigation = () => {
             }
         });
     }, []);
+
 
     return (
         // <NavigationContainer >
@@ -83,19 +90,14 @@ const Navigation = () => {
                         <Stack.Screen
                             name="formdetails"
                             component={FormDetails}
-                            options={{ headerShown: false }}  />
+                            options={{ headerShown: false }} />
 
                         <Stack.Screen
                             name="welcomeScreen"
-                            component={WelcomeScreen} 
-                            options={{
-                                title: '',
-                                headerStyle: { backgroundColor: 'black', },
-                                headerTintColor: '#bc9954',
-                                headerTitleStyle: { color: '#bc9954' }
-                            }} />
+                            component={WelcomeScreen}
+                            options={{ headerShown: false }} />
 
-                        <Stack.Screen
+                        {/* <Stack.Screen
                             name="taxinvoice"
                             component={TaxInvoice}
                             options={{
@@ -103,8 +105,12 @@ const Navigation = () => {
                                 headerStyle: { backgroundColor: 'black' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
-                            }} />
+                            }} /> */}
 
+                        <Stack.Screen
+                            name="drawerBeta"
+                            component={Drawer}
+                            options={{ headerShown: false }} />
 
                         <Stack.Screen
                             name="otp"
@@ -164,6 +170,8 @@ const Navigation = () => {
                             name="thankyou"
                             component={Thankyou}
                             options={{ headerShown: false }} />
+
+
 
                     </>
                 ) : null
