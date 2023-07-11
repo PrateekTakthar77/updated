@@ -15,7 +15,7 @@ const SignUp = ({ navigation }) => {
   const [mobile, setMobile] = useState(null);
   const [password, setPassword] = useState(null);
   const [name, setName] = useState(null);
-  const [role, setRole] = useState(null);
+  const [role, setRole] = useState("Dealer");
   const [email, setEmail] = useState(null);
 
   const handleRegister = () => {
@@ -69,13 +69,13 @@ const SignUp = ({ navigation }) => {
           />
 
           {/* role */}
-          <TextInput
+          {/* <TextInput
             style={styles.NameInputbotton}
             autoCapitalize
             autoCorrect={false}
             placeholder="Role"
             onChangeText={setRole}
-          />
+          /> */}
 
           {/* password*/}
           <TextInput

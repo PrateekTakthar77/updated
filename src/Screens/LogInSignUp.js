@@ -23,7 +23,7 @@ function LogInSignUp({ navigation }) {
                             </View>
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={OpenSignup}>
+                        <TouchableOpacity onPress={() => navigation.navigate('signup')}>
                             <View style={styles.signupbutton}>
                                 <Text style={styles.signuptext}>SIGNUP </Text>
                             </View>

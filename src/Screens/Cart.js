@@ -32,7 +32,8 @@ const Cart = ({ navigation }) => {
 
                             <View style={styles.View2}>
 
-                                <Image style={styles.View3} source={require("../assets/logo.png")} />
+                                {/* <Image style={styles.View3} source={require("../assets/logo.png")} /> */}
+                                <Image style={styles.View3} source={{ uri: cartItem.item.images[0] }} />
 
                                 <View style={styles.alignment}>
                                     <Text style={styles.View4}>{cartItem.item.name}</Text>
@@ -224,10 +225,10 @@ const styles = StyleSheet.create({
     },
     View3: {
         height: 130,
-        width: 100,
+        width: 200,
         backgroundColor: 'black',
         borderTopLeftRadius: 10,
-        borderBottomLeftRadius: 10
+        borderBottomLeftRadius: 10,
     },
     alignment: {
         flexDirection: "colomn",
@@ -236,13 +237,13 @@ const styles = StyleSheet.create({
     View4: {
         marginTop: 9,
         color: 'black',
-        marginLeft: 7,
+        marginLeft: 10,
         fontWeight: 'bold',
     },
     View5: {
         color: 'black',
         marginBottom: 27,
-        marginLeft: 7
+        marginLeft: 10
     },
     View6: {
         flexDirection: 'row',

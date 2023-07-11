@@ -60,10 +60,10 @@ const WelcomeScreen = () => {
     console.log("userInfo - Welcomescreen", userInfo);
     return (
         <>
-            <Headerr leftIcon={require("../assets/menu.png")}
+            {/* <Headerr leftIcon={require("../assets/menu.png")}
                 onClickLeftIcon={() => {
                     navigation.openDrawer();
-                }} />
+                }} /> */}
 
             <ScrollView>
                 <View style={styles.main}>
@@ -150,9 +150,6 @@ const WelcomeScreen = () => {
                         </View>
                     </TouchableOpacity>
 
-                    <TouchableHighlight >
-                        <Image source={require('../assets/golden-sparkle.jpg')} />
-                    </TouchableHighlight>
                     {/* <TouchableOpacity>
                         <View style={styles.button} onPress={() => navigation.navigate('product')} >
                             <Text style={styles.buttontext}>PRODUCTS</Text>

@@ -197,18 +197,18 @@ const FormDetails = ({ navigation }) => {
                         {/* Common */}
 
                         {/*Store Person Name 2*/}
-                        <View style={styles.span}>
+                        {/* <View style={styles.span}>
                             <TextInput
                                 style={styles.StorePersonNameinputbottom2}
                                 autoCapitalize
                                 autoCorrect={false}
                                 placeholder="Store Person Name"
                                 placeholderTextColor="#a4a4a4"
-                            />
+                            /> */}
 
                             {/* Contact No */}
 
-                            <TextInput
+                            {/* <TextInput
                                 style={styles.contactnoinputbottom2}
                                 autoCapitalize
                                 autoCorrect={false}
@@ -216,13 +216,13 @@ const FormDetails = ({ navigation }) => {
                                 placeholderTextColor="#a4a4a4"
 
                             />
-                        </View>
+                        </View> */}
 
                         {/* -------------------------------------------------------------------------------------------------- */}
                         {/* Common */}
 
                         {/*Store Person Name 3*/}
-
+{/* 
                         <View style={styles.span}>
                             <TextInput
                                 style={styles.StorePersonNameinputbottom3}
@@ -230,18 +230,18 @@ const FormDetails = ({ navigation }) => {
                                 autoCorrect={false}
                                 placeholder="Store Person Name"
                                 placeholderTextColor="#a4a4a4"
-                            />
+                            /> */}
 
                             {/* Contact No */}
 
-                            <TextInput
+                            {/* <TextInput
                                 style={styles.contactnoinputbottom3}
                                 autoCapitalize
                                 autoCorrect={false}
                                 placeholder="contact no"
                                 placeholderTextColor="#a4a4a4"
                             />
-                        </View>
+                        </View> */}
 
 
                         {/*GPS Location*/}

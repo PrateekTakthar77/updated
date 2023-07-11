@@ -23,16 +23,23 @@ const SingleProduct = ({ navigation }) => {
         <View>
             <ScrollView>
                 <View style={styles.View1}>
-                    <SliderBox
+                    {/* <SliderBox
                         images={images}
                         sliderBoxHeight={300}
                         dotColor="#eec06b"
                         inactiveDotColor="black"
                         autoplay={true}
-                        autoplayInterval={1000}
-                        circleLoop={true} />
+                        autoplayInterval={1000} */}
+                        {/* circleLoop={true} /> */}
+                        <Image style={{height:250,width:350,justifyContent:'center',alignSelf:'center',borderRadius:15}} source={{ uri: activeItem.images[0] }}/>
                 </View>
                 <View style={styles.View2}>
+                    <Text style={styles.View3}>Name {activeItem.name}</Text>
+                </View>
+                <View style={styles.View2}>
+                    <Text style={styles.View3}>Size-{activeItem.size}      Weight-{activeItem.weight}g</Text>
+                </View>
+                {/* <View style={styles.View2}>
                     <Text style={styles.View3}>Size-</Text>
                     <TouchableOpacity>
                         <Text style={styles.View4}>2.5</Text>
@@ -49,7 +56,7 @@ const SingleProduct = ({ navigation }) => {
                     <TouchableOpacity>
                         <Text style={styles.View3}>4.5</Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
                 {/* <View style={styles.View5}>
                     <Text style={styles.View60}>Ratings</Text>
                     <TouchableOpacity style={{ flexDirection: 'row' }}>
