@@ -50,6 +50,11 @@ const SingleProduct = ({ navigation }) => {
                         <Text style={styles.View3}>4.5</Text>
                     </TouchableOpacity>
                 </View>
+
+                <View style={styles.View2}>
+                    <Text style={styles.View3}>{cartItem.item.name}</Text>
+                    
+                </View>
                 {/* <View style={styles.View5}>
                     <Text style={styles.View60}>Ratings</Text>
                     <TouchableOpacity style={{ flexDirection: 'row' }}>

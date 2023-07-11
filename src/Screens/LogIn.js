@@ -20,7 +20,7 @@ const LogIn = ({ navigation }) => {
             <ScrollView>
                 <View>
                     <View style={styles.image}>
-                        {/* <Image source={require("./images/Logo.png")} style={styles.imageSize} /> */}
+                        <Image source={require("../assets/logo.png")} style={styles.imageSize} />
                     </View>
 
                     <View style={styles.LogInTitle}>
@@ -57,9 +57,9 @@ const LogIn = ({ navigation }) => {
                     <View style={styles.line}></View>
 
                     <View style={{ flexDirection: "row", justifyContent: "center" }}>
-                        <Text style={{ textAlign: "center", paddingTop: 6 }}>You are not a registered user Click </Text>
-                        <TouchableOpacity>
-                            <Text style={{ textAlign: "center", paddingTop: 6, textDecorationLine: 'underline', }}> here </Text>
+                        <Text style={{ textAlign: "center", paddingTop: 6, fontWeight: 'bold', }}>You are not a registered user Click </Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('signup')}>
+                            <Text style={{ fontWeight: 'bold', textAlign: "center", paddingTop: 6, textDecorationLine: 'underline', }}> here </Text>
                         </TouchableOpacity>
                     </View>
                 </View>
