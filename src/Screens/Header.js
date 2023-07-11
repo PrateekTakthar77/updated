@@ -21,7 +21,7 @@ export default Headerr
 const styles = StyleSheet.create({
     header: {
         width: width,
-        height: 65,
+        height: 50,
         backgroundColor: 'black',
         flexDirection: 'row',
         justifyContent: "space-between",
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     },
     icon: {
         marginLeft: 20,
-        marginTop: 18,
+        marginTop: 8,
         width: 30,
         height: 30,
         tintColor: "#eec06b"

@@ -1,13 +1,47 @@
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import React, { useContext } from 'react'
+import { View, Text, Dimensions, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native'
+import React, { useContext, useRef, useState } from 'react'
 import MarqueeView from "react-native-marquee-view";
 import { SliderBox } from "react-native-image-slider-box";
 import { AuthContext } from './AuthContext';
 import { useNavigation } from '@react-navigation/native';
-
 import Headerr from './Header';
 
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+
+
+
+
+
 const WelcomeScreen = () => {
+
+    const { width } = Dimensions.get('screen');
+
+    const entries = [
+        {
+            img: require("../assets/para1.jpg"),
+        },
+        {
+            img: require("../assets/para2.jpg"),
+        },
+        {
+            img: require("../assets/para3.jpg"),
+        },
+    ];
+
+    const renderItem = ({ item, index }) => {
+        return (
+            <Image
+                source={item.img}
+                style={{
+                    height: 150,
+                    marginTop: 30,
+                    width: 300,
+                    borderRadius: 20,
+                    marginBottom: 20,
+                }}
+            />
+        );
+    };
 
     const navigation = useNavigation()
 
@@ -26,13 +60,10 @@ const WelcomeScreen = () => {
     console.log("userInfo - Welcomescreen", userInfo);
     return (
         <>
-
             <Headerr leftIcon={require("../assets/menu.png")}
-             onClickLeftIcon={() => {
-                navigation.openDrawer();
-            }} />
-
-
+                onClickLeftIcon={() => {
+                    navigation.openDrawer();
+                }} />
 
             <ScrollView>
                 <View style={styles.main}>
@@ -118,6 +149,10 @@ const WelcomeScreen = () => {
                             <Text style={styles.buttontext}>WASTAGE CHART</Text>
                         </View>
                     </TouchableOpacity>
+
+                    <TouchableHighlight >
+                        <Image source={require('../assets/golden-sparkle.jpg')} />
+                    </TouchableHighlight>
                     {/* <TouchableOpacity>
                         <View style={styles.button} onPress={() => navigation.navigate('product')} >
                             <Text style={styles.buttontext}>PRODUCTS</Text>
@@ -125,7 +160,7 @@ const WelcomeScreen = () => {
                     </TouchableOpacity> */}
 
 
-                    <View style={styles.slider}>
+                    {/* <View style={styles.slider}>
                         <SliderBox
                             images={images}
                             sliderBoxHeight={170}
@@ -140,12 +175,34 @@ const WelcomeScreen = () => {
                             circleLoop={true}
 
                         />
-                    </View>
-                    {/* COLOMN 6 -------------------------------*/}
+                    </View> */}
+
+
+                    {/* // Parallax */}
+
+                    <Carousel
+                        data={entries}
+                        renderItem={renderItem}
+                        sliderWidth={width}
+                        itemWidth={300}
+                        loop
+                        firstItem={1}
+                    />
+                    <Pagination
+                        dotsLength={entries.length}
+                        // activeDotIndex={index}
+                        // carouselRef={isCarousel}
+                        dotStyle={{
+                            width: 10,
+                            height: 10,
+                            borderRadius: 10,
+                            marginHorizontal: 0,
+                            backgroundColor: "#bc9954"
+                        }} />
+                    {/* // Parallax */}
 
                     <View style={styles.line}></View>
 
-                    {/* COLOMN 7 -------------------------------*/}
                     {/* <View style={styles.span3}> */}
                     <View style={styles.span}>
                         <Image source={require("../assets/logo.png")} style={styles.size} />
@@ -347,7 +404,7 @@ const styles = StyleSheet.create({
         // textAlign: "center",
         // marginLeft: 50,
         // marginBottom: 8,
-        marginTop: 50,
+        marginTop: 10,
         alignSelf: 'center'
         //   COLOMN 7---------------------------
     },
