@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from "react-native";
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from "../redux/action";
-import { SliderBox } from "react-native-image-slider-box";
+// import { SliderBox } from "react-native-image-slider-box";
 
 const images = [
     require('../assets/logo.png'),
@@ -13,6 +13,7 @@ const images = [
 const SingleProduct = ({ navigation }) => {
     const dispatch = useDispatch();
     const { activeItem } = useSelector((state) => state.reducer);
+    console.log(activeItem.size);
 
     const handlePress = (activeItem) => {
         dispatch(addToCart(activeItem));
@@ -23,18 +24,19 @@ const SingleProduct = ({ navigation }) => {
         <View>
             <ScrollView>
                 <View style={styles.View1}>
-                    <SliderBox
+                    {/* <SliderBox
                         images={images}
                         sliderBoxHeight={300}
                         dotColor="#eec06b"
                         inactiveDotColor="black"
                         autoplay={true}
                         autoplayInterval={1000}
-                        circleLoop={true} />
+                        circleLoop={true} /> */}
+                        <Image style={{height:250,width:350,justifyContent:'center',alignSelf:'center',borderRadius:15}} source={{ uri: activeItem.images[0] }}/>
                 </View>
                 <View style={styles.View2}>
-                    <Text style={styles.View3}>Size-</Text>
-                    <TouchableOpacity>
+                    <Text style={styles.View3}>Size-{activeItem.size}      Weight-{activeItem.weight}</Text>
+                    {/* <TouchableOpacity>
                         <Text style={styles.View4}>2.5</Text>
                     </TouchableOpacity>
                     <TouchableOpacity>
@@ -48,7 +50,7 @@ const SingleProduct = ({ navigation }) => {
                     </TouchableOpacity>
                     <TouchableOpacity>
                         <Text style={styles.View3}>4.5</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
                 {/* <View style={styles.View5}>
                     <Text style={styles.View60}>Ratings</Text>
@@ -118,6 +120,8 @@ const styles = StyleSheet.create({
     View3: {
         color: 'black',
         fontWeight: "bold",
+        // justifyContent:'space-evenly'
+        
     },
     View4: {
         color: 'black',
