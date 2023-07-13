@@ -9,8 +9,15 @@ import {
   ScrollView
 } from "react-native";
 import { AuthContext } from "./AuthContext";
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const SignUp = ({ navigation }) => {
+  const [isOpen, setOpen] = useState(false);
+  // const [cureentValue, setCurrentValue] = useState();
+  const items = [
+    { label: 'Dealer', value: 'Dealer' }
+  ]
+
   const { register } = useContext(AuthContext);
   const [mobile, setMobile] = useState(null);
   const [password, setPassword] = useState(null);
@@ -40,6 +47,14 @@ const SignUp = ({ navigation }) => {
           <View style={styles.SignUpTitle}>
             <Text style={styles.SignUpText}>Sign Up</Text>
           </View>
+
+          <DropDownPicker
+            items={items}
+            open={isOpen}
+            value={cureentValue}
+            setOpen={() => setOpen(!isOpen)}
+            setValue={setRole}
+          />
 
           {/* name */}
           <TextInput
@@ -130,19 +145,16 @@ const styles = StyleSheet.create({
   // },
 
   image: {
-    alignSelf: 'center',
-    margintop: 0,
+    alignSelf: 'center'
   },
 
   imageSize: {
-
     width: 200,
     height: 300,
     resizeMode: "cover",
   },
 
   SignUpTitle: {
-    marginTop: -15,
     fontSize: 18,
     alignSelf: 'center'
   },
@@ -150,6 +162,7 @@ const styles = StyleSheet.create({
   SignUpText: {
     fontSize: 23,
     marginTop: -30,
+    marginBottom: 25,
     textAlign: "center",
     color: "black",
   },
@@ -160,7 +173,7 @@ const styles = StyleSheet.create({
   NameInputbotton: {
     borderWidth: 1,
     color: "#7d7d7d",
-    marginTop: 5,
+    marginTop: 10,
     marginBottom: 5,
     lineHeight: 25,
     fontSize: 13,
@@ -171,7 +184,6 @@ const styles = StyleSheet.create({
     borderBottomColor: "#bc9954",
     borderWidth: 0,
     paddingBottom: 0,
-    paddingLeft: 0,
   },
 
   //  Mobile No Input Buttons
@@ -189,7 +201,6 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     alignSelf: 'center',
     paddingBottom: 0,
-    paddingLeft: 0,
   },
 
   //  Email Id Input Buttons
@@ -206,7 +217,6 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     alignSelf: 'center',
     paddingBottom: 0,
-    paddingLeft: 0,
   },
 
   //  Password Input Buttons
@@ -222,8 +232,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#bc9954",
     borderWidth: 0,
-    paddingBottom: 0,
-    paddingLeft: 0,
   },
   //  Confirm password Input Buttons
   ConfirmPasswordInputbotton: {
@@ -237,9 +245,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#bc9954",
     borderWidth: 0,
-    alignSelf: 'center',
-    paddingBottom: 0,
-    paddingLeft: 0,
+    alignSelf: 'center'
   },
 
   SignUpButton: {
@@ -263,7 +269,7 @@ const styles = StyleSheet.create({
   ForgotPasswordText: {
     fontSize: 14,
     color: "#a4a4a4",
-    marginBottom: 25,
+    marginBottom: 35,
     textAlign: "center",
     marginTop: 20,
   },
@@ -283,15 +289,12 @@ const styles = StyleSheet.create({
 
   ExistingCustomerText: {
     textAlign: "center",
-    paddingTop: 6,
-    fontWeight: 'bold',
+    paddingTop: 6
   },
 
   ExistingCustomerHereText: {
     textAlign: "center",
     paddingTop: 6,
     textDecorationLine: 'underline',
-    fontWeight: 'bold',
-    
   }
 });

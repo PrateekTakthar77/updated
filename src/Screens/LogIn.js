@@ -19,7 +19,8 @@ const LogIn = ({ navigation }) => {
         if (!mobile || !pasword) {
             alert('Please fill in all the mandatory fields.');
             return
-        } login(mobile, pasword)
+        }
+        login(mobile, pasword);
     }
     return (
         <View style={styles.body}>
@@ -116,7 +117,6 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         alignSelf: 'center',
         paddingBottom: 0,
-        paddingLeft: 0,
     },
     PasswordInput: {
         borderWidth: 1,
@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
         marginTop: 50,
         alignSelf: 'center',
         paddingBottom: 0,
-        paddingLeft: 0,
     },
     signInbutton: {
         backgroundColor: "#eec06b",
@@ -157,8 +156,7 @@ const styles = StyleSheet.create({
         width: "80%",
         height: 1.5,
         backgroundColor: "#a4a4a4",
-        alignSelf: 'center',
-        marginBottom: 10,
+        alignSelf: 'center'
     },
     customerText: {
         fontSize: 14,
@@ -167,7 +165,6 @@ const styles = StyleSheet.create({
         marginTop: 10,
         color: "#000",
         textAlign: "center",
-        fontWeight: 'bold',
     },
     ForgotPasswordText: {
         fontSize: 14,

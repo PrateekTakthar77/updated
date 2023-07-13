@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { addToCart } from "../redux/action";
 import { addToCart, removeFromCart } from "../redux/action";
 
-const Cart = ({ navigation }) => {
+const Cart = () => {
     const [showModal, setShowModal] = useState(false);
     const { cart, cartDetails } = useSelector((state) => state.reducer);
     const dispatch = useDispatch();
@@ -88,25 +88,10 @@ const Cart = ({ navigation }) => {
                             </TouchableOpacity>
                         </View>
                     </View> */}
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 30, marginHorizontal: -20, }}>
-
-                        <TouchableOpacity onPress={Navigator}>
-                            <Text style={{ backgroundColor: "#eec06b", padding: 10, borderRadius: 20, marginRight: 5, fontWeight: '700', color: 'black' }}>CONTINUE SHOPPING</Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={Navigator}>
-                            <Text style={{ backgroundColor: "#eec06b", padding: 10, borderRadius: 20, marginLeft: 5, fontWeight: '700', color: 'black' }}>PROCEED TO PAY</Text>
-                        </TouchableOpacity>
-
+                    <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 30 }}>
+                        <TouchableOpacity onPress={Navigator}><Text style={{ backgroundColor: "#eec06b", padding: 10, borderRadius: 20, marginRight: 5, fontWeight: '700', color: 'black', width: '100%' }}>CONTINUE SHOPPING</Text></TouchableOpacity>
+                        <TouchableOpacity onPress={Navigator}><Text style={{ backgroundColor: "#eec06b", padding: 10, borderRadius: 20, marginLeft: 5, fontWeight: '700', color: 'black', width: '100%' }}>PROCEED TO PAY</Text></TouchableOpacity>
                     </View>
-
-
-                    <TouchableOpacity onPress={() => navigation.navigate('thankyou')}>
-                        <View style={styles.SubmitButton}>
-                            <Text style={styles.SubmitButtonText}>SUBMIT</Text>
-                        </View>
-                    </TouchableOpacity>
-
 
                     {/* <View style={styles.View16}>
                         <View style={styles.Button}>
@@ -501,25 +486,6 @@ const styles = StyleSheet.create({
         color: "black",
         textAlign: "center",
         fontWeight: "bold",
-    },
-    SubmitButton: {
-        backgroundColor: "#eec06b",
-        padding: 15,
-        marginTop: 30,
-        alignItems: "center",
-        borderRadius: 80,
-        width: 240,
-        height: 70,
-        justifyContent: "center",
-        alignItems: "center",
-        alignSelf: 'center'
-    },
-    SubmitButtonText: {
-        fontSize: 20,
-        color: "black",
-        fontWeight: '700'
-
     }
-
 
 })
