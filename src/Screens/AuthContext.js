@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 
+
 export const AuthContext = createContext();
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -12,6 +13,7 @@ export const AuthProvider = ({ children }) => {
     const [userToken, setUserToken] = useState(null);
     const [userInfo, setUserInfo] = useState(null);
     const [userDetails, setUserDetails] = useState(null);
+
 
     const login = (username, password) => {
         setIsLoading(true);
@@ -30,6 +32,7 @@ export const AuthProvider = ({ children }) => {
             setIsLoading(false);
         })
             .catch(e => {
+                alert(`Wrong Credentails`);
                 console.log(`Login error hello ${e}`);
                 setIsLoading(false);
             })
@@ -52,14 +55,12 @@ export const AuthProvider = ({ children }) => {
                 setUserToken(userInfo.token);
                 AsyncStorage.setItem('userinfo', JSON.stringify(userInfo));
                 AsyncStorage.setItem('userToken', userInfo.token);
-                // UserToken is Getting console log
+                console.log(res.status);
                 setIsLoading(false);
             })
             .catch(e => {
+                alert(`Mobile already Registered Please Login `);
                 console.log(`hello: ${e}`);
-                // console.log(`Response #####: ${e.response}`);
-                console.log(`Response: ${JSON.stringify(e.response)}`);
-                // console.log(`hello: ${e.data.message}`);
                 setIsLoading(false);
             });
     };
@@ -85,7 +86,6 @@ export const AuthProvider = ({ children }) => {
             if (userInfo) {
                 setUserToken(userToken);
                 setUserInfo(userInfo);
-                // console.log("userInfo", userInfo);
                 await getUserDetails(userInfo?.userId);
             }
             setIsLoading(false);
@@ -96,18 +96,19 @@ export const AuthProvider = ({ children }) => {
 
     const updateUserDetails = async (data) => {
         setIsLoading(true);
-        const headers = { 'Authorization': userToken };
+        const headers = { 'Authorization': `Bearer ${userToken}` };
         try {
-            const res = await axios.post(`${BASE_URL}api/auth/register`, data, { headers });
+            console.log(`data from authcontext`,data);
+            console.log(`headers from authcontext`,headers);
+            const res = await axios.post(`${BASE_URL}api/user-details/add`, data, { headers });
             const userDetails = res.data;
-            setUserDetails(userDetails);
-            await AsyncStorage.setItem('userDetails', JSON.stringify(userDetails));
+            console.log(`userDetails$$$$$`,userDetails)
+            setUserDetails(userDetails.data);
+            await AsyncStorage.setItem('userDetails', JSON.stringify(userDetails.data));
             setIsLoading(false);
         } catch (e) {
-            console.log(`hello: ${e}`);
-            // console.log(`Response #####: ${e.response}`);
+            console.log(`hello from userdetails: ${e}`);
             console.log(`Response: ${JSON.stringify(e.response)}`);
-            // console.log(`hello: ${e.data.message}`);
             setIsLoading(false);
         }
     }
@@ -125,7 +126,7 @@ export const AuthProvider = ({ children }) => {
         try {
             userDetails = await axios.get(`${BASE_URL}api/user-details/${id}`, { headers });
         } catch (e) {
-            console.log(e);
+            console.log(`error from authcontext `,e);
         }
 
         setUserDetails(userDetails.data);

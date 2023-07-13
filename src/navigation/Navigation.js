@@ -89,7 +89,7 @@ const Navigation = () => {
                             name="welcomeScreen"
                             component={WelcomeScreen} 
                             options={{
-                                title: '',
+                                title: 'WelcomeScreen',
                                 headerStyle: { backgroundColor: 'black', },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
@@ -120,7 +120,7 @@ const Navigation = () => {
                             name="cart"
                             component={Cart}
                             options={{
-                                title: '',
+                                title: 'My Cart',
                                 headerStyle: { backgroundColor: 'black' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
@@ -130,7 +130,7 @@ const Navigation = () => {
                             name="singleproduct"
                             component={SingleProduct}
                             options={{
-                                title: '',
+                                title: 'Product',
                                 headerStyle: { backgroundColor: 'black' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
@@ -140,7 +140,7 @@ const Navigation = () => {
                             name="product"
                             component={Product}
                             options={{
-                                title: '',
+                                title: 'Products',
                                 headerStyle: { backgroundColor: 'black' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
@@ -164,6 +164,7 @@ const Navigation = () => {
                             name="thankyou"
                             component={Thankyou}
                             options={{ headerShown: false }} />
+
 
                     </>
                 ) : null

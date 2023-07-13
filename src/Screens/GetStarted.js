@@ -15,14 +15,14 @@ function GetStarted({ navigation }) {
                 <Image style={styles.logoStyle} source={require('../assets/logo.png')} />
             </View>
             <View style={{ marginTop: 20 }}>
-                <SliderBox
+                {/* <SliderBox
                     images={images}
                     sliderBoxHeight={300}
                     dotColor="#eec06b"
                     inactiveDotColor="black"
                     autoplay={true}
                     autoplayInterval={1000}
-                    circleLoop={true} />
+                    circleLoop={true} /> */}
             </View>
             <View>
                 <TouchableOpacity onPress={() => {

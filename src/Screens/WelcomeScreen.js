@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image, FlatList, Modal, TextInput } from 'react-native'
 import React, { useContext, useState, useEffect } from 'react'
 import MarqueeView from "react-native-marquee-view";
 import { SliderBox } from "react-native-image-slider-box";
@@ -6,25 +6,42 @@ import { SliderBox } from "react-native-image-slider-box";
 import { AuthContext } from './AuthContext';
 
 const WelcomeScreen = ({ navigation }) => {
-    const { logout, userInfo, userDetails, userToken } = useContext(AuthContext);
+    const { login, logout, isLoading, userToken, userInfo, register, userDetails, updateUserDetails, getUserDetails } = useContext(AuthContext);
     const images = [
         require("../assets/logo.png"),
         require("../assets/logo.png"),
         require("../assets/logo.png"),
-        // require("../assets/img1.jpg"),
-        // require("../assets/img2.jpg"),
-        // require("../assets/img3.jpg"),
     ];
-    // console.log(userInfo);
     const { payload: user } = userInfo;
-    const check = () => {
-        console.log("hello checked");
+    console.log(`userinfo`,userInfo);
+    console.log(`userdetails from welcome screen *****`,userDetails)
+    console.log(`userdetails from welcome screen ((@))`,userDetails.userDetails.brandName)
+    console.log(`userdetails from welcome screen ((@))`,userDetails.mobile)
+    // console.log(`userdetails from welcome screen`,brandName)
+
+    // console.log("userInfo - Welcomescreen", userInfo);
+
+    const [data, setData] = useState([]);
+    // const dispatch = useDispatch();
+
+    const getAPIDATA = async () => {
+        const url = "https://jwells-bliss-deploy2.up.railway.app/api/products/";
+        let result = await fetch(url);
+        result = await result.json();
+        setData(result);
     }
 
-    console.log("userInfo - Welcomescreen", userInfo);
+    useEffect(() => {
+        getAPIDATA();
+    }, []);
+
+    const OpenUserDetails = () => {
+        setShowModal(true);
+    }
+    const [showModal, setShowModal] = useState(false);
 
     return (
-        <>
+        <View>
             <ScrollView>
                 <View style={styles.main}>
                     <View style={styles.goldenBoxAlignment}>
@@ -41,10 +58,10 @@ const WelcomeScreen = ({ navigation }) => {
                                             </TouchableOpacity>
                                         </View>
                                     </View>
-
-
-                                    <Text style={styles.name}>{user?.name}</Text>
-                                    <Text style={styles.abcjw}>Abc jewellers private limited</Text>
+                                    <TouchableOpacity onPress={OpenUserDetails}>
+                                        <Text style={styles.name}>{user?.name}</Text>
+                                    </TouchableOpacity>
+                                    <Text style={styles.abcjw}>{userDetails.userDetails.brandName}</Text>
                                 </View>
                                 <View style={styles.align2}>
                                     <Text style={styles.toapp}>Welcome to our app! we have thrilled to have you here.</Text>
@@ -105,7 +122,7 @@ const WelcomeScreen = ({ navigation }) => {
                     </View>
 
                     <TouchableOpacity onPress={() => navigation.navigate('wastage')}>
-                        <View style={styles.button} onPress={check} >
+                        <View style={styles.button}>
                             <Text style={styles.buttontext}>WASTAGE CHART</Text>
                         </View>
                     </TouchableOpacity>
@@ -117,7 +134,7 @@ const WelcomeScreen = ({ navigation }) => {
 
 
                     <View style={styles.slider}>
-                        <SliderBox
+                        {/* <SliderBox
                             images={images}
                             sliderBoxHeight={170}
                             inactiveDotColor="black"
@@ -130,7 +147,21 @@ const WelcomeScreen = ({ navigation }) => {
                             paginationBoxVerticalPadding={10}
                             circleLoop={true}
 
-                        />
+                        /> */}
+                        {/* <View>
+                            <FlatList contentContainerStyle={{ alignItems: "center" }}
+                                data={data}
+                                numColumns={2}
+                                renderItem={({ item, index }) => <View key={index} style={styles.View1}>
+                                    <TouchableOpacity onPress={() => handlePress(item)} style={styles.View2}>
+                                        <View style={styles.View3}>
+                                            <Image style={styles.View4} source={{ uri: item.images[0] }} />
+                                            <Text style={styles.View5}>{item?.name}</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>}
+                            />
+                        </View> */}
                     </View>
                     {/* COLOMN 6 -------------------------------*/}
 
@@ -155,9 +186,37 @@ const WelcomeScreen = ({ navigation }) => {
                             <Text style={styles.appointmentlogintext}>Request Appointment</Text>
                         </View>
                     </TouchableOpacity> */}
+
                 </View>
+
             </ScrollView>
-        </>
+            <Modal Modal visible={showModal} animationType="slide" onRequestClose={() => setShowModal(false)} >
+                <ScrollView>
+                    <View style={styles.main}>
+
+                        <View style={styles.image}>
+                            <Image source={require("../assets/logo.png")} style={styles.imageSize} />
+                        </View>
+
+                        <View style={styles.FormDetailsTitle}>
+                            <Text style={styles.FormDetailsText}>User Details</Text>
+                        </View>
+
+                        {/* Input Elements Alignment */}
+
+                        <View style={{margin:20}}>
+
+                            {/* Brand name */}
+                            <Text style={styles.name}>{user?.name}</Text>
+
+                            <Text style={styles.name}>{userDetails.mobile}</Text>
+                            <Text style={styles.name}>{user?.email}</Text>
+                        </View>
+                    </View>
+                </ScrollView>
+            </Modal >
+
+        </View >
     )
 }
 
@@ -394,5 +453,357 @@ const styles = StyleSheet.create({
         marginLeft: 43,
         textAlign: 'center'
         // justifyContent: "center",
+    },
+    // MODAL
+
+    modalAlignMent: {
+        flex: 3,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    modalStyle: {
+        backgroundColor: "#eec06b",
+        padding: 50,
+        borderRadius: 50,
+        width: 350
+    },
+
+    modalSignUpText: {
+        fontSize: 18,
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: '#000',
+        marginTop: -25,
+    },
+
+    line: {
+        width: "140%",
+        height: 2,
+        backgroundColor: "#000",
+        margin: 0,
+        alignSelf: 'center',
+        marginTop: 10,
+    },
+
+    ModalLogInButtonAlignment: {
+        alignItems: 'center',
+        marginTop: 20
+    },
+
+    Modalloginbutton: {
+        backgroundColor: "black",
+        padding: 15,
+        marginTop: 30,
+        borderRadius: 80,
+        width: 200,
+        height: 60,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    Modallogintext: {
+        fontSize: 20,
+        color: "#eec06b",
+    },
+
+    ModalSignUpButtonAlignment: {
+        alignItems: 'center'
+    },
+
+    Modalsignupbutton: {
+        backgroundColor: "black",
+        padding: 15,
+        marginTop: 30,
+        borderRadius: 80,
+        width: 200,
+        height: 60,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    Modalsignuptext: {
+        fontSize: 20,
+        color: "#eec06b",
+    },
+    body: {
+        // backgroundColor: "white",
+        // marginLeft:40,
+        // marginRight:40,
+    },
+
+    main: {
+        maxWidth: 500,
+        margin: 0,
+        textAlign: "center",
+    },
+
+    SkipButton: {
+        alignItems: 'flex-end',
+        marginTop: 10,
+        marginRight: 10,
+    },
+
+    SkipButtonText: {
+        color: "#bc9954",
+        fontSize: 14,
+        fontWeight: 'bold',
+    },
+
+    image: {
+        alignSelf: 'center',
+        marginTop: -45,
+    },
+
+    imageSize: {
+        width: 300,
+        height: 300,
+        resizeMode: "cover",
+    },
+
+    FormDetailsTitle: {
+        alignSelf: 'center'
+    },
+
+    FormDetailsText: {
+        fontSize: 20,
+        marginTop: -50,
+        textAlign: "center",
+        color: "black"
+
+    },
+
+    // InputButton CSS
+
+    // InputsAlignment: {
+    //     alignSelf: 'center',
+
+    // },
+    // BrandName Css
+    Brandnameinputbottom: {
+        borderWidth: 1,
+        color: "#7d7d7d",
+        lineHeight: 15,
+        marginTop: 0,
+        borderBottomWidth: 1,
+        borderBottomColor: "#bc9954",
+        borderWidth: 0,
+        width: "80%",
+        paddingBottom: 0,
+        paddingLeft: 0,
+        alignSelf: 'center',
+    },
+
+    // Address Css
+    Addressinputbottom: {
+        borderWidth: 1,
+        color: "#7d7d7d",
+        marginTop: 0,
+        lineHeight: 25,
+        marginTop: 15,
+        borderBottomWidth: 1,
+        borderBottomColor: "#bc9954",
+        borderWidth: 0,
+        width: "80%",
+        paddingBottom: 0,
+        paddingLeft: 0,
+        alignSelf: 'center',
+    },
+
+    // PinCode CSS
+    Pincodeinputbottom: {
+        borderWidth: 1,
+        color: "#7d7d7d",
+        marginTop: 0,
+        lineHeight: 25,
+        marginTop: 15,
+        borderBottomWidth: 1,
+        borderBottomColor: "#bc9954",
+        borderWidth: 0,
+        width: "35%",
+        paddingBottom: 0,
+        paddingLeft: 0,
+    },
+
+    // Locality CSS
+    Localityinputbottom: {
+        borderWidth: 1,
+        color: "#7d7d7d",
+        marginTop: 15,
+        lineHeight: 25,
+        borderBottomWidth: 1,
+        borderBottomColor: "#bc9954",
+        borderWidth: 0,
+        width: "35%",
+        paddingBottom: 0,
+        paddingLeft: 0,
+    },
+    // City Css
+    Cityinputbottom: {
+        borderWidth: 1,
+        color: "#7d7d7d",
+        marginTop: 15,
+        lineHeight: 25,
+        borderBottomWidth: 1,
+        borderBottomColor: "#bc9954",
+        borderWidth: 0,
+        width: "35%",
+        paddingBottom: 0,
+        paddingLeft: 0,
+    },
+    // State CSS
+    Stateinputbottom: {
+        borderWidth: 1,
+        color: "#7d7d7d",
+        marginTop: 15,
+        lineHeight: 25,
+        borderBottomWidth: 1,
+        borderBottomColor: "#bc9954",
+        borderWidth: 0,
+        width: "35%",
+        paddingBottom: 0,
+        paddingLeft: 0,
+    },
+    // GST CSS
+    GSTinputbottom: {
+        borderWidth: 1,
+        color: "#7d7d7d",
+        marginTop: 15,
+        lineHeight: 25,
+        borderBottomWidth: 1,
+        borderBottomColor: "#bc9954",
+        borderWidth: 0,
+        width: "80%",
+        paddingBottom: 0,
+        paddingLeft: 0,
+        alignSelf: 'center',
+    },
+    // Store Person 1 CSS
+    StorePersonNameinputbottom1: {
+        borderWidth: 1,
+        color: "#7d7d7d",
+        marginTop: 15,
+        lineHeight: 25,
+        borderBottomWidth: 1,
+        borderBottomColor: "#bc9954",
+        borderWidth: 0,
+        width: "35%",
+        paddingBottom: 0,
+        paddingLeft: 0,
+    },
+    // contact No 1 CSS
+    contactnoinputbottom1: {
+        borderWidth: 1,
+        color: "#7d7d7d",
+        marginTop: 15,
+        lineHeight: 25,
+        borderBottomWidth: 1,
+        borderBottomColor: "#bc9954",
+        borderWidth: 0,
+        width: "35%",
+        paddingBottom: 0,
+        paddingLeft: 0,
+    },
+
+    // Store Person 2 CSS
+    StorePersonNameinputbottom2: {
+        borderWidth: 1,
+        color: "#7d7d7d",
+        marginTop: 15,
+        lineHeight: 25,
+        borderBottomWidth: 1,
+        borderBottomColor: "#bc9954",
+        borderWidth: 0,
+        width: "35%",
+        paddingBottom: 0,
+        paddingLeft: 0,
+    },
+    // contact No 2
+    contactnoinputbottom2: {
+        borderWidth: 1,
+        color: "#7d7d7d",
+        marginTop: 15,
+        lineHeight: 25,
+        borderBottomWidth: 1,
+        borderBottomColor: "#bc9954",
+        borderWidth: 0,
+        width: "35%",
+        paddingBottom: 0,
+        paddingLeft: 0,
+    },
+
+    // Store Person 3 CSS
+    StorePersonNameinputbottom3: {
+        borderWidth: 1,
+        color: "#7d7d7d",
+        marginTop: 15,
+        lineHeight: 25,
+        borderBottomWidth: 1,
+        borderBottomColor: "#bc9954",
+        borderWidth: 0,
+        width: "35%",
+        paddingBottom: 0,
+        paddingLeft: 0,
+    },
+    // contact No 3 CSS
+    contactnoinputbottom3: {
+        borderWidth: 1,
+        color: "#7d7d7d",
+        marginTop: 15,
+        lineHeight: 25,
+        borderBottomWidth: 1,
+        borderBottomColor: "#bc9954",
+        borderWidth: 0,
+        width: "35%",
+        paddingBottom: 0,
+        paddingLeft: 0,
+    },
+    // GPS Location CSS
+    GPSinputbottom: {
+        borderWidth: 1,
+        color: "#7d7d7d",
+        lineHeight: 10,
+        marginTop: 15,
+        borderBottomWidth: 1,
+        borderBottomColor: "#bc9954",
+        borderWidth: 0,
+        width: "80%",
+        paddingBottom: 0,
+        paddingLeft: 0,
+        alignSelf: 'center',
+    },
+    bottom: {
+        width: 100,
+        height: 5,
+    },
+
+    span: {
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        paddingHorizontal: 0,
+    },
+
+    submitButtonAlignment: {
+        alignItems: "center",
+    },
+
+    submitButton: {
+        backgroundColor: "#eec06b",
+        padding: 20,
+        marginTop: 40,
+        alignItems: "center",
+        borderRadius: 70,
+        width: 240,
+        height: 70,
+        justifyContent: "center",
+
+    },
+
+    submitButtonText: {
+        fontSize: 20,
+        color: "black",
+        fontWeight: "500",
+
     },
 });    

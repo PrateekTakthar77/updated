@@ -15,6 +15,12 @@ const LogIn = ({ navigation }) => {
     const [mobile, setMobile] = useState(null);
     const [pasword, setPassword] = useState(null);
 
+    const checkLogin = () => {
+        if (!mobile || !pasword) {
+            alert('Please fill in all the mandatory fields.');
+            return
+        } login(mobile, pasword)
+    }
     return (
         <View style={styles.body}>
             <ScrollView>
@@ -44,7 +50,7 @@ const LogIn = ({ navigation }) => {
                     // secureTextEntry
                     />
 
-                    <TouchableOpacity onPress={() => { login(mobile, pasword) }}>
+                    <TouchableOpacity onPress={checkLogin}>
                         <View style={styles.signInbutton}>
                             <Text style={styles.signInText}>SIGN IN</Text>
                         </View>

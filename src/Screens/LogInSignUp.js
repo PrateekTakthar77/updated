@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, Image, StatusBar, Button, StyleSheet, TouchableOpacity, Modal, TextInput, ScrollView } from 'react-native';
 
 function LogInSignUp({ navigation }) {
+    // Modal is clossed temporarly
     const OpenSignup = () => {
         setShowModal(true);
     }
@@ -24,7 +25,7 @@ function LogInSignUp({ navigation }) {
                         </View>
 
                         <View style={styles.signupbutton}>
-                            <TouchableOpacity onPress={OpenSignup}>
+                            <TouchableOpacity onPress={() => navigation.navigate('signup')}>
                                 <Text style={styles.signuptext}>SIGNUP </Text>
                             </TouchableOpacity>
                         </View>
@@ -54,6 +55,7 @@ function LogInSignUp({ navigation }) {
                     </View>
                 </View>
             </Modal>
+
         </View>
     );
 }

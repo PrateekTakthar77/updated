@@ -13,7 +13,6 @@ const images = [
 const SingleProduct = ({ navigation }) => {
     const dispatch = useDispatch();
     const { activeItem } = useSelector((state) => state.reducer);
-    console.log(activeItem.size);
 
     const handlePress = (activeItem) => {
         dispatch(addToCart(activeItem));
@@ -35,22 +34,10 @@ const SingleProduct = ({ navigation }) => {
                         <Image style={{height:250,width:350,justifyContent:'center',alignSelf:'center',borderRadius:15}} source={{ uri: activeItem.images[0] }}/>
                 </View>
                 <View style={styles.View2}>
-                    <Text style={styles.View3}>Size-{activeItem.size}      Weight-{activeItem.weight}</Text>
-                    {/* <TouchableOpacity>
-                        <Text style={styles.View4}>2.5</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Text style={styles.View3}>3.0</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Text style={styles.View3} >3.5</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity >
-                        <Text style={styles.View3}>4.0</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Text style={styles.View3}>4.5</Text>
-                    </TouchableOpacity> */}
+                    <Text style={styles.View3}>Name {activeItem.name}</Text>
+                </View>
+                <View style={styles.View2}>
+                    <Text style={styles.View3}>Size-{activeItem.size}      Weight-{activeItem.weight}g</Text>
                 </View>
                 {/* <View style={styles.View5}>
                     <Text style={styles.View60}>Ratings</Text>
@@ -106,7 +93,7 @@ const styles = StyleSheet.create({
         // padding:0,
     },
     View2: {
-        marginTop: 50,
+        marginTop: 0,
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-evenly',
@@ -121,7 +108,7 @@ const styles = StyleSheet.create({
         color: 'black',
         fontWeight: "bold",
         // justifyContent:'space-evenly'
-        
+
     },
     View4: {
         color: 'black',

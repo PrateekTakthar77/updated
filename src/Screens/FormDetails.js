@@ -23,7 +23,10 @@ const FormDetails = ({ navigation }) => {
     const [gstNo, setGstno] = useState(null);
     const [storePersonName, setstorePersonName] = useState(null);
     const [contactNo, setContactNo] = useState(null);
-    const [gpsLocation, setGpsLocation] = useState(null);
+    const [gpsLocation, setGpsLocation] = useState({
+        latitude: 37.7749,
+        longitude: -122.4194
+      });
 
     useEffect(() => {
         if (!userToken) {
@@ -31,7 +34,7 @@ const FormDetails = ({ navigation }) => {
         }
 
         console.log("userToken", userToken);
-        console.log("userDetails", userDetails);
+        // console.log("userDetails#####", userDetails);
         if (userDetails) {
             navigation.replace('welcomeScreen');
             return;
@@ -39,7 +42,6 @@ const FormDetails = ({ navigation }) => {
     }, [userToken, userDetails]);
 
     const handleSkip = () => {
-        console.log('Skip button pressed!');
         updateUserDetails({
             brandName,
             address,
@@ -52,6 +54,7 @@ const FormDetails = ({ navigation }) => {
             contactNo,
             gpsLocation
         })
+        console.log(`BrandName   `,setBrandName);
     };
 
     return (
@@ -196,7 +199,7 @@ const FormDetails = ({ navigation }) => {
                         {/* -------------------------------------------------------------------------------------------------- */}
                         {/* Common */}
 
-                        {/*Store Person Name 2*/}
+                        {/* Store Person Name 2
                         <View style={styles.span}>
                             <TextInput
                                 style={styles.StorePersonNameinputbottom2}
@@ -204,11 +207,11 @@ const FormDetails = ({ navigation }) => {
                                 autoCorrect={false}
                                 placeholder="Store Person Name"
                                 placeholderTextColor="#a4a4a4"
-                            />
+                            /> */}
 
                             {/* Contact No */}
 
-                            <TextInput
+                            {/* <TextInput
                                 style={styles.contactnoinputbottom2}
                                 autoCapitalize="none"
                                 autoCorrect={false}
@@ -216,35 +219,35 @@ const FormDetails = ({ navigation }) => {
                                 placeholderTextColor="#a4a4a4"
 
                             />
-                        </View>
+                        </View> */}
 
                         {/* -------------------------------------------------------------------------------------------------- */}
                         {/* Common */}
 
                         {/*Store Person Name 3*/}
 
-                        <View style={styles.span}>
-                            <TextInput
+                        {/* <View style={styles.span}> */}
+                            {/* <TextInput
                                 style={styles.StorePersonNameinputbottom3}
                                 autoCapitalize="none"
                                 autoCorrect={false}
                                 placeholder="Store Person Name"
                                 placeholderTextColor="#a4a4a4"
-                            />
+                            /> */}
 
                             {/* Contact No */}
 
-                            <TextInput
+                            {/* <TextInput
                                 style={styles.contactnoinputbottom3}
                                 autoCapitalize="none"
                                 autoCorrect={false}
                                 placeholder="contact no"
                                 placeholderTextColor="#a4a4a4"
-                            />
-                        </View>
+                            /> */}
+                        {/* </View> */}
 
 
-                        {/*GPS Location*/}
+                        {/* GPS Location
                         <TextInput
                             style={styles.GPSinputbottom}
                             autoCorrect={false}
@@ -252,12 +255,12 @@ const FormDetails = ({ navigation }) => {
                             placeholderTextColor="#a4a4a4"
                             onChangeText={setGpsLocation}
 
-                        />
+                        /> */}
                     </View>
 
                     {/* Submit Button */}
 
-                    <TouchableOpacity style={styles.submitButtonAlignment} onPress={() => navigation.navigate('welcomeScreen')}>
+                    <TouchableOpacity style={styles.submitButtonAlignment} onPress={handleSkip}>
                         <View style={styles.submitButton}>
                             <Text style={styles.submitButtonText}>SUBMIT</Text>
                         </View>
