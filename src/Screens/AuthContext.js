@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
 
-
 export const AuthContext = createContext();
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -98,11 +97,11 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(true);
         const headers = { 'Authorization': `Bearer ${userToken}` };
         try {
-            console.log(`data from authcontext`,data);
-            console.log(`headers from authcontext`,headers);
+            console.log(`data from authcontext`, data);
+            console.log(`headers from authcontext`, headers);
             const res = await axios.post(`${BASE_URL}api/user-details/add`, data, { headers });
             const userDetails = res.data;
-            console.log(`userDetails$$$$$`,userDetails)
+            console.log(`userDetails$$$$$`, userDetails)
             setUserDetails(userDetails.data);
             await AsyncStorage.setItem('userDetails', JSON.stringify(userDetails.data));
             setIsLoading(false);
@@ -126,7 +125,7 @@ export const AuthProvider = ({ children }) => {
         try {
             userDetails = await axios.get(`${BASE_URL}api/user-details/${id}`, { headers });
         } catch (e) {
-            console.log(`error from authcontext `,e);
+            console.log(`error from authcontext `, e);
         }
 
         setUserDetails(userDetails.data);

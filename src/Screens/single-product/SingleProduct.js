@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToCart } from '../redux/action';
+import { singleProductAction } from './single-product.action';
 // import { SliderBox } from "react-native-image-slider-box";
 
 const images = [
@@ -15,7 +15,7 @@ const SingleProduct = ({ navigation }) => {
     const { activeItem } = useSelector((state) => state.reducer);
 
     const handlePress = async (activeItem) => {
-        dispatch(addToCart(activeItem));
+        await singleProductAction(activeItem, dispatch);
         navigation.navigate('cart');
     };
 
