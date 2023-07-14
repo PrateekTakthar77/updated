@@ -18,26 +18,20 @@ const SingleProduct = ({ navigation }) => {
         dispatch(addToCart(activeItem));
         navigation.navigate('cart');
     };
+    console.log("active", activeItem)
 
     return (
         <View>
             <ScrollView>
                 <View style={styles.View1}>
-                    {/* <SliderBox
-                        images={images}
-                        sliderBoxHeight={300}
-                        dotColor="#eec06b"
-                        inactiveDotColor="black"
-                        autoplay={true}
-                        autoplayInterval={1000} */}
-                        {/* circleLoop={true} /> */}
-                        <Image style={{height:250,width:350,justifyContent:'center',alignSelf:'center',borderRadius:15}} source={{ uri: activeItem.images[0] }}/>
+                    <Image style={{ height: 250, width: 350, justifyContent: 'center', alignSelf: 'center', borderRadius: 15, marginBottom: 2 }} source={{ uri: activeItem.images[0] }} />
                 </View>
-                <View style={styles.View2}>
-                    <Text style={styles.View3}>Name {activeItem.name}</Text>
-                </View>
-                <View style={styles.View2}>
-                    <Text style={styles.View3}>Size-{activeItem.size}      Weight-{activeItem.weight}g</Text>
+
+
+                <View style={styles.alignmentMento}>
+                    <Text style={styles.View3}>Name  {activeItem.name}</Text>
+                    <View style={styles.line}></View>
+                    <Text style={styles.View33}>Weight-{activeItem.weight} g</Text>
                 </View>
                 {/* <View style={styles.View2}>
                     <Text style={styles.View3}>Size-</Text>
@@ -88,7 +82,7 @@ const styles = StyleSheet.create({
     loginbutton: {
         backgroundColor: "#eec06b",
         padding: 15,
-        marginTop: 20,
+        marginTop: 100,
         borderRadius: 80,
         width: 190,
         height: 60,
@@ -110,21 +104,52 @@ const styles = StyleSheet.create({
         // justifyContent: 'center',
         // padding:0,
     },
-    View2: {
-        marginTop: 50,
-        alignItems: 'center',
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
+
+    View22: {
+        // width: 340,
+        // marginTop: 30,
+
+        // flexDirection: 'row',
+        // justifyContent: 'space-evenly',
+        // backgroundColor: '#eec06b',
+        // padding: 20,
+        // marginRight: 20,
+        // marginLeft: 20,
+        marginBottom: 20,
+        // borderRadius: 10,
+
+    },
+    alignmentMento: {
+        alignSelf: "center",
+        // alignItems: 'center',
         backgroundColor: '#eec06b',
-        padding: 20,
-        marginRight: 20,
-        marginLeft: 20,
+        width: 340,
+        height: 150,
+        marginTop: -20,
         marginBottom: 20,
         borderRadius: 10,
+        justifyContent: "center"
+    },
+    line: {
+        width: "100%",
+        height: 1.5,
+        backgroundColor: "black",
+        alignSelf: 'center',
+        // marginBottom: 15,
     },
     View3: {
         color: 'black',
         fontWeight: "bold",
+        textAlign: "center",
+        fontSize: 17,
+        paddingBottom: 20
+    },
+    View33: {
+        color: 'black',
+        fontWeight: "bold",
+        textAlign: "center",
+        fontSize: 17,
+        paddingTop: 20
     },
     View4: {
         color: 'black',

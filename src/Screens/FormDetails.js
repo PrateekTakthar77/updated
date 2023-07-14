@@ -23,13 +23,16 @@ const FormDetails = ({ navigation }) => {
     const [gstNo, setGstno] = useState(null);
     const [storePersonName, setstorePersonName] = useState(null);
     const [contactNo, setContactNo] = useState(null);
-    const [gpsLocation, setGpsLocation] = useState(null);
+    const [gpsLocation, setGpsLocation] = useState({
+        latitude: 37.779,
+        longitude: -122.4194
+    });
 
     useEffect(() => {
         if (!userToken) {
             return;
         }
-
+        console.log("gps location",setGpsLocation)
         console.log("userToken", userToken);
         console.log("userDetails", userDetails);
         if (userDetails) {
@@ -39,7 +42,7 @@ const FormDetails = ({ navigation }) => {
     }, [userToken, userDetails]);
 
     const handleSkip = () => {
-        console.log('Skip button pressed!');
+        // console.log('Skip button pressed!');
         updateUserDetails({
             brandName,
             address,
@@ -60,7 +63,7 @@ const FormDetails = ({ navigation }) => {
 
                 {/* Skip button */}
 
-                <TouchableOpacity style={styles.SkipButton} onPress={() => navigation.navigate('welcomeScreen')}>
+                <TouchableOpacity style={styles.SkipButton} onPress={() => navigation.navigate('tabs')}>
                     <Text style={styles.SkipButtonText}>Skip&nbsp;{">>"}</Text>
                 </TouchableOpacity>
 
@@ -187,7 +190,7 @@ const FormDetails = ({ navigation }) => {
                                 style={styles.contactnoinputbottom1}
                                 autoCapitalize
                                 autoCorrect={false}
-                                placeholder="contact no."
+                                placeholder="Contact no."
                                 placeholderTextColor="#a4a4a4"
                                 onChangeText={setContactNo}
                             />
@@ -206,9 +209,9 @@ const FormDetails = ({ navigation }) => {
                                 placeholderTextColor="#a4a4a4"
                             /> */}
 
-                            {/* Contact No */}
+                        {/* Contact No */}
 
-                            {/* <TextInput
+                        {/* <TextInput
                                 style={styles.contactnoinputbottom2}
                                 autoCapitalize
                                 autoCorrect={false}
@@ -222,7 +225,7 @@ const FormDetails = ({ navigation }) => {
                         {/* Common */}
 
                         {/*Store Person Name 3*/}
-{/* 
+                        {/* 
                         <View style={styles.span}>
                             <TextInput
                                 style={styles.StorePersonNameinputbottom3}
@@ -232,9 +235,9 @@ const FormDetails = ({ navigation }) => {
                                 placeholderTextColor="#a4a4a4"
                             /> */}
 
-                            {/* Contact No */}
+                        {/* Contact No */}
 
-                            {/* <TextInput
+                        {/* <TextInput
                                 style={styles.contactnoinputbottom3}
                                 autoCapitalize
                                 autoCorrect={false}
@@ -245,19 +248,19 @@ const FormDetails = ({ navigation }) => {
 
 
                         {/*GPS Location*/}
-                        <TextInput
+                        {/* <TextInput
                             style={styles.GPSinputbottom}
                             autoCorrect={false}
                             placeholder="GPS Location"
                             placeholderTextColor="#a4a4a4"
                             onChangeText={setGpsLocation}
 
-                        />
+                        /> */}
                     </View>
 
                     {/* Submit Button */}
 
-                    <TouchableOpacity style={styles.submitButtonAlignment} onPress={() => navigation.navigate('welcomeScreen')}>
+                    <TouchableOpacity style={styles.submitButtonAlignment} onPress={handleSkip}>
                         <View style={styles.submitButton}>
                             <Text style={styles.submitButtonText}>SUBMIT</Text>
                         </View>

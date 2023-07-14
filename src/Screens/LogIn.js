@@ -29,7 +29,8 @@ const LogIn = ({ navigation }) => {
                     {/* mobile no input */}
                     <TextInput
                         style={styles.MobileNoInput}
-                        autoCapitalize                        autoCorrect={false}
+                        autoCapitalize                  
+                        autoCorrect={false}
                         placeholder="Mobile No."
                         onChangeText={(text) => setMobile(text)}
                     />
@@ -85,7 +86,8 @@ const styles = StyleSheet.create({
     },
     LogInTitle: {
         fontSize: 18,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        marginTop:20
     },
     LogInText: {
         fontSize: 23,
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
         lineHeight: 25,
         fontSize: 13,
         width: "80%",
-        marginTop: 20,
+        marginTop: 50,
         borderBottomWidth: 1,
         borderBottomColor: "#bc9954",
         borderWidth: 0,
@@ -151,7 +153,7 @@ const styles = StyleSheet.create({
         height: 1.5,
         backgroundColor: "#a4a4a4",
         alignSelf: 'center',
-        marginBottom: 10,
+        marginBottom: 15,
     },
     customerText: {
         fontSize: 14,

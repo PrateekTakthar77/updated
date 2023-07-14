@@ -96,15 +96,18 @@ export const AuthProvider = ({ children }) => {
 
     const updateUserDetails = async (data) => {
         setIsLoading(true);
-        const headers = { 'Authorization': userToken };
+        const headers = { 'Authorization': `Bearer ${userToken}` };
         try {
-            const res = await axios.post(`${BASE_URL}api/auth/register`, data, { headers });
+
+            // const res = await axios.post(`${BASE_URL}api/auth/register`, data, { headers });
+            const res = await axios.post(`${BASE_URL}api/user-details/add`, data, { headers });
             const userDetails = res.data;
+            console.log(`userdata$$$$`,userDetails);
             setUserDetails(userDetails);
-            await AsyncStorage.setItem('userDetails', JSON.stringify(userDetails));
+            await AsyncStorage.setItem('userDetails', JSON.stringify(userDetails.data));
             setIsLoading(false);
         } catch (e) {
-            console.log(`hello: ${e}`);
+            console.log(`error from authcontext: ${e}`);
             // console.log(`Response #####: ${e.response}`);
             console.log(`Response: ${JSON.stringify(e.response)}`);
             // console.log(`hello: ${e.data.message}`);

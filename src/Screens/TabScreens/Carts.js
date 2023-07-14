@@ -4,9 +4,9 @@ import React from 'react'
 const Carts = () => {
   return (
     <View>
-      <Text>Cart</Text>
+      <Text>Carting</Text>
     </View>
   )
 }
 
-export default Carts
+export default Carts     

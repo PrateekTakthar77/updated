@@ -1,11 +1,9 @@
 import { View, Text, Dimensions, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { useContext, useRef, useState } from 'react'
 import MarqueeView from "react-native-marquee-view";
-import { SliderBox } from "react-native-image-slider-box";
 import { AuthContext } from './AuthContext';
 import { useNavigation } from '@react-navigation/native';
-import Headerr from './Header';
-
+import { moderateScale, moderateScaleVertical, textScale } from '../utils/responsive';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
 
@@ -18,14 +16,15 @@ const WelcomeScreen = () => {
 
     const entries = [
         {
-            img: require("../assets/para1.jpg"),
+            img: require("../assets/banner.jpg"),
         },
         {
-            img: require("../assets/para2.jpg"),
+            img: require("../assets/banner.jpg"),
         },
         {
-            img: require("../assets/para3.jpg"),
+            img: require("../assets/banner.jpg"),
         },
+
     ];
 
     const renderItem = ({ item, index }) => {
@@ -33,11 +32,11 @@ const WelcomeScreen = () => {
             <Image
                 source={item.img}
                 style={{
-                    height: 150,
-                    marginTop: 30,
-                    width: 300,
+                    height: moderateScaleVertical(170),
+                    width: moderateScale(270),
+                    marginTop: moderateScaleVertical(50),
                     borderRadius: 20,
-                    marginBottom: 20,
+                    marginBottom: moderateScaleVertical(20),
                 }}
             />
         );
@@ -45,7 +44,7 @@ const WelcomeScreen = () => {
 
     const navigation = useNavigation()
 
-    const { logout, userInfo, userDetails, userToken } = useContext(AuthContext);
+    const { login, logout, isLoading, userToken, userInfo, register, userDetails, updateUserDetails, getUserDetails } = useContext(AuthContext);
     const images = [
         require("../assets/logo.png"),
         require("../assets/logo.png"),
@@ -57,14 +56,12 @@ const WelcomeScreen = () => {
         console.log("hello checked");
     }
 
+    console.log(`userinfo`, userInfo);
+    console.log(`userdetails from profile screen *****`, userDetails.userDetails);
+    console.log(`user from view p ((@))`, user)
     console.log("userInfo - Welcomescreen", userInfo);
     return (
         <>
-            {/* <Headerr leftIcon={require("../assets/menu.png")}
-                onClickLeftIcon={() => {
-                    navigation.openDrawer();
-                }} /> */}
-
             <ScrollView>
                 <View style={styles.main}>
                     <View style={styles.goldenBoxAlignment}>
@@ -84,18 +81,12 @@ const WelcomeScreen = () => {
 
 
                                     <Text style={styles.name}>{user?.name}</Text>
-                                    <Text style={styles.abcjw}>Abc jewellers private limited</Text>
+                                    <Text style={styles.abcjw}>{userDetails.userDetails.brandName}</Text>
                                 </View>
                                 <View style={styles.align2}>
                                     <Text style={styles.toapp}>Welcome to our app! we have thrilled to have you here.</Text>
-                                    <Text style={styles.toapp2}>Enjoy Shopping!</Text>
+                                    <Text style={styles.toapp2}>Enjoy Shopping!😊</Text>
                                 </View>
-                                {/* <View style={{ marginLeft: 10 }}>
-                                    <TouchableOpacity onPress={logout}>
-                                        <Text style={{ fontSize: 20, marginLeft: 15 }}>Logout</Text>
-                                    </TouchableOpacity>
-                                </View> */}
-                                {/* </View> */}
                             </View>
 
 
@@ -194,7 +185,8 @@ const WelcomeScreen = () => {
                             height: 10,
                             borderRadius: 10,
                             marginHorizontal: 0,
-                            backgroundColor: "#bc9954"
+                            backgroundColor: "#bc9954",
+                            marginVertical: 10,
                         }} />
                     {/* // Parallax */}
 
@@ -202,14 +194,14 @@ const WelcomeScreen = () => {
 
                     {/* <View style={styles.span3}> */}
                     <View style={styles.span}>
-                        <Image source={require("../assets/logo.png")} style={styles.size} />
-                        <Image source={require("../assets/logo.png")} style={styles.size} />
-                        <Image source={require("../assets/logo.png")} style={styles.size} />
-                        <Image source={require("../assets/logo.png")} style={styles.size} />
+                        <Image source={require("../assets/banner.jpg")} style={styles.imgsize1} />
+                        <Image source={require("../assets/2.png")} style={styles.imgsize2} />
+                        <Image source={require("../assets/3.png")} style={styles.imgsize3} />
+                        <Image source={require("../assets/4.png")} style={styles.imgsize4} />
                     </View>
                     <View style={styles.span2}>
-                        <Image source={require("../assets/logo.png")} style={styles.size2} />
-                        <Image source={require("../assets/logo.png")} style={styles.size2} />
+                        <Image source={require("../assets/5.png")} style={styles.imgsize5} />
+                        <Image source={require("../assets/6.png")} style={styles.imgsize6} />
                     </View>
 
                     {/* COLOMN 8 -------------------------------*/}
@@ -278,7 +270,7 @@ const styles = StyleSheet.create({
     },
     Welcome: {
         fontSize: 20,
-        marginLeft: 5,
+        marginLeft: 7,
         // marginBottom: 10
         // fontWeight: 500,
         // marginTop: -10,
@@ -406,26 +398,56 @@ const styles = StyleSheet.create({
         //   COLOMN 7---------------------------
     },
     span: {
+        marginTop: 20,
         flexDirection: "row",
         // alignItems:"center",
         // paddingHorizontal: 20,
         // marginRight: 20,
         alignItems: "center",
-        // justifyContent:'center'
+        justifyContent: "space-around",
+        marginHorizontal: 40,
+
     },
     span2: {
+        marginTop: 25,
         flexDirection: "row",
         // paddingHorizontal: 10,
         // marginLeft: 80,
         // marginBottom: 5,
         alignItems: "center",
-        justifyContent: 'center'
+        justifyContent: "space-around",
+        marginHorizontal: 140,
     },
     size: {
-        width: 100,
-        height: 80, paddingHorizontal: 0,
+        width: 50,
+        height: 20,
+        paddingHorizontal: 0,
         marginRight: -40,
         marginLeft: 20,
+    },
+    imgsize1: {
+        width: 50,
+        height: 30,
+    },
+    imgsize2: {
+        width: 40,
+        height: 31,
+    },
+    imgsize3: {
+        width: 50,
+        height: 30,
+    },
+    imgsize4: {
+        width: 50,
+        height: 20,
+    },
+    imgsize5: {
+        width: 50,
+        height: 30,
+    },
+    imgsize6: {
+        width: 50,
+        height: 30,
     },
     size2: {
         width: 100,

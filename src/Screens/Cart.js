@@ -43,14 +43,15 @@ const Cart = ({ navigation }) => {
                                     <View style={styles.View6}>
 
                                         <View style={styles.View7}>
-                                            <TouchableOpacity style={styles.View8} onPress={() => increaseCount(cartItem.item)}>
-                                                <Text style={styles.View9}> +    </Text>
-                                            </TouchableOpacity>
-
-                                            <Text style={styles.View9}>{cartItem.count} </Text>
 
                                             <TouchableOpacity style={styles.View8} onPress={() => decreaseCount(cartItem.item)}>
-                                                <Text style={styles.View9}>      - </Text>
+                                                <Text style={styles.View9}>  -   </Text>
+                                            </TouchableOpacity>
+
+                                            <Text style={styles.View99}>{cartItem.count} </Text>
+
+                                            <TouchableOpacity style={styles.View8} onPress={() => increaseCount(cartItem.item)}>
+                                                <Text style={styles.View999}>    +</Text>
                                             </TouchableOpacity>
                                         </View>
                                     </View>
@@ -95,21 +96,23 @@ const Cart = ({ navigation }) => {
                         </TouchableOpacity> */}
 
                         <TouchableOpacity onPress={() => navigation.navigate('product')}>
-                            <Text style={{ backgroundColor: "#eec06b", padding: 10, borderRadius: 20, marginRight: 5, fontWeight: '700', color: 'black' }}>CONTINUE SHOPPING</Text>
+                            <View style={styles.SubmitButton}>
+                                <Text style={{ backgroundColor: "#eec06b", padding: 10,  marginRight: 5, fontWeight: '700', color: 'black' }}>CONTINUE SHOPPING</Text>
+                            </View>
                         </TouchableOpacity>
 
                         {/* <TouchableOpacity onPress={Navigator}>
                             <Text style={{ backgroundColor: "#eec06b", padding: 10, borderRadius: 20, marginLeft: 5, fontWeight: '700', color: 'black' }}>PROCEED TO PAY</Text>
                         </TouchableOpacity> */}
 
+
+                        <TouchableOpacity onPress={() => navigation.navigate('thankyou')}>
+                            <View style={styles.SubmitButton}>
+                                <Text style={styles.SubmitButtonText}>PLACE ORDER</Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
 
-
-                    <TouchableOpacity onPress={() => navigation.navigate('thankyou')}>
-                        <View style={styles.SubmitButton}>
-                            <Text style={styles.SubmitButtonText}>SUBMIT</Text>
-                        </View>
-                    </TouchableOpacity>
 
 
                     {/* <View style={styles.View16}>
@@ -262,7 +265,16 @@ const styles = StyleSheet.create({
         marginRight: 5
     },
     View9: {
-        color: 'white'
+        color: 'white',
+        fontSize: 20
+    },
+    View99: {
+        color: 'white',
+        fontSize: 17
+    },
+    View999: {
+        color: 'white',
+        fontSize: 20
     },
     View10: {
         flexDirection: 'column',
@@ -508,18 +520,18 @@ const styles = StyleSheet.create({
     },
     SubmitButton: {
         backgroundColor: "#eec06b",
-        padding: 15,
+        // padding: 15,
         marginTop: 30,
         alignItems: "center",
         borderRadius: 80,
-        width: 240,
-        height: 70,
+        width: 150,
+        height: 40,
         justifyContent: "center",
         alignItems: "center",
         alignSelf: 'center'
     },
     SubmitButtonText: {
-        fontSize: 20,
+        fontSize: 15,
         color: "black",
         fontWeight: '700'
 

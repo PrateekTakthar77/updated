@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image, StatusBar, Button, StyleSheet, TouchableOpacity, Modal, TextInput, ScrollView } from 'react-native';
+import { View, Text, ImageBackground, Image, StatusBar, Button, StyleSheet, TouchableOpacity, Modal, TextInput, ScrollView } from 'react-native';
 
 function LogInSignUp({ navigation }) {
     const OpenSignup = () => {
@@ -8,32 +8,33 @@ function LogInSignUp({ navigation }) {
     const [showModal, setShowModal] = useState(false);
     return (
         <View>
-            <ScrollView>
-                <View style={styles.body}>
+                <ScrollView>
+                    <View style={styles.body}>
 
-                    <View style={styles.image}>
-                        <Image style={styles.imageSize} source={require('../assets/logo.png')} />
+                        <View style={styles.image}>
+                            <Image style={styles.imageSize} source={require('../assets/logo.png')} />
+                        </View>
+
+                        <View style={styles.ButtonContainer}>
+
+                            <TouchableOpacity onPress={() => navigation.navigate('login')}>
+                                <View style={styles.loginbutton}>
+                                    <Text style={styles.logintext}>LOGIN</Text>
+                                </View>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity onPress={() => navigation.navigate('signup')}>
+                                <View style={styles.signupbutton}>
+                                    <Text style={styles.signuptext}>SIGNUP </Text>
+                                </View>
+                            </TouchableOpacity>
+
+                            <View style={{ height: 200 }}></View>
+
+                        </View>
                     </View>
+                </ScrollView>
 
-                    <View style={styles.ButtonContainer}>
-
-                        <TouchableOpacity onPress={() => navigation.navigate('login')}>
-                            <View style={styles.loginbutton}>
-                                <Text style={styles.logintext}>LOGIN</Text>
-                            </View>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={() => navigation.navigate('signup')}>
-                            <View style={styles.signupbutton}>
-                                <Text style={styles.signuptext}>SIGNUP </Text>
-                            </View>
-                        </TouchableOpacity>
-
-                        <View style={{ height: 200 }}></View>
-
-                    </View>
-                </View>
-            </ScrollView>
 
             <Modal Modal visible={showModal} animationType="slide" onRequestClose={() => setShowModal(false)} >
                 <View style={styles.modalAlignMent}>
@@ -56,7 +57,7 @@ function LogInSignUp({ navigation }) {
                     </View>
                 </View>
             </Modal>
-        </View>
+        </View >
     );
 }
 
@@ -191,5 +192,6 @@ const styles = StyleSheet.create({
     Modalsignuptext: {
         fontSize: 20,
         color: "#eec06b",
-    }
+    },
+
 });

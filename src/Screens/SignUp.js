@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   },
 
   SignUpTitle: {
-    marginTop: -15,
+    marginTop: 15,
     fontSize: 18,
     alignSelf: 'center'
   },
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     lineHeight: 25,
     fontSize: 13,
     width: "80%",
-    marginTop: 20,
+    marginTop: 50,
     alignSelf: 'center',
     borderBottomWidth: 1,
     borderBottomColor: "#bc9954",
@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
   SignUpButton: {
     backgroundColor: "#eec06b",
     padding: 15,
-    marginTop: 30,
+    marginTop: 40,
     alignItems: "center",
     borderRadius: 80,
     width: 240,
