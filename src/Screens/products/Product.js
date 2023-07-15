@@ -10,11 +10,11 @@ const Product = ({ navigation }) => {
     const products = useSelector((state) => state.products);
     const dispatch = useDispatch();
     useEffect(() => {
-        getProductsActionCreator(dispatch);
+        dispatch(getProductsActionCreator);
     }, []);
 
     const handlePress = (item) => {
-        dispatch(setActiveItem(item));
+        // dispatch(setActiveItem(item));
         navigation.navigate('singleproduct', { productId: item.id });
     };
 

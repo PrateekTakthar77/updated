@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSingleProductActionCreator } from './single-product.action-creator';
+import { addToCartActionCreator } from '../cart/cart.action-creator';
+import { AuthContext } from '../AuthContext';
 
 const images = [
     require('../../assets/logo.png'),
@@ -11,6 +13,7 @@ const images = [
 
 const SingleProduct = ({ navigation, route }) => {
     const { productId } = route.params;
+    const { userToken } = useContext(AuthContext);
     const dispatch = useDispatch();
     const product = useSelector((state) => state.product);
 
@@ -18,12 +21,17 @@ const SingleProduct = ({ navigation, route }) => {
         return <></>;
     }
 
+    const getData = () => {
+        dispatch(getSingleProductActionCreator(productId));
+    };
+
     useEffect(() => {
-        getSingleProductActionCreator(productId, dispatch);
+        getData();
     }, [productId]);
 
     const handlePress = () => {
         // Server API HIT
+        dispatch(addToCartActionCreator(productId, userToken));
         navigation.navigate('cart');
     };
 

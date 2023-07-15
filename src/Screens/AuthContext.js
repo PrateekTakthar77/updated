@@ -1,11 +1,11 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from 'react';
 
 export const AuthContext = createContext();
 
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import axios from 'axios'
-import { BASE_URL } from "./config";
+import axios from 'axios';
+import { BASE_URL } from './config';
 
 export const AuthProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -15,28 +15,41 @@ export const AuthProvider = ({ children }) => {
 
     const login = (username, password) => {
         setIsLoading(true);
-        axios.post(`${BASE_URL}api/auth/login`, {
-            "mobile": username,
-            "password": password,
-        }).then(async res => {
-            // console.log(res.data);
-            let userInfo = res.data;
-            setUserInfo(userInfo);
-            setUserToken(userInfo.token);
-            AsyncStorage.setItem('userinfo', JSON.stringify(userInfo));
-            AsyncStorage.setItem('userToken', userInfo.token);
-            console.log("Login API espon", userInfo);
-            await getUserDetails(userInfo?.User?._id);
-            setIsLoading(false);
-        })
-            .catch(e => {
-                console.log(`Login error hello ${e}`);
+        axios
+            .post(`${BASE_URL}api/auth/login`, {
+                mobile: username,
+                password: password,
+            })
+            .then(async (res) => {
+                // console.log(res.data);
+                let userInfo = res.data;
+                setUserInfo(userInfo);
+                setUserToken(userInfo.token);
+                AsyncStorage.setItem('userinfo', JSON.stringify(userInfo));
+                AsyncStorage.setItem('userToken', userInfo.token);
+                console.log('Login API espon', userInfo);
+                await getUserDetails(userInfo?.User?._id);
                 setIsLoading(false);
             })
-    }
+            .catch((e) => {
+                console.log(`Login error hello ${e}`);
+                setIsLoading(false);
+            });
+    };
 
     const register = (name, email, password, mobile, role) => {
-        console.log('Name', name, 'Mobile', mobile, 'Email', email, 'Role', role, 'Password', password);
+        console.log(
+            'Name',
+            name,
+            'Mobile',
+            mobile,
+            'Email',
+            email,
+            'Role',
+            role,
+            'Password',
+            password,
+        );
         const data = {
             mobile,
             password,
@@ -45,8 +58,9 @@ export const AuthProvider = ({ children }) => {
             role,
         };
         setIsLoading(true);
-        axios.post(`${BASE_URL}api/auth/register`, data)
-            .then(res => {
+        axios
+            .post(`${BASE_URL}api/auth/register`, data)
+            .then((res) => {
                 let userInfo = res.data;
                 setUserInfo(userInfo);
                 setUserToken(userInfo.token);
@@ -55,7 +69,7 @@ export const AuthProvider = ({ children }) => {
                 // UserToken is Getting console log
                 setIsLoading(false);
             })
-            .catch(e => {
+            .catch((e) => {
                 console.log(`hello: ${e}`);
                 // console.log(`Response #####: ${e.response}`);
                 console.log(`Response: ${JSON.stringify(e.response)}`);
@@ -66,14 +80,14 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         console.log('logout');
-        setIsLoading(true)
-        setUserToken(null)
+        setIsLoading(true);
+        setUserToken(null);
         setUserDetails(null);
         await AsyncStorage.removeItem('userToken');
         await AsyncStorage.removeItem('userinfo');
         await AsyncStorage.removeItem('userDetails');
         setIsLoading(false);
-    }
+    };
 
     const isLogedIn = async () => {
         try {
@@ -92,15 +106,16 @@ export const AuthProvider = ({ children }) => {
         } catch (e) {
             console.log(`is logged in error ${e}`);
         }
-    }
+    };
 
     const updateUserDetails = async (data) => {
         setIsLoading(true);
-        const headers = { 'Authorization': `Bearer ${userToken}` };
+        const headers = { Authorization: `Bearer ${userToken}` };
         try {
-
             // const res = await axios.post(`${BASE_URL}api/auth/register`, data, { headers });
-            const res = await axios.post(`${BASE_URL}api/user-details/add`, data, { headers });
+            const res = await axios.post(`${BASE_URL}api/user-details/add`, data, {
+                headers,
+            });
             const userDetails = res.data;
             console.log(`userdata$$$$`, userDetails);
             setUserDetails(userDetails);
@@ -113,15 +128,15 @@ export const AuthProvider = ({ children }) => {
             // console.log(`hello: ${e.data.message}`);
             setIsLoading(false);
         }
-    }
+    };
 
     const getUserDetails = async (id) => {
-        console.log("id", id);
+        console.log('id', id);
         if (!id) {
             return;
         }
 
-        const headers = { 'Authorization': userToken };
+        const headers = { Authorization: userToken };
         setIsLoading(true);
 
         let userDetails;
@@ -134,14 +149,26 @@ export const AuthProvider = ({ children }) => {
         setUserDetails(userDetails.data);
         await AsyncStorage.setItem('userDetails', JSON.stringify(userDetails.data));
         setIsLoading(false);
-    }
+    };
 
     useEffect(() => {
         isLogedIn();
     }, []);
     return (
-        <AuthContext.Provider value={{ login, logout, isLoading, userToken, userInfo, register, userDetails, updateUserDetails, getUserDetails }}>
+        <AuthContext.Provider
+            value={{
+                login,
+                logout,
+                isLoading,
+                userToken,
+                userInfo,
+                register,
+                userDetails,
+                updateUserDetails,
+                getUserDetails,
+            }}
+        >
             {children}
         </AuthContext.Provider>
-    )
-}
+    );
+};

@@ -12,7 +12,7 @@ import SignUp from '../Screens/SignUp';
 import FormDetails from '../Screens/FormDetails';
 import OTP from '../Screens/OTP';
 import WelcomeScreen from '../Screens/WelcomeScreen';
-import Cart from '../Screens/Cart';
+import Cart from '../Screens/cart/Cart';
 import SingleProduct from '../Screens/single-product/SingleProduct';
 import Product from '../Screens/products/Product';
 import WastageChart from '../Screens/WastageChart';
