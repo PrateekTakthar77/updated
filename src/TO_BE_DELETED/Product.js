@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text, Image, TouchableOpacity, ScrollView, FlatList } from 'react-native'
-import { useDispatch } from 'react-redux'
+import React, { useState, useEffect } from 'react';
+import { View, Text, Image, TouchableOpacity, ScrollView, FlatList } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { setActiveItem } from '../redux/action';
 import { StyleSheet } from 'react-native';
 import { moderateScale } from '../utils/responsive';
-
 
 // TODO: GET THE PRODUCTS FROM STORE
 const Product = ({ navigation }) => {
@@ -13,11 +12,11 @@ const Product = ({ navigation }) => {
 
     const getAPIDATA = async () => {
         // const url = "https://jwell-bliss-test-dev.cyclic.app/api/products/";
-        const url = "https://jwells-bliss-deploy2.up.railway.app/api/products/";
+        const url = 'https://jwells-bliss-deploy2.up.railway.app/api/products/';
         let result = await fetch(url);
         result = await result.json();
         setData(result);
-    }
+    };
 
     useEffect(() => {
         getAPIDATA();
@@ -30,24 +29,32 @@ const Product = ({ navigation }) => {
 
     return (
         <View>
-            <FlatList contentContainerStyle={{ alignItems: "center" }}
+            <FlatList
+                contentContainerStyle={{ alignItems: 'center' }}
                 data={data}
                 numColumns={2}
-                renderItem={({ item, index }) => <View key={index} style={styles.View1}>
-                    <TouchableOpacity onPress={() => handlePress(item)} style={styles.View2}>
-                        <View style={styles.View3}>
-                            <Image style={styles.View4} source={{ uri: item.images[0] }} />
-                            <Text style={styles.View5}>{item?.name}</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>}
+                renderItem={({ item, index }) => (
+                    <View key={index} style={styles.View1}>
+                        <TouchableOpacity
+                            onPress={() => handlePress(item)}
+                            style={styles.View2}
+                        >
+                            <View style={styles.View3}>
+                                <Image
+                                    style={styles.View4}
+                                    source={{ uri: item.images[0] }}
+                                />
+                                <Text style={styles.View5}>{item?.name}</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                )}
             />
         </View>
+    );
+};
 
-    )
-}
-
-export default Product
+export default Product;
 
 const styles = StyleSheet.create({
     View1: {
@@ -56,17 +63,17 @@ const styles = StyleSheet.create({
         // justifyContent: 'space-evenly',
         justifyContent: 'center',
         // marginRight:moderateScale(30),
-        marginHorizontal: moderateScale(20)
+        marginHorizontal: moderateScale(20),
     },
     View2: {
         backgroundColor: 'black',
         justifyContent: 'space-evenly',
         marginRight: moderateScale(10),
-        borderRadius: 50
+        borderRadius: 50,
     },
     View3: {
         // backgroundColor: 'black',
-        borderRadius: 35
+        borderRadius: 35,
     },
     View4: {
         height: 150,
@@ -85,6 +92,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#ECC440',
         textAlign: 'center',
         borderBottomLeftRadius: 50,
-        borderBottomRightRadius: 50
-    }
-})
+        borderBottomRightRadius: 50,
+    },
+});
