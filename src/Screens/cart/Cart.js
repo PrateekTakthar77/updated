@@ -13,6 +13,7 @@ import React, { useState, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AuthContext } from '../AuthContext';
 import { addToCartActionCreator } from './cart.action-creator';
+// import { checkoutActionCreator } from '../checkout/checkout.action-creator';
 
 const Cart = ({ navigation }) => {
     const [showModal, setShowModal] = useState(false);
@@ -25,6 +26,12 @@ const Cart = ({ navigation }) => {
         setShowModal(true);
     };
 
+    const placeOrder = () => {
+        console.log('checkout not working');
+        // dispatch(checkoutActionCreator(userToken));
+        navigation.navigate('thankyou');
+    };
+
     const increaseCount = (item) => {
         dispatch(addToCartActionCreator(item.product, userToken));
     };
@@ -33,7 +40,6 @@ const Cart = ({ navigation }) => {
         // dispatch(removeFromCart(item));
     };
 
-    // console.log(cartDetails);
     return (
         <View>
             <ScrollView>
@@ -141,7 +147,7 @@ const Cart = ({ navigation }) => {
                             <Text style={{ backgroundColor: "#eec06b", padding: 10, borderRadius: 20, marginLeft: 5, fontWeight: '700', color: 'black' }}>PROCEED TO PAY</Text>
                         </TouchableOpacity> */}
 
-                        <TouchableOpacity onPress={() => navigation.navigate('thankyou')}>
+                        <TouchableOpacity onPress={placeOrder}>
                             <View style={styles.SubmitButton}>
                                 <Text style={styles.SubmitButtonText}>PLACE ORDER</Text>
                             </View>
