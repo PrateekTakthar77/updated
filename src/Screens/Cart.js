@@ -23,6 +23,15 @@ const Cart = ({ navigation }) => {
     }
 
     console.log(cartDetails);
+
+    if (!cart.length) {
+        return (
+            <View>
+                <Text>Please add something on cart</Text>
+            </View>
+        )
+    }
+
     return (
         <View>
             <ScrollView>
@@ -97,7 +106,7 @@ const Cart = ({ navigation }) => {
 
                         <TouchableOpacity onPress={() => navigation.navigate('product')}>
                             <View style={styles.SubmitButton}>
-                                <Text style={{ backgroundColor: "#eec06b", padding: 10,  marginRight: 5, fontWeight: '700', color: 'black' }}>CONTINUE SHOPPING</Text>
+                                <Text style={{ backgroundColor: "#eec06b", padding: 10, marginRight: 5, fontWeight: '700', color: 'black' }}>CONTINUE SHOPPING</Text>
                             </View>
                         </TouchableOpacity>
 

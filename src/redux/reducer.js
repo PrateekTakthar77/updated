@@ -25,7 +25,7 @@ export const reducer = (state = initialState, action = {}) => {
                     return cartItem;
                 });
 
-                const total = calculateCartTotal(updatedCart, state.cartDetails.total);
+                const total = calculateCartTotal(updatedCart);
                 const grandTotal = calculateGrandTotal(total);
 
                 return {
@@ -67,7 +67,9 @@ export const reducer = (state = initialState, action = {}) => {
                 return cartItem;
             }).filter(Boolean);
 
-            const total = calculateCartTotal(updatedCart, state.cartDetails.total);
+            console.log(updatedCart);
+
+            const total = calculateCartTotal(updatedCart);
             const grandTotal = calculateGrandTotal(total);
 
             return {
@@ -93,7 +95,7 @@ export const reducer = (state = initialState, action = {}) => {
 function calculateCartTotal(cartItems, initialTotal = 0) {
     return cartItems.reduce((acc, cartItem) => {
         console.log(`%%%%%%`, acc, cartItem);
-        return acc + parseInt(cartItem.item.price) + (cartItem.count);
+        return acc + (parseInt(cartItem.item.price) * (cartItem.count));
     }, initialTotal)
 }
 
