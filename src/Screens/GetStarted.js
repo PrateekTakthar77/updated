@@ -52,10 +52,10 @@ function GetStarted({ navigation }) {
 
     return (
         <View>
-            <View >
+            {/* <View >
                 <Image style={styles.logoStyle} source={require('../assets/logo.png')} />
-            </View>
-            <View style={{ marginTop: 20 }}>
+            </View> */}
+            <View>
                 <View style={{ paddingTop: 20, alignItems: "center" }}>
                     <Carousel
                         ref={isCarousel}
@@ -80,10 +80,6 @@ function GetStarted({ navigation }) {
 
                     />
                 </View>
-
-
-
-
             </View>
             <View>
                 <TouchableOpacity onPress={() => {

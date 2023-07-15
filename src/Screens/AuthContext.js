@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [userToken, setUserToken] = useState(null);
     const [userInfo, setUserInfo] = useState(null);
-    const [userDetails, setUserDetails] = useState(null);
+    const [userDetails, setUserDetails] = useState({});
 
     const login = (username, password) => {
         setIsLoading(true);
@@ -102,7 +102,7 @@ export const AuthProvider = ({ children }) => {
             // const res = await axios.post(`${BASE_URL}api/auth/register`, data, { headers });
             const res = await axios.post(`${BASE_URL}api/user-details/add`, data, { headers });
             const userDetails = res.data;
-            console.log(`userdata$$$$`,userDetails);
+            console.log(`userdata$$$$`, userDetails);
             setUserDetails(userDetails);
             await AsyncStorage.setItem('userDetails', JSON.stringify(userDetails.data));
             setIsLoading(false);

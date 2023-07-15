@@ -30,7 +30,7 @@ const Product = ({ navigation }) => {
 
     return (
         <View>
-            <FlatList contentContainerStyle={{  alignItems: "center" }}
+            <FlatList contentContainerStyle={{ alignItems: "center" }}
                 data={data}
                 numColumns={2}
                 renderItem={({ item, index }) => <View key={index} style={styles.View1}>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         // justifyContent: 'space-evenly',
         justifyContent: 'center',
         // marginRight:moderateScale(30),
-        marginHorizontal:moderateScale(20)
+        marginHorizontal: moderateScale(20)
     },
     View2: {
         backgroundColor: 'black',

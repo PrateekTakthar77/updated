@@ -1,35 +1,46 @@
-import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from "react-native";
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToCart } from "../redux/action";
-import { SliderBox } from "react-native-image-slider-box";
+import { addToCart } from '../redux/action';
+import { SliderBox } from 'react-native-image-slider-box';
 
 const images = [
     require('../assets/logo.png'),
     require('../assets/logo.png'),
     require('../assets/logo.png'),
-]
+];
 
-const SingleProduct = ({ navigation }) => {
+const SingleProduct = ({ navigation, route }) => {
     const dispatch = useDispatch();
+    const { productId } = route.params;
+    console.log('product id------', productId);
     const { activeItem } = useSelector((state) => state.reducer);
 
     const handlePress = (activeItem) => {
         dispatch(addToCart(activeItem));
         navigation.navigate('cart');
     };
-    console.log("active", activeItem)
+    console.log('active', activeItem);
 
     return (
         <View>
             <ScrollView>
                 <View style={styles.View1}>
-                    <Image style={{ height: 250, width: 350, justifyContent: 'center', alignSelf: 'center', borderRadius: 15, marginBottom: 2 }} source={{ uri: activeItem.images[0] }} />
+                    <Image
+                        style={{
+                            height: 250,
+                            width: 350,
+                            justifyContent: 'center',
+                            alignSelf: 'center',
+                            borderRadius: 15,
+                            marginBottom: 2,
+                        }}
+                        source={{ uri: activeItem.images[0] }}
+                    />
                 </View>
 
-
                 <View style={styles.alignmentMento}>
-                    <Text style={styles.View3}>Name  {activeItem.name}</Text>
+                    <Text style={styles.View3}>Name {activeItem.name}</Text>
                     <View style={styles.line}></View>
                     <Text style={styles.View33}>Weight-{activeItem.weight} g</Text>
                 </View>
@@ -73,14 +84,14 @@ const SingleProduct = ({ navigation }) => {
                 </View> */}
             </ScrollView>
         </View>
-    )
-}
+    );
+};
 
 export default SingleProduct;
 
 const styles = StyleSheet.create({
     loginbutton: {
-        backgroundColor: "#eec06b",
+        backgroundColor: '#eec06b',
         padding: 15,
         marginTop: 100,
         borderRadius: 80,
@@ -88,14 +99,14 @@ const styles = StyleSheet.create({
         height: 60,
         justifyContent: 'center',
         // alignItems: 'center',
-        alignSelf: "center"
+        alignSelf: 'center',
         // marginLeft: 75,
     },
     logintext: {
         fontSize: 15,
-        color: "black",
-        textAlign: "center",
-        fontWeight: "bold",
+        color: 'black',
+        textAlign: 'center',
+        fontWeight: 'bold',
     },
     View1: {
         height: 300,
@@ -117,10 +128,9 @@ const styles = StyleSheet.create({
         // marginLeft: 20,
         marginBottom: 20,
         // borderRadius: 10,
-
     },
     alignmentMento: {
-        alignSelf: "center",
+        alignSelf: 'center',
         // alignItems: 'center',
         backgroundColor: '#eec06b',
         width: 340,
@@ -128,34 +138,34 @@ const styles = StyleSheet.create({
         marginTop: -20,
         marginBottom: 20,
         borderRadius: 10,
-        justifyContent: "center"
+        justifyContent: 'center',
     },
     line: {
-        width: "100%",
+        width: '100%',
         height: 1.5,
-        backgroundColor: "black",
+        backgroundColor: 'black',
         alignSelf: 'center',
         // marginBottom: 15,
     },
     View3: {
         color: 'black',
-        fontWeight: "bold",
-        textAlign: "center",
+        fontWeight: 'bold',
+        textAlign: 'center',
         fontSize: 17,
-        paddingBottom: 20
+        paddingBottom: 20,
     },
     View33: {
         color: 'black',
-        fontWeight: "bold",
-        textAlign: "center",
+        fontWeight: 'bold',
+        textAlign: 'center',
         fontSize: 17,
-        paddingTop: 20
+        paddingTop: 20,
     },
     View4: {
         color: 'black',
         // backgroundColor: 'black',
         padding: 1,
-        fontWeight: "bold",
+        fontWeight: 'bold',
     },
     View5: {
         marginTop: 20,
@@ -169,10 +179,10 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     View6: {
-        color: 'black'
+        color: 'black',
     },
     View60: {
-        color: "#eec06b"
+        color: '#eec06b',
     },
     View7: {
         borderTopWidth: 1,
@@ -183,6 +193,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         padding: 20,
         marginRight: 20,
-        marginLeft: 20
-    }
+        marginLeft: 20,
+    },
 });

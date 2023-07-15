@@ -6,7 +6,7 @@ import { AuthContext } from '../Screens/AuthContext';
 
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 
-import { Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRipple, Switch } from "react-native-paper"
+// import { Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRipple, Switch } from "react-native-paper"
 // import { TouchableOpacity } from 'react-native-gesture-handler'
 const DrawerContent = (props, { navigation }) => {
 
@@ -20,9 +20,9 @@ const DrawerContent = (props, { navigation }) => {
                 <View style={styles.drawerContent}>
                     <View style={styles.userInfoSection}>
                         <View style={styles.ProfileName}>
-                            <Avatar.Image
+                            {/* <Avatar.Image
                                 source={require("../assets/dp.jpg")} size={100}
-                            />
+                            /> */}
                             <View style={styles.nameProfile}>
                                 <Text style={{ marginTop: 5, fontWeight: "500", textAlign: "center", fontSize: 30 }}>{user?.name}</Text>
 

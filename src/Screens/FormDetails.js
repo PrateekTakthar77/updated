@@ -32,7 +32,7 @@ const FormDetails = ({ navigation }) => {
         if (!userToken) {
             return;
         }
-        console.log("gps location",setGpsLocation)
+        console.log("gps location", setGpsLocation)
         console.log("userToken", userToken);
         console.log("userDetails", userDetails);
         if (userDetails) {
@@ -42,7 +42,6 @@ const FormDetails = ({ navigation }) => {
     }, [userToken, userDetails]);
 
     const handleSkip = () => {
-        // console.log('Skip button pressed!');
         updateUserDetails({
             brandName,
             address,
@@ -63,7 +62,7 @@ const FormDetails = ({ navigation }) => {
 
                 {/* Skip button */}
 
-                <TouchableOpacity style={styles.SkipButton} onPress={() => navigation.navigate('tabs')}>
+                <TouchableOpacity style={styles.SkipButton} onPress={() => navigation.navigate('welcomescreen')}>
                     <Text style={styles.SkipButtonText}>Skip&nbsp;{">>"}</Text>
                 </TouchableOpacity>
 

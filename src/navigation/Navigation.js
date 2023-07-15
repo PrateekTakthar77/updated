@@ -14,7 +14,7 @@ import OTP from '../Screens/OTP';
 import WelcomeScreen from '../Screens/WelcomeScreen';
 import Cart from '../Screens/Cart';
 import SingleProduct from '../Screens/SingleProduct';
-import Product from '../Screens/Product';
+import Product from '../Screens/products/Product';
 import WastageChart from '../Screens/WastageChart';
 import Thankyou from '../Screens/Thankyou';
 import Tabs from './Tabs';
@@ -195,7 +195,7 @@ const Navigation = () => {
                             options={{
                                 title: '',
                                 headerShown: true,
-                                 headerStyle: { backgroundColor: 'black' },
+                                headerStyle: { backgroundColor: 'black' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
                             }} />
@@ -205,7 +205,7 @@ const Navigation = () => {
                             component={ManageOrder}
                             options={{
                                 title: '',
-                                headerShown: true, 
+                                headerShown: true,
                                 headerStyle: { backgroundColor: 'black' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
@@ -216,7 +216,7 @@ const Navigation = () => {
                             component={OurProduct}
                             options={{
                                 title: '',
-                                headerShown: true, 
+                                headerShown: true,
                                 headerStyle: { backgroundColor: 'black' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
