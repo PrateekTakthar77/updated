@@ -13,7 +13,7 @@ import { AuthContext } from "./AuthContext";
 
 const FormDetails = ({ navigation }) => {
     const { userDetails, userToken } = useContext(AuthContext);
-    const { updateUserDetails } = useContext(AuthContext);
+    const { addUserDetails } = useContext(AuthContext);
     const [brandName, setBrandName] = useState(null);
     const [address, setAddress] = useState(null);
     const [pincode, setPincode] = useState(null);
@@ -32,18 +32,16 @@ const FormDetails = ({ navigation }) => {
         if (!userToken) {
             return;
         }
-        console.log("gps location",setGpsLocation)
-        console.log("userToken", userToken);
-        console.log("userDetails", userDetails);
+        console.log('useEffect userDetails', userDetails);
         if (userDetails) {
-            navigation.replace('welcomeScreen');
+            navigation.navigate('tabs');
             return;
         }
     }, [userToken, userDetails]);
 
-    const handleSkip = () => {
-        // console.log('Skip button pressed!');
-        updateUserDetails({
+    console.log('userDetails', userDetails);
+    const handleSubmit = () => {
+        addUserDetails({
             brandName,
             address,
             pincode,
@@ -260,7 +258,7 @@ const FormDetails = ({ navigation }) => {
 
                     {/* Submit Button */}
 
-                    <TouchableOpacity style={styles.submitButtonAlignment} onPress={handleSkip}>
+                    <TouchableOpacity style={styles.submitButtonAlignment} onPress={handleSubmit}>
                         <View style={styles.submitButton}>
                             <Text style={styles.submitButtonText}>SUBMIT</Text>
                         </View>
@@ -290,6 +288,9 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         marginTop: 10,
         marginRight: 10,
+        // borderColor: 'black',
+        // borderWidth: 2,
+        width: '100%',
     },
 
     SkipButtonText: {

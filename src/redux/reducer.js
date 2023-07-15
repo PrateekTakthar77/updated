@@ -92,14 +92,15 @@ export const reducer = (state = initialState, action = {}) => {
 
 function calculateCartTotal(cartItems, initialTotal = 0) {
     return cartItems.reduce((acc, cartItem) => {
-        console.log(acc, cartItem);
-        return acc + parseInt(cartItem.item.price) * parseInt(cartItem.count);
+        console.log(`%%%%%%`, acc, cartItem);
+        return acc + parseInt(cartItem.item.price) + (cartItem.count);
     }, initialTotal)
 }
 
 function calculateGrandTotal(total) {
     const tax = 1.5;
     const discount = 1000;
+    console.log(`total-----------`, total)
 
-    return parseInt(total) + parseInt((tax * 2) / 100) - parseInt(discount);
+    return parseInt(total);
 }

@@ -11,9 +11,8 @@ import { Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRipple, Switc
 const DrawerContent = (props, { navigation }) => {
 
 
-    const { logout, userInfo, userDetails, userToken } = useContext(AuthContext);
+    const { logout, userInfo } = useContext(AuthContext);
 
-    const { payload: user } = userInfo;
     return (
         <View style={{ flex: 1, backgroundColor: "#eec06b" }}>
             <DrawerContentScrollView {...props}>
@@ -24,7 +23,7 @@ const DrawerContent = (props, { navigation }) => {
                                 source={require("../assets/dp.jpg")} size={100}
                             />
                             <View style={styles.nameProfile}>
-                                <Text style={{ marginTop: 5, fontWeight: "500", textAlign: "center", fontSize: 30 }}>{user?.name}</Text>
+                                <Text style={{ marginTop: 5, fontWeight: "500", textAlign: "center", fontSize: 30 }}>{userInfo?.name}</Text>
 
                             </View>
                         </View>
