@@ -132,7 +132,7 @@ const WelcomeScreen = () => {
                         </TouchableOpacity>
                     </View>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('wastage')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('pricelist')}>
                         <View style={styles.button} onPress={check} >
                             <Text style={styles.buttontext}>WASTAGE CHART</Text>
                         </View>

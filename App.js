@@ -10,6 +10,7 @@ import LogIn from './src/Screens/LogIn';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
 import "react-native-gesture-handler";
+import { NativeBaseProvider } from 'native-base'
 const Stack = createNativeStackNavigator();
 
 // const Stack = createNativeStackNavigator();
@@ -27,11 +28,13 @@ const App = () => {
 
 export default () => {
   return (
-    <NavigationContainer >
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </NavigationContainer>
+    <NativeBaseProvider>
+      <NavigationContainer >
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </NavigationContainer>
+    </NativeBaseProvider>
   );
 };
 

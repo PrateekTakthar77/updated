@@ -25,6 +25,9 @@ import PrivacyPolicy from '../Screens/DrawerScreens/PrivacyPolicy';
 import TnC from '../Screens/DrawerScreens/TnC';
 import ServiceAvailable from '../Screens/DrawerScreens/ServiceAvailable';
 import ViewProfile from '../Screens/ViewProfile';
+import PriceList from '../Screens/PriceList';
+import GoldScreen from '../Screens/GoldScreen';
+import SilverScreen from '../Screens/SilverScreen';
 // import TaxInvoice from '../Screens/TaxInvoice';
 
 const Stack = createNativeStackNavigator();
@@ -184,7 +187,8 @@ const Navigation = () => {
                             component={Thankyou}
                             options={{
                                 title: '',
-                                headerShown: true, headerStyle: { backgroundColor: 'black' },
+                                headerShown: true,
+                                headerStyle: { backgroundColor: 'black' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
                             }} />
@@ -195,7 +199,7 @@ const Navigation = () => {
                             options={{
                                 title: '',
                                 headerShown: true,
-                                 headerStyle: { backgroundColor: 'black' },
+                                headerStyle: { backgroundColor: 'black' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
                             }} />
@@ -205,7 +209,7 @@ const Navigation = () => {
                             component={ManageOrder}
                             options={{
                                 title: '',
-                                headerShown: true, 
+                                headerShown: true,
                                 headerStyle: { backgroundColor: 'black' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
@@ -216,7 +220,7 @@ const Navigation = () => {
                             component={OurProduct}
                             options={{
                                 title: '',
-                                headerShown: true, 
+                                headerShown: true,
                                 headerStyle: { backgroundColor: 'black' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
@@ -238,7 +242,8 @@ const Navigation = () => {
                             component={TnC}
                             options={{
                                 title: '',
-                                headerShown: true, headerStyle: { backgroundColor: 'black' },
+                                headerShown: true,
+                                headerStyle: { backgroundColor: 'black' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
                             }} />
@@ -248,7 +253,8 @@ const Navigation = () => {
                             component={WastageChart}
                             options={{
                                 title: '',
-                                headerShown: true, headerStyle: { backgroundColor: 'black' },
+                                headerShown: true,
+                                headerStyle: { backgroundColor: 'black' },
                                 headerTintColor: '#bc9954',
                                 headerTitleStyle: { color: '#bc9954' }
                             }} />
@@ -275,6 +281,33 @@ const Navigation = () => {
                         <Stack.Screen
                             name="viewprofile"
                             component={ViewProfile}
+                            options={{
+                                title: '',
+                                headerShown: true, headerStyle: { backgroundColor: 'black' },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }} />
+                        <Stack.Screen
+                            name="pricelist"
+                            component={PriceList}
+                            options={{
+                                title: '',
+                                headerShown: true, headerStyle: { backgroundColor: 'black' },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }} />
+                        <Stack.Screen
+                            name="goldscreen"
+                            component={GoldScreen}
+                            options={{
+                                title: '',
+                                headerShown: true, headerStyle: { backgroundColor: 'black' },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }} />
+                        <Stack.Screen
+                            name="silverscreen"
+                            component={SilverScreen}
                             options={{
                                 title: '',
                                 headerShown: true, headerStyle: { backgroundColor: 'black' },

@@ -54,7 +54,7 @@ const DrawerContent = (props, { navigation }) => {
                         )}
                         label="Our Products"
                         onPress={() => {
-                            props.navigation.navigate("product");
+                            props.navigation.navigate("ourproduct");
                         }}
                         style={styles.OurProduct}
                     />
@@ -78,7 +78,7 @@ const DrawerContent = (props, { navigation }) => {
                         )}
                         label="Wastage Chart"
                         onPress={() => {
-                            props.navigation.navigate("wastagechart");
+                            props.navigation.navigate("pricelist");
                         }}
                     />
 
@@ -90,7 +90,7 @@ const DrawerContent = (props, { navigation }) => {
                         )}
                         label="About Us"
                         onPress={() => {
-                            props.navigation.navigate("aboutus");
+                            props.navigation.navigate("goldscreen");
                         }}
                     />
 
@@ -102,7 +102,7 @@ const DrawerContent = (props, { navigation }) => {
                         )}
                         label="Privacy Policy"
                         onPress={() => {
-                            props.navigation.navigate("privacypolicy");
+                            props.navigation.navigate("silverscreen");
                         }}
                     />
 
@@ -133,22 +133,22 @@ const DrawerContent = (props, { navigation }) => {
 
                     <View style={styles.line}></View>
                 </Drawer.Section>
+                <View style={styles.Align2}>
+                    <Image source={require("../assets/facebook.png")} style={styles.ImageIconsSize} />
+                    <Image source={require("../assets/instagram2.png")} style={styles.ImageIconsSize} />
+                    <Image source={require("../assets/whatsapp2.png")} style={styles.ImageIconsSize} />
+                    <Image source={require("../assets/twitter.png")} style={styles.ImageIconsSize} />
+                </View>
 
+                <View style={{ alignSelf: "center", marginBottom: 20 }}>
+                    <TouchableOpacity onPress={logout}>
+                        <Text style={styles.logoutText}>Logout</Text>
+                    </TouchableOpacity>
+                </View>
 
             </DrawerContentScrollView>
 
-            <View style={styles.Align2}>
-                <Image source={require("../assets/facebook.png")} style={styles.ImageIconsSize} />
-                <Image source={require("../assets/instagram2.png")} style={styles.ImageIconsSize} />
-                <Image source={require("../assets/whatsapp2.png")} style={styles.ImageIconsSize} />
-                <Image source={require("../assets/twitter.png")} style={styles.ImageIconsSize} />
-            </View>
 
-            <View style={{ alignSelf: "center", marginBottom: 20 }}>
-                <TouchableOpacity onPress={logout}>
-                    <Text style={styles.logoutText}>Logout</Text>
-                </TouchableOpacity>
-            </View>
         </View>
     )
 }
