@@ -17,12 +17,12 @@ export const cart = (state = cartInitialState, action = {}) => {
 };
 
 const getTransformedCart = ({ cartDetails, products }) => {
-    console.log(cartDetails);
+    // console.log(cartDetails);
     const updatedCartDetails = { ...cartDetails };
     updatedCartDetails.cgst = updatedCartDetails.cgst || 0;
     updatedCartDetails.sgst = updatedCartDetails.sgst || 0;
     updatedCartDetails.discount = updatedCartDetails.discount || 0;
-    updatedCartDetails.gradTotal = calculateGrandTotal(updatedCartDetails);
+    updatedCartDetails.grandTotal = calculateGrandTotal(updatedCartDetails);
     updatedCartDetails.id = updatedCartDetails._id;
 
     updatedCartDetails.items = updatedCartDetails.items.map((item) => {

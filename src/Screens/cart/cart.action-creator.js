@@ -11,14 +11,3 @@ export const addToCartActionCreator = (productId, userToken) => {
         });
     };
 };
-
-export const increaseCartItemQuantity = (productId, quantity, userToken) => {
-    return async function (dispatch, getState) {
-        const { products } = getState();
-        const cartDetails = await updateCart(product, quantity + 1, userToken);
-        dispatch({
-            type: ADD_TO_CART,
-            data: { cartDetails, products },
-        });
-    };
-};

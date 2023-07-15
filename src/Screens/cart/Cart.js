@@ -9,26 +9,24 @@ import {
     StyleSheet,
     Modal,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { addToCart } from "../redux/action";
-// import { addToCart, removeFromCart } from '../redux/action';
+import { AuthContext } from '../AuthContext';
+import { addToCartActionCreator } from './cart.action-creator';
 
 const Cart = ({ navigation }) => {
     const [showModal, setShowModal] = useState(false);
     const cart = useSelector((state) => state.cart);
     const dispatch = useDispatch();
-    // const { userToken } = useContext(AuthContext);
+    const { userToken } = useContext(AuthContext);
     const { total, grandTotal } = cart;
-
-    console.log('----cart', cart);
 
     const Navigator = () => {
         setShowModal(true);
     };
 
     const increaseCount = (item) => {
-        // dispatch(addToCart(item));
+        dispatch(addToCartActionCreator(item.product, userToken));
     };
 
     const decreaseCount = (item) => {
@@ -46,17 +44,18 @@ const Cart = ({ navigation }) => {
                                 {/* <Image style={styles.View3} source={require("../assets/logo.png")} /> */}
                                 <Image
                                     style={styles.View3}
-                                    source={{ uri: cartItem.images?.[0] }}
+                                    source={{ uri: cartItem?.images?.[0] }}
                                 />
 
                                 <View style={styles.alignment}>
-                                    <Text style={styles.View4}>{cartItem.name}</Text>
+                                    <Text style={styles.View4}>{cartItem?.name}</Text>
 
-                                    <Text style={styles.View5}>RS. {cartItem.price}</Text>
+                                    <Text style={styles.View5}>RS. {cartItem?.price}</Text>
 
                                     <View style={styles.View6}>
                                         <View style={styles.View7}>
                                             <TouchableOpacity
+                                                disabled={true}
                                                 style={styles.View8}
                                                 onPress={() => decreaseCount(cartItem)}
                                             >
