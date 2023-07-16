@@ -15,6 +15,13 @@ const LogIn = ({ navigation }) => {
     const [mobile, setMobile] = useState(null);
     const [pasword, setPassword] = useState(null);
 
+    const checkLogin = () => {
+        if (!mobile || !pasword) {
+            alert('Please fill in all the mandatory fields.');
+            return
+        } login(mobile, pasword)
+    }
+
     return (
         <View style={styles.body}>
             <ScrollView>
@@ -29,7 +36,7 @@ const LogIn = ({ navigation }) => {
                     {/* mobile no input */}
                     <TextInput
                         style={styles.MobileNoInput}
-                        autoCapitalize                  
+                        autoCapitalize
                         autoCorrect={false}
                         placeholder="Mobile No."
                         onChangeText={(text) => setMobile(text)}
@@ -44,7 +51,7 @@ const LogIn = ({ navigation }) => {
                     // secureTextEntry
                     />
 
-                    <TouchableOpacity onPress={() => { login(mobile, pasword) }}>
+                    <TouchableOpacity onPress={checkLogin}>
                         <View style={styles.signInbutton}>
                             <Text style={styles.signInText}>SIGN IN</Text>
                         </View>
@@ -87,7 +94,7 @@ const styles = StyleSheet.create({
     LogInTitle: {
         fontSize: 18,
         alignSelf: 'center',
-        marginTop:20
+        marginTop: 20
     },
     LogInText: {
         fontSize: 23,

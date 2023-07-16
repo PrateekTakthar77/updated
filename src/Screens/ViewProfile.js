@@ -206,10 +206,11 @@ import { AuthContext } from './AuthContext'
 
 const ViewProfile = () => {
 
-    const { login, logout, isLoading, userToken, userInfo, register, userDetails, updateUserDetails, getUserDetails } = useContext(AuthContext);
-    // console.log(userInfo);
+    const { userInfo, userDetails } = useContext(AuthContext);
 
-    const { payload: user } = userInfo;
+    console.log("userInfo", userInfo);
+
+    // const { payload: user } = userInfo;
 
     // console.log(`userinfo`, userInfo);
     // console.log(`userdetails from profile screen *****`, userDetails.mobile);
@@ -221,7 +222,7 @@ const ViewProfile = () => {
             <ScrollView>
                 <View style={{ alignItems: "center" }}>
                     <Image source={require("../assets/dp.jpg")} style={{ width: 140, height: 140, borderRadius: 100, marginTop: 20 }} />
-                    <Text style={{ fontSize: 25, marginTop: 20, fontWeight: "bold", color: "black" }}>{user?.name}</Text>
+                    <Text style={{ fontSize: 25, marginTop: 20, fontWeight: "bold", color: "black" }}>{userInfo?.name}</Text>
                 </View>
 
                 {/* -------------- */}
@@ -261,7 +262,7 @@ const ViewProfile = () => {
                         borderRadius: 10,
 
                     }}>
-                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Name : {user?.name}</Text>
+                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Name : {userInfo?.name}</Text>
                         <Text style={{ fontSize: 15, }}></Text>
                     </View>
 
@@ -283,7 +284,7 @@ const ViewProfile = () => {
                         borderRadius: 10,
                     }}>
 
-                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Mobile No. : {userDetails.mobile}</Text>
+                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Mobile No. : {userDetails?.mobile}</Text>
                         {/* <Text style={{ fontSize: 15, }}></Text> */}
                     </View>
                     <View style={{
@@ -304,7 +305,7 @@ const ViewProfile = () => {
                     }}>
 
 
-                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Email : {user?.email}</Text>
+                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Email : {userInfo?.email}</Text>
                         <Text style={{ fontSize: 15, }}></Text>
                     </View>
 
@@ -353,7 +354,7 @@ const ViewProfile = () => {
                         borderRadius: 10,
 
                     }}>
-                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Brand name :{userDetails.userDetails.brandName}</Text>
+                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Brand name :{userDetails.brandName}</Text>
                         <Text style={{ fontSize: 15, }}></Text>
                     </View>
 
@@ -375,7 +376,7 @@ const ViewProfile = () => {
                         borderRadius: 10,
                     }}>
 
-                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Address : {userDetails.userDetails.address}</Text>
+                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Address : {userDetails.address}</Text>
                         <Text style={{ fontSize: 15, }}></Text>
                     </View>
                     <View style={{
@@ -395,7 +396,7 @@ const ViewProfile = () => {
                     }}>
 
 
-                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Pincode :{userDetails.userDetails.pincode}</Text>
+                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Pincode :{userDetails.pincode}</Text>
                         <Text style={{ fontSize: 15, }}></Text>
                     </View>
                     <View style={{
@@ -413,7 +414,7 @@ const ViewProfile = () => {
                         borderColor: "black",
                         borderRadius: 10,
                     }}>
-                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Locality : {userDetails.userDetails.locality}</Text>
+                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Locality : {userDetails.locality}</Text>
                         <Text style={{ fontSize: 15, }}></Text>
                     </View>
                     <View style={{
@@ -431,7 +432,7 @@ const ViewProfile = () => {
                         borderColor: "black",
                         borderRadius: 10,
                     }}>
-                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>City : {userDetails.userDetails.city}</Text>
+                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>City : {userDetails.city}</Text>
                         <Text style={{ fontSize: 15, }}></Text>
                     </View>
                     <View style={{
@@ -449,7 +450,7 @@ const ViewProfile = () => {
                         borderColor: "black",
                         borderRadius: 10,
                     }}>
-                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>State : {userDetails.userDetails.state}</Text>
+                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>State : {userDetails.state}</Text>
                         <Text style={{ fontSize: 15, }}></Text>
                     </View>
                     <View style={{
@@ -467,7 +468,7 @@ const ViewProfile = () => {
                         borderColor: "black",
                         borderRadius: 10,
                     }}>
-                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Store person name : {userDetails.userDetails.storePersonName}</Text>
+                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Store person name : {userDetails.storePersonName}</Text>
                         <Text style={{ fontSize: 15, }}></Text>
                     </View>
                     <View style={{
@@ -486,7 +487,7 @@ const ViewProfile = () => {
                         borderRadius: 10,
                         marginBottom: 40
                     }}>
-                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Store contact no : {userDetails.userDetails.contactNo}</Text>
+                        <Text style={{ fontSize: 15, color: "black", fontWeight: "bold", textAlign: "left", justifyContent: "flex-start" }}>Store contact no : {userDetails.contactNo}</Text>
                         <Text style={{ fontSize: 15, }}></Text>
                     </View>
 

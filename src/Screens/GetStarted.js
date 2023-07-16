@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Text, View, Image, TouchableOpacity, StyleSheet, Dimensions, ImageBackground } from 'react-native';
+import { Text, View, Image, TouchableOpacity, StyleSheet, Dimensions, ImageBackground, ScrollView } from 'react-native';
 
 
 import Carousel, { Pagination } from "react-native-snap-carousel"
@@ -52,48 +52,50 @@ function GetStarted({ navigation }) {
 
     return (
         <View>
-            <View >
-                <Image style={styles.logoStyle} source={require('../assets/logo.png')} />
-            </View>
-            <View style={{ marginTop: 20 }}>
-                <View style={{ paddingTop: 20, alignItems: "center" }}>
-                    <Carousel
-                        ref={isCarousel}
-                        data={data}
-                        renderItem={SnapCarousel}
-                        sliderWidth={SLIDER_WIDTH}
-                        itemWidth={ITEM_WIDTH}
-                        onSnapToItem={index => setIndex(index)}
-
-                    />
-                    <Pagination
-                        dotsLength={data.length}
-                        activeDotIndex={index}
-                        carouselRef={isCarousel}
-                        dotStyle={{
-                            width: 10,
-                            height: 10,
-                            borderRadius: 10,
-                            marginHorizontal: 0,
-                            backgroundColor: "#bc9954"
-                        }}
-
-                    />
+            <ScrollView>
+                <View >
+                    <Image style={styles.logoStyle} source={require('../assets/logo.png')} />
                 </View>
+                <View style={{ marginTop: 20 }}>
+                    <View style={{ paddingTop: 20, alignItems: "center" }}>
+                        <Carousel
+                            ref={isCarousel}
+                            data={data}
+                            renderItem={SnapCarousel}
+                            sliderWidth={SLIDER_WIDTH}
+                            itemWidth={ITEM_WIDTH}
+                            onSnapToItem={index => setIndex(index)}
 
+                        />
+                        <Pagination
+                            dotsLength={data.length}
+                            activeDotIndex={index}
+                            carouselRef={isCarousel}
+                            dotStyle={{
+                                width: 10,
+                                height: 10,
+                                borderRadius: 10,
+                                marginHorizontal: 0,
+                                backgroundColor: "#bc9954"
+                            }}
 
-
-
-            </View>
-            <View>
-                <TouchableOpacity onPress={() => {
-                    navigation.navigate('loginsignup')
-                }}>
-                    <View >
-                        <Text style={styles.GetStartedButtton}>Get Started</Text>
+                        />
                     </View>
-                </TouchableOpacity>
-            </View>
+
+
+
+
+                </View>
+                <View>
+                    <TouchableOpacity onPress={() => {
+                        navigation.navigate('loginsignup')
+                    }}>
+                        <View >
+                            <Text style={styles.GetStartedButtton}>Get Started</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
         </View>
 
     );

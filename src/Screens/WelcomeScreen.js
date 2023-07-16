@@ -44,22 +44,18 @@ const WelcomeScreen = () => {
 
     const navigation = useNavigation()
 
-    const { login, logout, isLoading, userToken, userInfo, register, userDetails, updateUserDetails, getUserDetails } = useContext(AuthContext);
+    const { logout, userInfo, userDetails } = useContext(AuthContext);
     const images = [
         require("../assets/logo.png"),
         require("../assets/logo.png"),
         require("../assets/logo.png"),
     ];
 
-    const { payload: user } = userInfo;
+    // const { payload: user } = userInfo;
     const check = () => {
         console.log("hello checked");
     }
 
-    console.log(`userinfo`, userInfo);
-    console.log(`userdetails from profile screen *****`, userDetails.userDetails);
-    console.log(`user from view p ((@))`, user)
-    console.log("userInfo - Welcomescreen", userInfo);
     return (
         <>
             <ScrollView>
@@ -80,8 +76,8 @@ const WelcomeScreen = () => {
                                     </View>
 
 
-                                    <Text style={styles.name}>{user?.name}</Text>
-                                    <Text style={styles.abcjw}>{userDetails.userDetails.brandName}</Text>
+                                    <Text style={styles.name}>{userInfo?.name}</Text>
+                                    <Text style={styles.abcjw}>{userDetails.brandName}</Text>
                                 </View>
                                 <View style={styles.align2}>
                                     <Text style={styles.toapp}>Welcome to our app! we have thrilled to have you here.</Text>
