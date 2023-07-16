@@ -28,6 +28,7 @@ import ViewProfile from '../Screens/ViewProfile';
 import PriceList from '../Screens/PriceList';
 import GoldScreen from '../Screens/GoldScreen';
 import SilverScreen from '../Screens/SilverScreen';
+import StatesDropDown from '../Screens/StatesDropDown';
 // import TaxInvoice from '../Screens/TaxInvoice';
 
 const Stack = createNativeStackNavigator();
@@ -308,6 +309,15 @@ const Navigation = () => {
                         <Stack.Screen
                             name="silverscreen"
                             component={SilverScreen}
+                            options={{
+                                title: '',
+                                headerShown: true, headerStyle: { backgroundColor: 'black' },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' }
+                            }} />
+                        <Stack.Screen
+                            name="StatesDropDown"
+                            component={StatesDropDown}
                             options={{
                                 title: '',
                                 headerShown: true, headerStyle: { backgroundColor: 'black' },
