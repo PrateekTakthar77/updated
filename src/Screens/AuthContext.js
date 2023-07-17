@@ -106,24 +106,47 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    // const getUserDetails = async (id) => {
+    //     console.log(id);
+    //     if (!id) {
+    //         return;
+    //     }
+    //     const headers = { 'Authorization': userToken };
+    //     setIsLoading(true);
+    //     let response;
+    //     try {
+    //         response = await axios.get(`${BASE_URL}api/user-details/${id}`, { headers });
+    //     } catch (e) {
+    //         console.log(`error from authcontext `, e);
+    //     }
+    //     const UserDetails = { ...response.data.userDetails, mobile: response.data.mobile };
+    //     console.log(`USERDETAILS.;l,;l.,l[]/;'.`, UserDetails);
+    //     setUserDetails(UserDetails);
+    //     console.log(`USERDETAILS`, UserDetails)
+    //     await AsyncStorage.setItem('userDetails', JSON.stringify(UserDetails));
+    //     setIsLoading(false);
+    // }
+
     const getUserDetails = async (id) => {
+        console.log(id);
         if (!id) {
             return;
         }
         const headers = { 'Authorization': userToken };
         setIsLoading(true);
-        let response;
         try {
-            response = await axios.get(`${BASE_URL}api/user-details/${id}`, { headers });
+            const response = await axios.get(`${BASE_URL}api/user-details/${id}`, { headers });
+            const UserDetails = { ...response.data.userDetails, mobile: response.data.mobile };
+            console.log(`USERDETAILS:`, UserDetails);
+            setUserDetails(UserDetails);
+            await AsyncStorage.setItem('userDetails', JSON.stringify(UserDetails));
+            setIsLoading(false);
         } catch (e) {
-            console.log(`error from authcontext `, e);
+            console.log(`error from authcontext: `, e);
+            setIsLoading(false);
         }
-        const UserDetails = { ...response.data.userDetails, mobile: response.data.mobile };
-        setUserDetails(UserDetails);
-        console.log(`USERDETAILS`, UserDetails)
-        await AsyncStorage.setItem('userDetails', JSON.stringify(UserDetails));
-        setIsLoading(false);
     }
+
 
     useEffect(() => {
         isLogedIn();

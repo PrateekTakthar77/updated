@@ -29,7 +29,7 @@ const FormDetails = ({ navigation }) => {
     });
 
     const handleSubmit = () => {
-        addUserDetails({
+        addUserDetails(
             brandName,
             address,
             pincode,
@@ -40,8 +40,8 @@ const FormDetails = ({ navigation }) => {
             storePersonName,
             contactNo,
             gpsLocation
-        })
-        navigation.navigate('tabs')
+        )
+        navigation.navigate('otp')
     };
 
     useEffect(() => {
