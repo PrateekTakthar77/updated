@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [userToken, setUserToken] = useState(null);
     const [userInfo, setUserInfo] = useState(null);
-    const [userDetails, setUserDetails] = useState({});
+    const [userDetails, setUserDetails] = useState();
 
     const login = (username, password) => {
         setIsLoading(true);
@@ -47,6 +47,8 @@ export const AuthProvider = ({ children }) => {
         axios.post(`${BASE_URL}api/auth/register`, data)
             .then(res => {
                 let userInfo = { ...res.data.payload };
+                console.log(`userInfo---------->`, userInfo);
+                console.log(`userInfo---------->`, userInfo.userDetails);
                 setUserInfo(userInfo);
                 setUserToken(res.data.token);
                 AsyncStorage.setItem('userinfo', JSON.stringify(userInfo));
@@ -91,7 +93,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     const addUserDetails = async (data) => {
-        console.log(data);
+        console.log(`data`, data);
         setIsLoading(true);
         const headers = { 'Authorization': `Bearer ${userToken}` };
         try {
@@ -108,21 +110,18 @@ export const AuthProvider = ({ children }) => {
         if (!id) {
             return;
         }
-
         const headers = { 'Authorization': userToken };
         setIsLoading(true);
-
         let response;
         try {
             response = await axios.get(`${BASE_URL}api/user-details/${id}`, { headers });
         } catch (e) {
             console.log(`error from authcontext `, e);
         }
-
-        const userDetails = { ...response.data.userDetails, mobile: response.data.mobile };
-
-        setUserDetails(userDetails);
-        await AsyncStorage.setItem('userDetails', JSON.stringify(userDetails));
+        const UserDetails = { ...response.data.userDetails, mobile: response.data.mobile };
+        setUserDetails(UserDetails);
+        console.log(`USERDETAILS`, UserDetails)
+        await AsyncStorage.setItem('userDetails', JSON.stringify(UserDetails));
         setIsLoading(false);
     }
 
@@ -130,7 +129,7 @@ export const AuthProvider = ({ children }) => {
         isLogedIn();
     }, []);
     return (
-        <AuthContext.Provider value={{ login, logout, isLoading, userToken, userInfo, register, userDetails, addUserDetails, getUserDetails }}>
+        <AuthContext.Provider value={{ login, logout, isLoading, userToken, userInfo, register, userDetails, addUserDetails, getUserDetails, setUserDetails }}>
             {children}
         </AuthContext.Provider>
     )

@@ -28,18 +28,6 @@ const FormDetails = ({ navigation }) => {
         longitude: -122.4194
     });
 
-    useEffect(() => {
-        if (!userToken) {
-            return;
-        }
-        console.log('useEffect userDetails', userDetails);
-        if (userDetails) {
-            navigation.navigate('tabs');
-            return;
-        }
-    }, [userToken, userDetails]);
-
-    console.log('userDetails', userDetails);
     const handleSubmit = () => {
         addUserDetails({
             brandName,
@@ -53,7 +41,20 @@ const FormDetails = ({ navigation }) => {
             contactNo,
             gpsLocation
         })
+        navigation.navigate('tabs')
     };
+
+    useEffect(() => {
+        if (!userToken) {
+            return;
+        }
+        if (userDetails) {
+            navigation.navigate('tabs');
+            return;
+        }
+    }, [userToken, userDetails]);
+
+    // console.log('userDetails', userDetails);
 
     return (
         <ScrollView>

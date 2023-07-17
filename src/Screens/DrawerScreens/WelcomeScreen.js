@@ -46,6 +46,7 @@ const WelcomeScreen = () => {
     const navigation = useNavigation()
 
     const { userInfo, userDetails } = useContext(AuthContext);
+    console.log(`/.//../././..//.//./`, userDetails);
 
     // const { payload: user } = userInfo;
     const check = () => {
