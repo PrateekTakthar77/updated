@@ -19,27 +19,34 @@ const DrawerContent = (props, { navigation }) => {
                 <View style={styles.drawerContent}>
                     <View style={styles.userInfoSection}>
                         <View style={styles.ProfileName}>
-                            <Avatar.Image
-                                source={require("../assets/dp.jpg")} size={100}
-                            />
+                            <View >
+                                <Avatar.Image
+                                    source={require("../assets/dp.jpg")} size={100}
+                                />
+                            </View>
+
                             <View style={styles.nameProfile}>
+<<<<<<< HEAD
+                                <Text style={{ marginTop: 5, fontWeight: "500", textAlign: "center", fontSize: 30 }}>{user?.name}</Text>
+=======
                                 <Text style={{ marginTop: 5, fontWeight: "500", textAlign: "center", fontSize: 30 }}>{userInfo?.name}</Text>
 
+>>>>>>> a00b51837ec67342ad0d254247438a4e3ba80891
                             </View>
                         </View>
                     </View>
                 </View>
 
-
                 <Drawer.Section style={styles.bottomDrawerSection}>
 
                     <DrawerItem
-                        // icon={({ color, size }) => (
+                        // ion={({ color, size }) => (
                         //     <Icon name="profile" color={color} size={size} />
                         // )}
-                        label="View Profile"
                         // label={() => (<Text style={{ color: 'white', fontSize: 20 }}>Start Motor</Text>)}
                         // label={<Text style={{color: '#ffffff'}}>First Item</Text>}
+                        label="View Profile"
+                        labelStyle={{ color: 'black', fontSize: 18, textAlign: "center", marginLeft: 27 }}
                         onPress={() => {
                             props.navigation.navigate("viewprofile");
                         }}
@@ -126,7 +133,7 @@ const DrawerContent = (props, { navigation }) => {
 
                         label="Service Available"
                         onPress={() => {
-                            props.navigation.navigate("ServiceAvailable");
+                            props.navigation.navigate("StatesDropDown");
                         }}
                     />
 
@@ -146,8 +153,6 @@ const DrawerContent = (props, { navigation }) => {
                 </View>
 
             </DrawerContentScrollView>
-
-
         </View>
     )
 }
@@ -158,13 +163,14 @@ export default DrawerContent;
 const styles = StyleSheet.create({
     ProfileName: {
         alignItems: "center",
-        marginTop: 30,
+        marginTop: 40,
+        marginRight: 27,
     },
     nameProfile: {
         alignItems: "center",
     },
     drawerContent: {
-        flex: 1,
+        flex: 0.,
     },
     userInfoSection: {
         paddingLeft: 20,
@@ -210,7 +216,7 @@ const styles = StyleSheet.create({
     },
     line: {
         width: "100%",
-        height: 1.5,
+        height: 2,
         backgroundColor: "white",
         alignSelf: 'center',
         marginBottom: 15,
