@@ -26,12 +26,8 @@ const DrawerContent = (props, { navigation }) => {
                             </View>
 
                             <View style={styles.nameProfile}>
-<<<<<<< HEAD
-                                <Text style={{ marginTop: 5, fontWeight: "500", textAlign: "center", fontSize: 30 }}>{user?.name}</Text>
-=======
                                 <Text style={{ marginTop: 5, fontWeight: "500", textAlign: "center", fontSize: 30 }}>{userInfo?.name}</Text>
 
->>>>>>> a00b51837ec67342ad0d254247438a4e3ba80891
                             </View>
                         </View>
                     </View>
