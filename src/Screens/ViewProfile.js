@@ -223,7 +223,7 @@ const ViewProfile = () => {
             <ScrollView>
                 <View style={{ alignItems: "center" }}>
                     <Image source={require("../assets/dp.jpg")} style={{ width: 140, height: 140, borderRadius: 100, marginTop: 20 }} />
-                    <Text style={{ fontSize: 25, marginTop: 20, fontWeight: "bold", color: "black" }}>{userDetails.name}</Text>
+                    <Text style={{ fontSize: 25, marginTop: 20, fontWeight: "bold", color: "black" }}>{userInfo?.name}</Text>
                 </View>
 
                 {/* -------------- */}

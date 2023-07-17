@@ -13,13 +13,13 @@ export const AuthProvider = ({ children }) => {
     const [userInfo, setUserInfo] = useState(null);
     const [userDetails, setUserDetails] = useState();
 
+
     const login = (username, password) => {
         setIsLoading(true);
         axios.post(`${BASE_URL}api/auth/login`, {
             "mobile": username,
             "password": password,
         }).then(async res => {
-            // console.log(res.data);
             let userInfo = { ...res.data.User };
             setUserInfo(userInfo);
             setUserToken(res.data.token);
@@ -35,7 +35,36 @@ export const AuthProvider = ({ children }) => {
             })
     }
 
-    const register = (name, email, password, mobile, role) => {
+    // const register = (name, email, password, mobile, role) => {
+    //     const data = {
+    //         mobile,
+    //         password,
+    //         name,
+    //         email,
+    //         role,
+    //     };
+    //     setIsLoading(true);
+    //     axios.post(`${BASE_URL}api/auth/register`, data)
+    //         .then(res => {
+    //             let userInfo = { ...res.data.payload };
+    //             console.log(`userInfo---------->`, userInfo);
+    //             console.log(`userInfo---------->`, userInfo.userDetails);
+    //             setUserInfo(userInfo);
+    //             setUserToken(res.data.token);
+    //             AsyncStorage.setItem('userinfo', JSON.stringify(userInfo));
+    //             AsyncStorage.setItem('userToken', res.data.token);
+    //             // UserToken is Getting console log
+    //             setIsLoading(false);
+    //         })
+    //         .catch(e => {
+    //             alert(`Mobile already Registered Please Login `);
+    //             console.log(`hello: ${e}`);
+    //             setIsLoading(false);
+    //         });
+    // };
+
+
+    const register = async (name, email, password, mobile, role) => {
         const data = {
             mobile,
             password,
@@ -44,24 +73,24 @@ export const AuthProvider = ({ children }) => {
             role,
         };
         setIsLoading(true);
-        axios.post(`${BASE_URL}api/auth/register`, data)
-            .then(res => {
-                let userInfo = { ...res.data.payload };
-                console.log(`userInfo---------->`, userInfo);
-                console.log(`userInfo---------->`, userInfo.userDetails);
-                setUserInfo(userInfo);
-                setUserToken(res.data.token);
-                AsyncStorage.setItem('userinfo', JSON.stringify(userInfo));
-                AsyncStorage.setItem('userToken', res.data.token);
-                // UserToken is Getting console log
-                setIsLoading(false);
-            })
-            .catch(e => {
-                alert(`Mobile already Registered Please Login `);
-                console.log(`hello: ${e}`);
-                setIsLoading(false);
-            });
+        try {
+            const res = await axios.post(`${BASE_URL}api/auth/register`, data);
+            let userInfo = { ...res.data.payload };
+            console.log(`userInfo---------->`, userInfo);
+            console.log(`userInfo---------->`, userInfo.userDetails);
+            AsyncStorage.setItem('userinfo', JSON.stringify(userInfo));
+            AsyncStorage.setItem('userToken', res.data.token);
+            setUserInfo(userInfo);
+            setUserToken(res.data.token);
+            await getUserDetails(userInfo?._id);
+            setIsLoading(false);
+        } catch (e) {
+            alert(`Mobile already Registered. Please Login.`);
+            console.log(`hello: ${e}`);
+            setIsLoading(false);
+        }
     };
+
 
     const logout = async () => {
         console.log('logout');
@@ -83,6 +112,7 @@ export const AuthProvider = ({ children }) => {
 
             if (userInfo) {
                 setUserToken(userToken);
+                console.log(`token`, userToken);
                 setUserInfo(userInfo);
                 await getUserDetails(userInfo?._id);
             }
@@ -93,7 +123,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     const addUserDetails = async (data) => {
-        console.log(`data`, data);
+        console.log(`data`, data.contactNo);
         setIsLoading(true);
         const headers = { 'Authorization': `Bearer ${userToken}` };
         try {
@@ -106,27 +136,6 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    // const getUserDetails = async (id) => {
-    //     console.log(id);
-    //     if (!id) {
-    //         return;
-    //     }
-    //     const headers = { 'Authorization': userToken };
-    //     setIsLoading(true);
-    //     let response;
-    //     try {
-    //         response = await axios.get(`${BASE_URL}api/user-details/${id}`, { headers });
-    //     } catch (e) {
-    //         console.log(`error from authcontext `, e);
-    //     }
-    //     const UserDetails = { ...response.data.userDetails, mobile: response.data.mobile };
-    //     console.log(`USERDETAILS.;l,;l.,l[]/;'.`, UserDetails);
-    //     setUserDetails(UserDetails);
-    //     console.log(`USERDETAILS`, UserDetails)
-    //     await AsyncStorage.setItem('userDetails', JSON.stringify(UserDetails));
-    //     setIsLoading(false);
-    // }
-
     const getUserDetails = async (id) => {
         console.log(id);
         if (!id) {
@@ -134,18 +143,40 @@ export const AuthProvider = ({ children }) => {
         }
         const headers = { 'Authorization': userToken };
         setIsLoading(true);
+        let response;
         try {
-            const response = await axios.get(`${BASE_URL}api/user-details/${id}`, { headers });
-            const UserDetails = { ...response.data.userDetails, mobile: response.data.mobile };
-            console.log(`USERDETAILS:`, UserDetails);
-            setUserDetails(UserDetails);
-            await AsyncStorage.setItem('userDetails', JSON.stringify(UserDetails));
+            response = await axios.get(`${BASE_URL}api/user-details/${id}`, { headers });
+            const userDetails = { ...response.data.userDetails, mobile: response.data.mobile };
+            console.log(`response from userdetails line:121 `, response.data.userDetails);
+            console.log(`USERDETAILS.;l,;l.,l[]/;'.`, userDetails);
+            setUserDetails(userDetails);
+            console.log(`USERDETAILS`, userDetails)
+            await AsyncStorage.setItem('userDetails', JSON.stringify(userDetails));
             setIsLoading(false);
         } catch (e) {
-            console.log(`error from authcontext: `, e);
-            setIsLoading(false);
+            console.log(`error from authcontext `, e);
         }
     }
+
+    // const getUserDetails = async (id) => {
+    //     console.log(id);
+    //     if (!id) {
+    //         return;
+    //     }
+    //     const headers = { 'Authorization': userToken };
+    //     setIsLoading(true);
+    //     try {
+    //         const response = await axios.get(`${BASE_URL}api/user-details/${id}`, { headers });
+    //         const UserDetails = { ...response.data.userDetails, mobile: response.data.mobile };
+    //         console.log(`USERDETAILS:`, UserDetails);
+    //         setUserDetails(UserDetails);
+    //         await AsyncStorage.setItem('userDetails', JSON.stringify(UserDetails));
+    //         setIsLoading(false);
+    //     } catch (e) {
+    //         console.log(`error from authcontext: `, e);
+    //         setIsLoading(false);
+    //     }
+    // }
 
 
     useEffect(() => {
