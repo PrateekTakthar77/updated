@@ -1,31 +1,33 @@
-import { View, Text, Dimensions, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import React, { useContext, useRef, useState } from 'react'
-import MarqueeView from "react-native-marquee-view";
+import {
+    View,
+    Text,
+    Dimensions,
+    ScrollView,
+    StyleSheet,
+    TouchableOpacity,
+    Image,
+} from 'react-native';
+import React, { useContext, useRef, useState } from 'react';
+import MarqueeView from 'react-native-marquee-view';
 import { useNavigation } from '@react-navigation/native';
 // import { moderateScale, } from '../utils/responsive';
 import { moderateScale, moderateScaleVertical, textScale } from '../../utils/responsive';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { AuthContext } from '../AuthContext';
 
-
-
-
-
 const WelcomeScreen = () => {
-
     const { width } = Dimensions.get('screen');
 
     const entries = [
         {
-            img: require("../../assets/banner.jpg"),
+            img: require('../../assets/banner.jpg'),
         },
         {
-            img: require("../../assets/banner.jpg"),
+            img: require('../../assets/banner.jpg'),
         },
         {
-            img: require("../../assets/banner.jpg"),
+            img: require('../../assets/banner.jpg'),
         },
-
     ];
 
     const renderItem = ({ item, index }) => {
@@ -43,14 +45,24 @@ const WelcomeScreen = () => {
         );
     };
 
-    const navigation = useNavigation()
+    const navigation = useNavigation();
 
-    const { login, logout, isLoading, userToken, userInfo, register, userDetails, updateUserDetails, getUserDetails } = useContext(AuthContext);
+    const {
+        login,
+        logout,
+        isLoading,
+        userToken,
+        userInfo,
+        register,
+        userDetails,
+        updateUserDetails,
+        getUserDetails,
+    } = useContext(AuthContext);
 
     const { payload: user } = userInfo;
     const check = () => {
-        console.log("hello checked");
-    }
+        console.log('hello checked');
+    };
 
     // console.log(`userinfo`, userInfo);
     // console.log(`userdetails from profile screen *****`, userDetails.userDetails);
@@ -63,30 +75,47 @@ const WelcomeScreen = () => {
                 <View style={styles.main}>
                     <View style={styles.goldenBoxAlignment}>
                         <View style={styles.BoxStyle}>
-                            <View style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                            <View
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'space-between',
+                                }}
+                            >
                                 {/* <View style={{flex:"1 1 0"}}> */}
                                 <View style={styles.align}>
-                                    <View style={{ flexDirection: "row", marginHorizontal: -58, justifyContent: "space-around", }}>
+                                    <View
+                                        style={{
+                                            flexDirection: 'row',
+                                            marginHorizontal: -58,
+                                            justifyContent: 'space-around',
+                                        }}
+                                    >
                                         <View style={styles.logoutButton}>
                                             <Text style={styles.Welcome}>Welcome,</Text>
                                         </View>
                                         <View>
                                             <TouchableOpacity>
-                                                <Image source={require("../../assets/notification.png")} style={{ width: 30, height: 30 }} />
+                                                <Image
+                                                    source={require('../../assets/notification.png')}
+                                                    style={{ width: 30, height: 30 }}
+                                                />
                                             </TouchableOpacity>
                                         </View>
                                     </View>
 
-                                    <Text style={styles.name}>{user?.name}</Text>
-                                    {/* <Text style={styles.abcjw}>{userDetails.userDetails.brandName}</Text> */}
+                                    {/* <Text style={styles.name}>{user?.name}</Text> */}
+                                    <Text style={styles.abcjw}>
+                                        {userDetails.userDetails.brandName}
+                                    </Text>
                                 </View>
                                 <View style={styles.align2}>
-                                    <Text style={styles.toapp}>Welcome to our app! we have thrilled to have you here.</Text>
+                                    <Text style={styles.toapp}>
+                                        Welcome to our app! we have thrilled to have you here.
+                                    </Text>
                                     <Text style={styles.toapp2}>Enjoy Shopping!😊</Text>
                                 </View>
                             </View>
-
-
                         </View>
                     </View>
 
@@ -98,7 +127,6 @@ const WelcomeScreen = () => {
                             </Text>
                         </View>
                     </MarqueeView>
-
 
                     <View style={styles.Buttonspan}>
                         <TouchableOpacity onPress={() => navigation.navigate('product')}>
@@ -133,7 +161,7 @@ const WelcomeScreen = () => {
                     </View>
 
                     <TouchableOpacity onPress={() => navigation.navigate('wastage')}>
-                        <View style={styles.button} onPress={check} >
+                        <View style={styles.button} onPress={check}>
                             <Text style={styles.buttontext}>WASTAGE CHART</Text>
                         </View>
                     </TouchableOpacity>
@@ -143,7 +171,6 @@ const WelcomeScreen = () => {
                             <Text style={styles.buttontext}>PRODUCTS</Text>
                         </View>
                     </TouchableOpacity> */}
-
 
                     {/* <View style={styles.slider}>
                         <SliderBox
@@ -161,7 +188,6 @@ const WelcomeScreen = () => {
 
                         />
                     </View> */}
-
 
                     {/* // Parallax */}
 
@@ -191,14 +217,32 @@ const WelcomeScreen = () => {
 
                     {/* <View style={styles.span3}> */}
                     <View style={styles.span}>
-                        <Image source={require("../../assets/1.png")} style={styles.imgsize1} />
-                        <Image source={require("../../assets/2.png")} style={styles.imgsize2} />
-                        <Image source={require("../../assets/3.png")} style={styles.imgsize3} />
-                        <Image source={require("../../assets/4.png")} style={styles.imgsize4} />
+                        <Image
+                            source={require('../../assets/1.png')}
+                            style={styles.imgsize1}
+                        />
+                        <Image
+                            source={require('../../assets/2.png')}
+                            style={styles.imgsize2}
+                        />
+                        <Image
+                            source={require('../../assets/3.png')}
+                            style={styles.imgsize3}
+                        />
+                        <Image
+                            source={require('../../assets/4.png')}
+                            style={styles.imgsize4}
+                        />
                     </View>
                     <View style={styles.span2}>
-                        <Image source={require("../../assets/5.png")} style={styles.imgsize5} />
-                        <Image source={require("../../assets/6.png")} style={styles.imgsize6} />
+                        <Image
+                            source={require('../../assets/5.png')}
+                            style={styles.imgsize5}
+                        />
+                        <Image
+                            source={require('../../assets/6.png')}
+                            style={styles.imgsize6}
+                        />
                     </View>
 
                     {/* COLOMN 8 -------------------------------*/}
@@ -210,11 +254,10 @@ const WelcomeScreen = () => {
                 </View>
             </ScrollView>
         </>
-    )
-}
+    );
+};
 
-export default WelcomeScreen
-
+export default WelcomeScreen;
 
 const styles = StyleSheet.create({
     main: {
@@ -228,34 +271,34 @@ const styles = StyleSheet.create({
     logoutText: {
         fontSize: 15,
         marginRight: 35,
-        color: "#eec06b",
-        backgroundColor: "black",
+        color: '#eec06b',
+        backgroundColor: 'black',
         padding: 5,
-        borderRadius: 10
+        borderRadius: 10,
     },
     goldenBoxAlignment: {
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
         paddingLeft: 10,
         paddingRight: 10,
     },
     BoxStyle: {
         borderRadius: 40,
         marginTop: 30,
-        backgroundColor: "#eec06b",
+        backgroundColor: '#eec06b',
         height: 200,
         width: 380,
     },
 
     align: {
         display: 'flex',
-        flexDirection: "column",
+        flexDirection: 'column',
         marginLeft: 25,
         marginTop: 15,
     },
     align2: {
         display: 'flex',
-        flexDirection: "column",
+        flexDirection: 'column',
         marginLeft: 25,
         marginTop: 15,
     },
@@ -281,97 +324,96 @@ const styles = StyleSheet.create({
         // marginRight: 210,
         marginLeft: 4,
         marginBottom: 2,
-        fontWeight: "600",
-        color: "black",
+        fontWeight: '600',
+        color: 'black',
         // fontWeight: "bold",
-
     },
     abcjw: {
         fontSize: 15,
         marginLeft: 6,
         marginBottom: 17,
-        fontWeight: "bold",
+        fontWeight: 'bold',
     },
     toapp: {
         fontSize: 12,
         // marginTop: 12,
         marginLeft: 6,
         marginBottom: 10,
-        fontWeight: "bold",
+        fontWeight: 'bold',
     },
     toapp2: {
         fontSize: 12,
         marginTop: -6,
         marginLeft: 6,
         marginBottom: 7,
-        fontWeight: "bold",
+        fontWeight: 'bold',
     },
 
     // COLOMN 2---------------------------
 
     Marquee: {
-        backgroundColor: "white",
+        backgroundColor: 'white',
         // backgroundColor: "black",
         width: 400,
     },
     marq1: {
         marginTop: 10,
-        backgroundColor: "#edf0e6",
+        backgroundColor: '#edf0e6',
         marginRight: 120,
     },
 
     // COLOMN 3---------------------------
 
     Buttonspan: {
-        flexDirection: "row",
+        flexDirection: 'row',
         justifyContent: 'space-evenly',
         paddingHorizontal: 0,
         // alignSelf:'center',
     },
     loginbutton: {
-        backgroundColor: "#eec06b",
-        alignItems: "center",
+        backgroundColor: '#eec06b',
+        alignItems: 'center',
         borderRadius: 15,
-        justifyContent: "center",
+        justifyContent: 'center',
         width: 60,
         height: 60,
         marginTop: 30,
-        alignSelf: 'center'
+        alignSelf: 'center',
         // marginLeft: 20,
         // marginRight: ,
     },
     logintext: {
         fontSize: 12,
-        color: "black",
-        fontWeight: "bold",
-        textAlign: "center"
+        color: 'black',
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
     logintext2: {
         fontSize: 12,
-        color: "black",
-        fontWeight: "bold",
-        textAlign: "center"
+        color: 'black',
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
 
     // COLOMN 4---------------------------
 
     button: {
         marginTop: 40,
-        backgroundColor: "black",
+        backgroundColor: 'black',
         padding: 15,
-        alignItems: "center",
+        alignItems: 'center',
         borderRadius: 80,
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
         width: 160,
-        justifyContent: "center",
+        justifyContent: 'center',
         height: 50,
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
     buttontext: {
         fontSize: 14,
-        color: "#eec06b",
-        fontWeight: "bold",
+        color: '#eec06b',
+        fontWeight: 'bold',
         // fontWeight: 500,
     },
 
@@ -383,37 +425,36 @@ const styles = StyleSheet.create({
 
     //   COLOMN 6---------------------------
     line: {
-        width: "80%",
+        width: '80%',
         height: 1,
-        backgroundColor: "#a4a4a4",
+        backgroundColor: '#a4a4a4',
         // textAlign: "center",
         // marginLeft: 50,
         // marginBottom: 8,
         marginTop: 10,
-        alignSelf: 'center'
+        alignSelf: 'center',
         //   COLOMN 7---------------------------
     },
     span: {
         marginTop: 20,
-        flexDirection: "row",
+        flexDirection: 'row',
         // alignItems:"center",
         // paddingHorizontal: 20,
         // marginRight: 20,
-        alignItems: "center",
-        justifyContent: "space-around",
+        alignItems: 'center',
+        justifyContent: 'space-around',
         marginHorizontal: 40,
         marginVertical: -5,
         marginBottom: 2,
-
     },
     span2: {
         marginTop: 25,
-        flexDirection: "row",
+        flexDirection: 'row',
         // paddingHorizontal: 10,
         // marginLeft: 80,
         // marginBottom: 5,
-        alignItems: "center",
-        justifyContent: "space-around",
+        alignItems: 'center',
+        justifyContent: 'space-around',
         marginHorizontal: 140,
     },
     size: {
@@ -461,7 +502,7 @@ const styles = StyleSheet.create({
 
     //   COLOMN 8---------------------------
     appointmentbutton: {
-        backgroundColor: "#eec06b",
+        backgroundColor: '#eec06b',
         borderRadius: 17,
         // justifyContent:"flex-end",
         width: 100,
@@ -472,10 +513,10 @@ const styles = StyleSheet.create({
     },
     appointmentlogintext: {
         fontSize: 10,
-        color: "black",
-        fontWeight: "bold",
+        color: 'black',
+        fontWeight: 'bold',
         marginLeft: 43,
-        textAlign: 'center'
+        textAlign: 'center',
         // justifyContent: "center",
     },
-});    
+});

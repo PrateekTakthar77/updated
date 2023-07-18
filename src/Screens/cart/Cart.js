@@ -13,7 +13,7 @@ import React, { useState, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AuthContext } from '../AuthContext';
 import { addToCartActionCreator } from './cart.action-creator';
-// import { checkoutActionCreator } from '../checkout/checkout.action-creator';
+import { checkoutActionCreator } from '../checkout/checkout.action-creator';
 
 const Cart = ({ navigation }) => {
     const [showModal, setShowModal] = useState(false);
@@ -22,14 +22,13 @@ const Cart = ({ navigation }) => {
     const { userToken } = useContext(AuthContext);
     const { total, grandTotal } = cart;
 
-    const Navigator = () => {
-        setShowModal(true);
-    };
+    // const Navigator = () => {
+    //     setShowModal(true);
+    // };
 
     const placeOrder = () => {
-        console.log('checkout not working');
-        // dispatch(checkoutActionCreator(userToken));
-        navigation.navigate('thankyou');
+        dispatch(checkoutActionCreator(userToken));
+        // navigation.navigate('thankyou');
     };
 
     const increaseCount = (item) => {
