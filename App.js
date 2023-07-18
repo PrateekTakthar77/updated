@@ -10,6 +10,10 @@ import LogIn from './src/Screens/LogIn';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
+
+import { FlashMessageProvider } from 'react-native-flash-message';
+import { FlashMessage } from 'react-native-flash-message';
+
 const Stack = createNativeStackNavigator();
 
 // const Stack = createNativeStackNavigator();
@@ -27,6 +31,7 @@ export default () => {
         <NavigationContainer>
             <AuthProvider>
                 <App />
+                {/* <FlashMessage position="top" /> */}
             </AuthProvider>
         </NavigationContainer>
     );

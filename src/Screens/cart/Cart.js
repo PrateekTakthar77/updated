@@ -15,6 +15,8 @@ import { AuthContext } from '../AuthContext';
 import { addToCartActionCreator } from './cart.action-creator';
 import { checkoutActionCreator } from '../checkout/checkout.action-creator';
 
+import { FlashMessage } from 'react-native-flash-message';
+
 const Cart = ({ navigation }) => {
     const [showModal, setShowModal] = useState(false);
     const cart = useSelector((state) => state.cart);
@@ -28,7 +30,7 @@ const Cart = ({ navigation }) => {
 
     const placeOrder = () => {
         dispatch(checkoutActionCreator(userToken));
-        // navigation.navigate('thankyou');
+        navigation.navigate('thankyou');
     };
 
     const increaseCount = (item) => {
@@ -42,6 +44,7 @@ const Cart = ({ navigation }) => {
     return (
         <View>
             <ScrollView>
+                {/* <FlashMessage position="top" /> */}
                 {cart.items.length ? (
                     cart.items.map((cartItem) => (
                         <View key={cartItem.id} style={styles.View1}>

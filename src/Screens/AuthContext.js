@@ -60,13 +60,14 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(true);
         axios
             .post(`${BASE_URL}api/auth/register`, data)
-            .then((res) => {
+            .then(async (res) => {
                 let userInfo = res.data;
                 setUserInfo(userInfo);
                 setUserToken(userInfo.token);
                 AsyncStorage.setItem('userinfo', JSON.stringify(userInfo));
                 AsyncStorage.setItem('userToken', userInfo.token);
                 // UserToken is Getting console log
+                await getUserDetails(userInfo?.User?._id);
                 setIsLoading(false);
             })
             .catch((e) => {

@@ -17,6 +17,7 @@ export const updateCart = async (productId, quantity, userToken) => {
         );
         cartDetails = response.data ? response.data.cart : cartInitialState;
         console.log(`caartDetails from try`, cartDetails);
+        // console.log(e.message);
     } catch (e) {
         console.log(e);
         cartDetails = cartInitialState;

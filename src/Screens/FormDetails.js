@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from 'react';
 
 import {
     StyleSheet,
@@ -7,9 +7,9 @@ import {
     Image,
     TouchableOpacity,
     TextInput,
-    ScrollView
-} from "react-native";
-import { AuthContext } from "./AuthContext";
+    ScrollView,
+} from 'react-native';
+import { AuthContext } from './AuthContext';
 
 const FormDetails = ({ navigation }) => {
     const { userDetails, userToken } = useContext(AuthContext);
@@ -25,18 +25,18 @@ const FormDetails = ({ navigation }) => {
     const [contactNo, setContactNo] = useState(null);
     const [gpsLocation, setGpsLocation] = useState({
         latitude: 37.779,
-        longitude: -122.4194
+        longitude: -122.4194,
     });
 
     useEffect(() => {
         if (!userToken) {
             return;
         }
-        console.log("gps location", setGpsLocation)
-        console.log("userToken", userToken);
-        console.log("userDetails", userDetails);
+        console.log('gps location', setGpsLocation);
+        console.log('userToken', userToken);
+        console.log('userDetails', userDetails);
         if (userDetails) {
-            navigation.replace('welcomeScreen');
+            navigation.navigate('welcomeScreen');
             return;
         }
     }, [userToken, userDetails]);
@@ -52,26 +52,28 @@ const FormDetails = ({ navigation }) => {
             gstNo,
             storePersonName,
             contactNo,
-            gpsLocation
-        })
+            gpsLocation,
+        });
     };
 
     return (
         <ScrollView>
             <View style={styles.body}>
-
                 {/* Skip button */}
 
-                <TouchableOpacity style={styles.SkipButton} onPress={() => navigation.navigate('welcomescreen')}>
-                    <Text style={styles.SkipButtonText}>Skip&nbsp;{">>"}</Text>
+                <TouchableOpacity
+                    style={styles.SkipButton}
+                    onPress={() => navigation.navigate('welcomescreen')}
+                >
+                    <Text style={styles.SkipButtonText}>Skip&nbsp;{'>>'}</Text>
                 </TouchableOpacity>
 
-
-
                 <View style={styles.main}>
-
                     <View style={styles.image}>
-                        <Image source={require("../assets/logo.png")} style={styles.imageSize} />
+                        <Image
+                            source={require('../assets/logo.png')}
+                            style={styles.imageSize}
+                        />
                     </View>
 
                     <View style={styles.FormDetailsTitle}>
@@ -81,7 +83,6 @@ const FormDetails = ({ navigation }) => {
                     {/* Input Elements Alignment */}
 
                     <View>
-
                         {/* Brand name */}
 
                         <TextInput
@@ -153,7 +154,6 @@ const FormDetails = ({ navigation }) => {
                             />
                         </View>
 
-
                         {/* -------------------------------------------------------------------------------------------------- */}
 
                         {/*GST No.*/}
@@ -166,7 +166,6 @@ const FormDetails = ({ navigation }) => {
                             placeholderTextColor="#a4a4a4"
                             onChangeText={setGstno}
                         />
-
 
                         {/* -------------------------------------------------------------------------------------------------- */}
 
@@ -245,7 +244,6 @@ const FormDetails = ({ navigation }) => {
                             />
                         </View> */}
 
-
                         {/*GPS Location*/}
                         {/* <TextInput
                             style={styles.GPSinputbottom}
@@ -259,7 +257,10 @@ const FormDetails = ({ navigation }) => {
 
                     {/* Submit Button */}
 
-                    <TouchableOpacity style={styles.submitButtonAlignment} onPress={handleSkip}>
+                    <TouchableOpacity
+                        style={styles.submitButtonAlignment}
+                        onPress={handleSkip}
+                    >
                         <View style={styles.submitButton}>
                             <Text style={styles.submitButtonText}>SUBMIT</Text>
                         </View>
@@ -282,7 +283,7 @@ const styles = StyleSheet.create({
     main: {
         maxWidth: 500,
         margin: 0,
-        textAlign: "center",
+        textAlign: 'center',
     },
 
     SkipButton: {
@@ -292,7 +293,7 @@ const styles = StyleSheet.create({
     },
 
     SkipButtonText: {
-        color: "#bc9954",
+        color: '#bc9954',
         fontSize: 14,
         fontWeight: 'bold',
     },
@@ -305,19 +306,18 @@ const styles = StyleSheet.create({
     imageSize: {
         width: 300,
         height: 300,
-        resizeMode: "cover",
+        resizeMode: 'cover',
     },
 
     FormDetailsTitle: {
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
 
     FormDetailsText: {
         fontSize: 20,
         marginTop: -50,
-        textAlign: "center",
-        color: "black"
-
+        textAlign: 'center',
+        color: 'black',
     },
 
     // InputButton CSS
@@ -329,13 +329,13 @@ const styles = StyleSheet.create({
     // BrandName Css
     Brandnameinputbottom: {
         borderWidth: 1,
-        color: "#7d7d7d",
+        color: '#7d7d7d',
         lineHeight: 15,
         marginTop: 0,
         borderBottomWidth: 1,
-        borderBottomColor: "#bc9954",
+        borderBottomColor: '#bc9954',
         borderWidth: 0,
-        width: "80%",
+        width: '80%',
         paddingBottom: 0,
         paddingLeft: 0,
         alignSelf: 'center',
@@ -344,14 +344,14 @@ const styles = StyleSheet.create({
     // Address Css
     Addressinputbottom: {
         borderWidth: 1,
-        color: "#7d7d7d",
+        color: '#7d7d7d',
         marginTop: 0,
         lineHeight: 25,
         marginTop: 15,
         borderBottomWidth: 1,
-        borderBottomColor: "#bc9954",
+        borderBottomColor: '#bc9954',
         borderWidth: 0,
-        width: "80%",
+        width: '80%',
         paddingBottom: 0,
         paddingLeft: 0,
         alignSelf: 'center',
@@ -360,14 +360,14 @@ const styles = StyleSheet.create({
     // PinCode CSS
     Pincodeinputbottom: {
         borderWidth: 1,
-        color: "#7d7d7d",
+        color: '#7d7d7d',
         marginTop: 0,
         lineHeight: 25,
         marginTop: 15,
         borderBottomWidth: 1,
-        borderBottomColor: "#bc9954",
+        borderBottomColor: '#bc9954',
         borderWidth: 0,
-        width: "35%",
+        width: '35%',
         paddingBottom: 0,
         paddingLeft: 0,
     },
@@ -375,52 +375,52 @@ const styles = StyleSheet.create({
     // Locality CSS
     Localityinputbottom: {
         borderWidth: 1,
-        color: "#7d7d7d",
+        color: '#7d7d7d',
         marginTop: 15,
         lineHeight: 25,
         borderBottomWidth: 1,
-        borderBottomColor: "#bc9954",
+        borderBottomColor: '#bc9954',
         borderWidth: 0,
-        width: "35%",
+        width: '35%',
         paddingBottom: 0,
         paddingLeft: 0,
     },
     // City Css
     Cityinputbottom: {
         borderWidth: 1,
-        color: "#7d7d7d",
+        color: '#7d7d7d',
         marginTop: 15,
         lineHeight: 25,
         borderBottomWidth: 1,
-        borderBottomColor: "#bc9954",
+        borderBottomColor: '#bc9954',
         borderWidth: 0,
-        width: "35%",
+        width: '35%',
         paddingBottom: 0,
         paddingLeft: 0,
     },
     // State CSS
     Stateinputbottom: {
         borderWidth: 1,
-        color: "#7d7d7d",
+        color: '#7d7d7d',
         marginTop: 15,
         lineHeight: 25,
         borderBottomWidth: 1,
-        borderBottomColor: "#bc9954",
+        borderBottomColor: '#bc9954',
         borderWidth: 0,
-        width: "35%",
+        width: '35%',
         paddingBottom: 0,
         paddingLeft: 0,
     },
     // GST CSS
     GSTinputbottom: {
         borderWidth: 1,
-        color: "#7d7d7d",
+        color: '#7d7d7d',
         marginTop: 15,
         lineHeight: 25,
         borderBottomWidth: 1,
-        borderBottomColor: "#bc9954",
+        borderBottomColor: '#bc9954',
         borderWidth: 0,
-        width: "80%",
+        width: '80%',
         paddingBottom: 0,
         paddingLeft: 0,
         alignSelf: 'center',
@@ -428,26 +428,26 @@ const styles = StyleSheet.create({
     // Store Person 1 CSS
     StorePersonNameinputbottom1: {
         borderWidth: 1,
-        color: "#7d7d7d",
+        color: '#7d7d7d',
         marginTop: 15,
         lineHeight: 25,
         borderBottomWidth: 1,
-        borderBottomColor: "#bc9954",
+        borderBottomColor: '#bc9954',
         borderWidth: 0,
-        width: "35%",
+        width: '35%',
         paddingBottom: 0,
         paddingLeft: 0,
     },
     // contact No 1 CSS
     contactnoinputbottom1: {
         borderWidth: 1,
-        color: "#7d7d7d",
+        color: '#7d7d7d',
         marginTop: 15,
         lineHeight: 25,
         borderBottomWidth: 1,
-        borderBottomColor: "#bc9954",
+        borderBottomColor: '#bc9954',
         borderWidth: 0,
-        width: "35%",
+        width: '35%',
         paddingBottom: 0,
         paddingLeft: 0,
     },
@@ -455,26 +455,26 @@ const styles = StyleSheet.create({
     // Store Person 2 CSS
     StorePersonNameinputbottom2: {
         borderWidth: 1,
-        color: "#7d7d7d",
+        color: '#7d7d7d',
         marginTop: 15,
         lineHeight: 25,
         borderBottomWidth: 1,
-        borderBottomColor: "#bc9954",
+        borderBottomColor: '#bc9954',
         borderWidth: 0,
-        width: "35%",
+        width: '35%',
         paddingBottom: 0,
         paddingLeft: 0,
     },
     // contact No 2
     contactnoinputbottom2: {
         borderWidth: 1,
-        color: "#7d7d7d",
+        color: '#7d7d7d',
         marginTop: 15,
         lineHeight: 25,
         borderBottomWidth: 1,
-        borderBottomColor: "#bc9954",
+        borderBottomColor: '#bc9954',
         borderWidth: 0,
-        width: "35%",
+        width: '35%',
         paddingBottom: 0,
         paddingLeft: 0,
     },
@@ -482,39 +482,39 @@ const styles = StyleSheet.create({
     // Store Person 3 CSS
     StorePersonNameinputbottom3: {
         borderWidth: 1,
-        color: "#7d7d7d",
+        color: '#7d7d7d',
         marginTop: 15,
         lineHeight: 25,
         borderBottomWidth: 1,
-        borderBottomColor: "#bc9954",
+        borderBottomColor: '#bc9954',
         borderWidth: 0,
-        width: "35%",
+        width: '35%',
         paddingBottom: 0,
         paddingLeft: 0,
     },
     // contact No 3 CSS
     contactnoinputbottom3: {
         borderWidth: 1,
-        color: "#7d7d7d",
+        color: '#7d7d7d',
         marginTop: 15,
         lineHeight: 25,
         borderBottomWidth: 1,
-        borderBottomColor: "#bc9954",
+        borderBottomColor: '#bc9954',
         borderWidth: 0,
-        width: "35%",
+        width: '35%',
         paddingBottom: 0,
         paddingLeft: 0,
     },
     // GPS Location CSS
     GPSinputbottom: {
         borderWidth: 1,
-        color: "#7d7d7d",
+        color: '#7d7d7d',
         lineHeight: 10,
         marginTop: 15,
         borderBottomWidth: 1,
-        borderBottomColor: "#bc9954",
+        borderBottomColor: '#bc9954',
         borderWidth: 0,
-        width: "80%",
+        width: '80%',
         paddingBottom: 0,
         paddingLeft: 0,
         alignSelf: 'center',
@@ -525,31 +525,29 @@ const styles = StyleSheet.create({
     },
 
     span: {
-        flexDirection: "row",
-        justifyContent: "space-evenly",
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
         paddingHorizontal: 0,
     },
 
     submitButtonAlignment: {
-        alignItems: "center",
+        alignItems: 'center',
     },
 
     submitButton: {
-        backgroundColor: "#eec06b",
+        backgroundColor: '#eec06b',
         padding: 20,
         marginTop: 40,
-        alignItems: "center",
+        alignItems: 'center',
         borderRadius: 70,
         width: 240,
         height: 70,
-        justifyContent: "center",
-
+        justifyContent: 'center',
     },
 
     submitButtonText: {
         fontSize: 20,
-        color: "black",
-        fontWeight: "500",
-
+        color: 'black',
+        fontWeight: '500',
     },
 });
