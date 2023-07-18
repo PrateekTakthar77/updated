@@ -1,5 +1,5 @@
 import { View, Text, Dimensions, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useRef, useState, useEffect } from 'react'
 import MarqueeView from "react-native-marquee-view";
 import { useNavigation } from '@react-navigation/native';
 // import { moderateScale, } from '../utils/responsive';
@@ -44,9 +44,17 @@ const WelcomeScreen = () => {
     };
 
     const navigation = useNavigation()
-
     const { userInfo, userDetails } = useContext(AuthContext);
-    console.log(`/.//../././..//.//./`, userDetails);
+    // const [buisnessDetails, setbuisnessDetails] = useState({});
+
+    // useEffect(() => {
+    //     if (userDetails) {
+    //         setbuisnessDetails({ ...userDetails });
+    //         console.log(`setDetails`, { ...setbuisnessDetails });
+    //     }
+    // }, [userDetails]);
+
+    // console.log(`/.//../././..//.//./`, userDetails);
 
     // const { payload: user } = userInfo;
     const check = () => {
@@ -74,7 +82,7 @@ const WelcomeScreen = () => {
                                     </View>
 
                                     <Text style={styles.name}>{userInfo?.name}</Text>
-                                    <Text style={styles.abcjw}>{userDetails?.brandName}</Text>
+                                    <Text style={styles.abcjw}>{buisnessDetails?.brandName}</Text>
                                 </View>
                                 <View style={styles.align2}>
                                     <Text style={styles.toapp}>Welcome to our app! we have thrilled to have you here.</Text>

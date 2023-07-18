@@ -76,10 +76,10 @@ export const AuthProvider = ({ children }) => {
         try {
             const res = await axios.post(`${BASE_URL}api/auth/register`, data);
             let userInfo = { ...res.data.payload };
-            console.log(`userInfo---------->`, userInfo);
-            console.log(`userInfo---------->`, userInfo.userDetails);
+            // console.log(`userInfo---------->`, userInfo.data.userDetails);
             AsyncStorage.setItem('userinfo', JSON.stringify(userInfo));
             AsyncStorage.setItem('userToken', res.data.token);
+            // console.log(`userInfo---------->`, userInfo);
             setUserInfo(userInfo);
             setUserToken(res.data.token);
             await getUserDetails(userInfo?._id);
@@ -123,12 +123,13 @@ export const AuthProvider = ({ children }) => {
     }
 
     const addUserDetails = async (data) => {
-        console.log(`data`, data.contactNo);
+        console.log(`data`, data);
         setIsLoading(true);
         const headers = { 'Authorization': `Bearer ${userToken}` };
         try {
             const res = await axios.post(`${BASE_URL}api/user-details/add`, data, { headers });
             await getUserDetails(res._id);
+            console.log(`resssssssssssssss`, res);
             setIsLoading(false);
         } catch (e) {
             console.log(`Response: ${JSON.stringify(e.response)}`);
@@ -147,10 +148,10 @@ export const AuthProvider = ({ children }) => {
         try {
             response = await axios.get(`${BASE_URL}api/user-details/${id}`, { headers });
             const userDetails = { ...response.data.userDetails, mobile: response.data.mobile };
-            console.log(`response from userdetails line:121 `, response.data.userDetails);
-            console.log(`USERDETAILS.;l,;l.,l[]/;'.`, userDetails);
+            // console.log(`response from userdetails line:121 `, response.data.userDetails);
+            // console.log(`USERDETAILS.;l,;l.,l[]/;'.`, userDetails);
             setUserDetails(userDetails);
-            console.log(`USERDETAILS`, userDetails)
+            // console.log(`USERDETAILS`, userDetails)
             await AsyncStorage.setItem('userDetails', JSON.stringify(userDetails));
             setIsLoading(false);
         } catch (e) {
