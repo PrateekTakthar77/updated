@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import {
     StyleSheet,
@@ -10,10 +11,14 @@ import {
     ScrollView,
 } from 'react-native';
 import { AuthContext } from './AuthContext';
+import { updateUserDetails } from './FormDetails/fillDetails/FormDetails.service';
+import { fillDetails } from './FormDetails/fillDetails/FormDetails.action-creator';
+import { useSelector, useDispatch } from 'react-redux';
 
 const FormDetails = ({ navigation }) => {
-    const { userDetails, userToken } = useContext(AuthContext);
-    const { updateUserDetails } = useContext(AuthContext);
+    const { userToken } = useContext(AuthContext);
+    const userDetails = useSelector((state) => state.userDetails);
+    const dispatch = useDispatch();
     const [brandName, setBrandName] = useState(null);
     const [address, setAddress] = useState(null);
     const [pincode, setPincode] = useState(null);
@@ -28,33 +33,63 @@ const FormDetails = ({ navigation }) => {
         longitude: -122.4194,
     });
 
+    // console.log(fillDetails);
+
     useEffect(() => {
         if (!userToken) {
             return;
         }
-        console.log('gps location', setGpsLocation);
-        console.log('userToken', userToken);
-        console.log('userDetails', userDetails);
         if (userDetails) {
             navigation.navigate('welcomeScreen');
             return;
         }
     }, [userToken, userDetails]);
 
-    const handleSkip = () => {
-        updateUserDetails({
+    const submitData = () => {
+        const userDetails = {
             brandName,
             address,
             pincode,
             city,
-            state,
             locality,
+            state,
             gstNo,
             storePersonName,
             contactNo,
             gpsLocation,
-        });
+        };
+        console.log(`userdetails ??????????????????????`, userDetails);
+        dispatch(fillDetails(userToken, userDetails));
+        console.log(`Details filled in the form `, userToken);
+        // console.log(fillDetails.toString);
+        navigation.navigate('welcomescreen');
     };
+
+    // const handleSkip = async () => {
+    //     const userDetailsData = {
+    //         brandName,
+    //         address,
+    //         pincode,
+    //         city,
+    //         state,
+    //         locality,
+    //         gstNo,
+    //         storePersonName,
+    //         contactNo,
+    //         gpsLocation,
+    //     };
+    //     try {
+    //         const updatedUserDetails = await updateUserDetails(userToken);
+    //         if (updatedUserDetails) {
+    //             // Dispatch an action to update the user details in the Redux store
+    //             dispatch(fillDetails(updatedUserDetails));
+    //             // Navigate to the welcomeScreen or any other desired screen
+    //             navigation.navigate('welcomeScreen');
+    //         }
+    //     } catch (error) {
+    //         console.log(`Error updating user details: ${error}`);
+    //     }
+    // };
 
     return (
         <ScrollView>
@@ -259,7 +294,7 @@ const FormDetails = ({ navigation }) => {
 
                     <TouchableOpacity
                         style={styles.submitButtonAlignment}
-                        onPress={handleSkip}
+                        onPress={submitData}
                     >
                         <View style={styles.submitButton}>
                             <Text style={styles.submitButtonText}>SUBMIT</Text>
@@ -271,7 +306,15 @@ const FormDetails = ({ navigation }) => {
     );
 };
 
-export default FormDetails;
+const mapStateToProps = (state) => ({
+    userDetails: state.formDetails,
+});
+
+const mapDispatchToProps = {
+    fillDetails,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormDetails);
 
 const styles = StyleSheet.create({
     body: {

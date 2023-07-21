@@ -97,10 +97,10 @@ const WelcomeScreen = () => {
                                     </View>
 
                                     <Text style={styles.name}>{user?.name}</Text>
-                                    <Text style={styles.abcjw}>{userDetails.brandName}</Text>
-                                    <Text style={styles.abcjw}>{userDetails?.address}</Text>
+                                    {/* <Text style={styles.abcjw}>{userDetails.brandName}</Text> */}
+                                    {/* <Text style={styles.abcjw}>{userDetails?.address}</Text> */}
                                     <Text style={styles.abcjw}>
-                                        {userDetails.userDetails?.city}
+                                        {/* {userDetails.userDetails?.city} */}
                                     </Text>
                                 </View>
                                 <View style={styles.align2}>

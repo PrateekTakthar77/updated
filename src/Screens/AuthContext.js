@@ -33,6 +33,7 @@ export const AuthProvider = ({ children }) => {
             })
             .catch((e) => {
                 console.log(`Login error hello ${e}`);
+                console.log(`Response: ${JSON.stringify(e.response.data.message)}`);
                 setIsLoading(false);
             });
     };
@@ -72,9 +73,7 @@ export const AuthProvider = ({ children }) => {
             })
             .catch((e) => {
                 console.log(`hello: ${e}`);
-                // console.log(`Response #####: ${e.response}`);
-                console.log(`Response: ${JSON.stringify(e.response)}`);
-                // console.log(`hello: ${e.data.message}`);
+                console.log(`Response: ${JSON.stringify(e.response.data.message)}`);
                 setIsLoading(false);
             });
     };

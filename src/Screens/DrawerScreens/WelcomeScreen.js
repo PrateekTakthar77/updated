@@ -105,9 +105,9 @@ const WelcomeScreen = () => {
                                     </View>
 
                                     {/* <Text style={styles.name}>{user?.name}</Text> */}
-                                    <Text style={styles.abcjw}>
+                                    {/* <Text style={styles.abcjw}>
                                         {userDetails.userDetails.brandName}
-                                    </Text>
+                                    </Text> */}
                                 </View>
                                 <View style={styles.align2}>
                                     <Text style={styles.toapp}>
