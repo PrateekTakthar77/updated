@@ -24,6 +24,8 @@ export const fillDetails = (state = initialState, action = {}) => {
                 ...state,
                 ...action.data,
             };
+        case GET_DETAILS:
+            return action.data;
         default:
             return state;
     }

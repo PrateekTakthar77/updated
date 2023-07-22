@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { BASE_URL } from '../../config';
-
+// import React, { useContext, useRef, useState, useEffect } from 'react';
+// import { AuthContext } from '../../AuthContext';
 export const updateUserDetails = async (userToken, userDetails) => {
     let formDetails = {};
     const headers = { Authorization: `Bearer ${userToken}` };
@@ -17,21 +18,19 @@ export const updateUserDetails = async (userToken, userDetails) => {
     return formDetails;
 };
 
-export const fetchUserDetails = async (id) => {
-    console.log('id', id);
+// id not found is the error
+export const fetchUserDetails = async (id, userToken) => {
     if (!id) {
-        return;
+        throw new Error(`id not found`);
     }
     const headers = { Authorization: userToken };
-    // setIsLoading(true);
     let userDetails = {};
     try {
         userDetails = await axios.get(`${BASE_URL}api/user-details/${id}`, { headers });
+        console.log(`HTTPS request`, userDetails);
     } catch (e) {
         console.log(e);
     }
-    // await AsyncStorage.setItem('userDetails', JSON.stringify(userDetails.data));
     console.log(`userdetails[..............]`, userDetails);
-    // setIsLoading(false);
     return userDetails;
 };

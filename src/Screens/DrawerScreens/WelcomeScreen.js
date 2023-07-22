@@ -14,8 +14,10 @@ import { useNavigation } from '@react-navigation/native';
 import { moderateScale, moderateScaleVertical, textScale } from '../../utils/responsive';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { AuthContext } from '../AuthContext';
+import { useSelector, useDispatch } from 'react-redux';
 
 const WelcomeScreen = () => {
+    const Details = useSelector((state) => state.userDetails);
     const { width } = Dimensions.get('screen');
 
     const entries = [
@@ -47,17 +49,17 @@ const WelcomeScreen = () => {
 
     const navigation = useNavigation();
 
-    const {
-        login,
-        logout,
-        isLoading,
-        userToken,
-        userInfo,
-        register,
-        userDetails,
-        updateUserDetails,
-        getUserDetails,
-    } = useContext(AuthContext);
+    // const {
+    //     login,
+    //     logout,
+    //     isLoading,
+    //     userToken,
+    //     userInfo,
+    //     register,
+    //     userDetails,
+    //     updateUserDetails,
+    //     getUserDetails,
+    // } = useContext(AuthContext);
 
     const { payload: user } = userInfo;
     const check = () => {
@@ -104,9 +106,9 @@ const WelcomeScreen = () => {
                                         </View>
                                     </View>
 
-                                    {/* <Text style={styles.name}>{user?.name}</Text> */}
+                                    <Text style={styles.name}>{Details?.name}</Text>
                                     {/* <Text style={styles.abcjw}>
-                                        {userDetails.userDetails.brandName}
+                                        {userDetails.brandName}
                                     </Text> */}
                                 </View>
                                 <View style={styles.align2}>

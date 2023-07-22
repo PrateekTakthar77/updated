@@ -58,9 +58,9 @@ const FormDetails = ({ navigation }) => {
             contactNo,
             gpsLocation,
         };
-        console.log(`userdetails ??????????????????????`, userDetails);
+        // console.log(`userdetails ??????????????????????`, userDetails);
         dispatch(fillDetails(userToken, userDetails));
-        console.log(`Details filled in the form `, userToken);
+        // console.log(`Details filled in the form `, userToken);
         // console.log(fillDetails.toString);
         navigation.navigate('welcomescreen');
     };

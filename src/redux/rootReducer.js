@@ -10,5 +10,5 @@ export default combineReducers({
     products,
     product: singleProduct,
     cart,
-    userDetails: fillDetails,
+    userDetailsData: fillDetails,
 });

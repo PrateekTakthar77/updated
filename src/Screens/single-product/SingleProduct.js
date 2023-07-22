@@ -16,6 +16,7 @@ const SingleProduct = ({ navigation, route }) => {
     const { userToken } = useContext(AuthContext);
     const dispatch = useDispatch();
     const product = useSelector((state) => state.product);
+    console.log(`Product from single screen========>`, product);
 
     if (!productId) {
         return <></>;

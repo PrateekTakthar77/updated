@@ -11,5 +11,5 @@ const store = configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
 });
-// sagaMiddleware.run(rootSaga);r
+// sagaMiddleware.run(rootSaga);
 export default store;
