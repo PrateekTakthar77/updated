@@ -9,8 +9,9 @@ import {
 import React, { useContext } from 'react';
 import { AuthContext } from './AuthContext';
 import { fillDetails } from './FormDetails/fillDetails/FormDetails.action-creator';
-
-const ViewProfile = () => {
+import Navigation from '../navigation/Navigation';
+import { useNavigation } from '@react-navigation/native';
+const ViewProfile = ({ navigation }) => {
     const {
         login,
         logout,
@@ -23,17 +24,24 @@ const ViewProfile = () => {
         getUserDetails,
     } = useContext(AuthContext);
 
-    const { payload: user } = userInfo;
+    // const { payload: user } = userInfo;
     // console.log(fillDetails.toString);
 
     return (
         <View style={{ backgroundColor: '#eec06b' }}>
             <ScrollView>
                 <View style={{ alignItems: 'center' }}>
-                    <Image
-                        source={require('../assets/dp.jpg')}
-                        style={{ width: 140, height: 140, borderRadius: 100, marginTop: 20 }}
-                    />
+                    <TouchableOpacity onPress={() => navigation.navigate('editprofile')}>
+                        <Image
+                            source={require('../assets/dp.jpg')}
+                            style={{
+                                width: 140,
+                                height: 140,
+                                borderRadius: 100,
+                                marginTop: 20,
+                            }}
+                        />
+                    </TouchableOpacity>
                     <Text
                         style={{
                             fontSize: 25,
@@ -41,9 +49,7 @@ const ViewProfile = () => {
                             fontWeight: 'bold',
                             color: 'black',
                         }}
-                    >
-                        {user?.name}
-                    </Text>
+                    ></Text>
                 </View>
 
                 {/* -------------- */}
@@ -114,7 +120,7 @@ const ViewProfile = () => {
                                 justifyContent: 'flex-start',
                             }}
                         >
-                            Name : {user?.name}
+                            Name :
                         </Text>
                         <Text style={{ fontSize: 15 }}></Text>
                     </View>
@@ -145,7 +151,7 @@ const ViewProfile = () => {
                                 justifyContent: 'flex-start',
                             }}
                         >
-                            Mobile No. : {userDetails.mobile}
+                            Mobile No. :
                         </Text>
                         {/* <Text style={{ fontSize: 15, }}></Text> */}
                     </View>
@@ -176,7 +182,7 @@ const ViewProfile = () => {
                                 justifyContent: 'flex-start',
                             }}
                         >
-                            Email : {user?.email}
+                            Email :
                         </Text>
                         <Text style={{ fontSize: 15 }}></Text>
                     </View>
@@ -251,7 +257,7 @@ const ViewProfile = () => {
                                 justifyContent: 'flex-start',
                             }}
                         >
-                            Brand name :{userDetails.userDetails.brandName}
+                            Brand name :
                         </Text>
                         <Text style={{ fontSize: 15 }}></Text>
                     </View>
@@ -282,7 +288,7 @@ const ViewProfile = () => {
                                 justifyContent: 'flex-start',
                             }}
                         >
-                            Address : {userDetails.userDetails.address}
+                            Address :
                         </Text>
                         <Text style={{ fontSize: 15 }}></Text>
                     </View>
@@ -312,7 +318,7 @@ const ViewProfile = () => {
                                 justifyContent: 'flex-start',
                             }}
                         >
-                            Pincode :{userDetails.userDetails.pincode}
+                            Pincode :
                         </Text>
                         <Text style={{ fontSize: 15 }}></Text>
                     </View>
@@ -342,7 +348,7 @@ const ViewProfile = () => {
                                 justifyContent: 'flex-start',
                             }}
                         >
-                            Locality : {userDetails.userDetails.locality}
+                            Locality :
                         </Text>
                         <Text style={{ fontSize: 15 }}></Text>
                     </View>
@@ -372,7 +378,7 @@ const ViewProfile = () => {
                                 justifyContent: 'flex-start',
                             }}
                         >
-                            City : {userDetails.userDetails.city}
+                            City :
                         </Text>
                         <Text style={{ fontSize: 15 }}></Text>
                     </View>
@@ -402,7 +408,7 @@ const ViewProfile = () => {
                                 justifyContent: 'flex-start',
                             }}
                         >
-                            State : {userDetails.userDetails.state}
+                            State :
                         </Text>
                         <Text style={{ fontSize: 15 }}></Text>
                     </View>
@@ -432,7 +438,7 @@ const ViewProfile = () => {
                                 justifyContent: 'flex-start',
                             }}
                         >
-                            Store person name : {userDetails.userDetails.storePersonName}
+                            Store person name :
                         </Text>
                         <Text style={{ fontSize: 15 }}></Text>
                     </View>
@@ -463,7 +469,7 @@ const ViewProfile = () => {
                                 justifyContent: 'flex-start',
                             }}
                         >
-                            Store contact no : {userDetails.userDetails.contactNo}
+                            Store contact no :
                         </Text>
                         <Text style={{ fontSize: 15 }}></Text>
                     </View>

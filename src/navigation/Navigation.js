@@ -25,6 +25,7 @@ import PrivacyPolicy from '../Screens/DrawerScreens/PrivacyPolicy';
 import TnC from '../Screens/DrawerScreens/TnC';
 import ServiceAvailable from '../Screens/DrawerScreens/ServiceAvailable';
 import ViewProfile from '../Screens/ViewProfile';
+import EditProfile from '../Screens/EditProfile';
 // import TaxInvoice from '../Screens/TaxInvoice';
 
 const Stack = createNativeStackNavigator();
@@ -291,6 +292,17 @@ const Navigation = () => {
                         <Stack.Screen
                             name="viewprofile"
                             component={ViewProfile}
+                            options={{
+                                title: '',
+                                headerShown: true,
+                                headerStyle: { backgroundColor: 'black' },
+                                headerTintColor: '#bc9954',
+                                headerTitleStyle: { color: '#bc9954' },
+                            }}
+                        />
+                        <Stack.Screen
+                            name="editprofile"
+                            component={EditProfile}
                             options={{
                                 title: '',
                                 headerShown: true,

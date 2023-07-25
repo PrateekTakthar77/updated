@@ -9,28 +9,35 @@ import {
     StyleSheet,
     Modal,
 } from 'react-native';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AuthContext } from '../AuthContext';
 import { addToCartActionCreator } from './cart.action-creator';
 import { checkoutActionCreator } from '../checkout/checkout.action-creator';
+// import { getUserDetailsActionCreator } from '../../Screens/';
 
 import { FlashMessage } from 'react-native-flash-message';
 
 const Cart = ({ navigation }) => {
     const [showModal, setShowModal] = useState(false);
     const cart = useSelector((state) => state.cart);
+    const userDetails = useSelector((state) => state.userDetailsData);
+    useEffect(() => {
+        if (userDetails && !userDetails.brandName) {
+        }
+    }, []);
     const dispatch = useDispatch();
     const { userToken } = useContext(AuthContext);
     const { total, grandTotal } = cart;
 
-    // const Navigator = () => {
-    //     setShowModal(true);
-    // };
-
     const placeOrder = () => {
-        dispatch(checkoutActionCreator(userToken));
-        navigation.navigate('thankyou');
+        if (userDetails?.brandName) {
+            dispatch(checkoutActionCreator(userToken));
+            navigation.navigate('thankyou');
+        } else {
+            alert(`Please fill Your details to order Products`);
+            navigation.navigate('formdetails');
+        }
     };
 
     const increaseCount = (item) => {

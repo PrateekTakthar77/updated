@@ -1,7 +1,5 @@
 import axios from 'axios';
 import { BASE_URL } from '../../config';
-// import React, { useContext, useRef, useState, useEffect } from 'react';
-// import { AuthContext } from '../../AuthContext';
 export const updateUserDetails = async (userToken, userDetails) => {
     let formDetails = {};
     const headers = { Authorization: `Bearer ${userToken}` };
@@ -10,7 +8,6 @@ export const updateUserDetails = async (userToken, userDetails) => {
             headers,
         });
         formDetails = response.data;
-        console.log(`;;;;;;;;;;`, formDetails);
     } catch (e) {
         console.log(`error from Redux: ${e}`);
         console.log(`Response: ${JSON.stringify(e.response)}`);
@@ -18,7 +15,6 @@ export const updateUserDetails = async (userToken, userDetails) => {
     return formDetails;
 };
 
-// id not found is the error
 export const fetchUserDetails = async (id, userToken) => {
     if (!id) {
         throw new Error(`id not found`);
@@ -26,11 +22,13 @@ export const fetchUserDetails = async (id, userToken) => {
     const headers = { Authorization: userToken };
     let userDetails = {};
     try {
-        userDetails = await axios.get(`${BASE_URL}api/user-details/${id}`, { headers });
-        console.log(`HTTPS request`, userDetails);
+        const response = await axios.get(`${BASE_URL}api/user-details/${id}`, { headers });
+        console.log('Structured data here', response.data);
+        if (response.data) {
+            userDetails = { ...response?.data?.userDetails };
+        }
     } catch (e) {
         console.log(e);
     }
-    console.log(`userdetails[..............]`, userDetails);
     return userDetails;
 };

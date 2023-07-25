@@ -7,28 +7,35 @@ import {
     TouchableOpacity,
     Image,
 } from 'react-native';
-import React, { useContext, useRef, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import MarqueeView from 'react-native-marquee-view';
 import { AuthContext } from './AuthContext';
 import { useNavigation } from '@react-navigation/native';
 import { moderateScale, moderateScaleVertical, textScale } from '../utils/responsive';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-    fillDetails,
-    getUserDetailsActionCreator,
-} from './FormDetails/fillDetails/FormDetails.action-creator';
+import { getUserDetailsActionCreator } from './FormDetails/fillDetails/FormDetails.action-creator';
 
 const WelcomeScreen = () => {
-    const userDetailsData = useSelector((state) => state.userDetailsData);
+    const { logout, userToken, userInfo } = useContext(AuthContext);
+    const images = [
+        require('../assets/logo.png'),
+        require('../assets/logo.png'),
+        require('../assets/logo.png'),
+    ];
+
+    const { payload: user } = userInfo;
+    const check = () => {
+        console.log('hello checked');
+    };
+    const userDetails = useSelector((state) => state.userDetailsData);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getUserDetailsActionCreator);
+        if (userDetails && !userDetails.brandName) {
+            console.log('Welcome screen userinfo', userInfo);
+            dispatch(getUserDetailsActionCreator(userInfo.payload._id, userToken));
+        }
     }, []);
-
-    // const getUserDetails = async (userId) => {
-    //     dispatch(getUserDetailsActionCreator(userId));
-    //   };
 
     const { width } = Dimensions.get('screen');
 
@@ -61,32 +68,6 @@ const WelcomeScreen = () => {
 
     const navigation = useNavigation();
 
-    const {
-        login,
-        logout,
-        isLoading,
-        userToken,
-        userInfo,
-        register,
-        // userDetails,
-        updateUserDetails,
-        getUserDetails,
-    } = useContext(AuthContext);
-    const images = [
-        require('../assets/logo.png'),
-        require('../assets/logo.png'),
-        require('../assets/logo.png'),
-    ];
-
-    const { payload: user } = userInfo;
-    const check = () => {
-        console.log('hello checked');
-    };
-
-    // console.log(`userinfo`, userInfo);
-    // console.log(`userdetails from profile screen *****`, userDetailsData);
-    // console.log(`user from view p ((@))`, user)
-    // console.log("userInfo - Welcomescreen", userInfo);
     return (
         <>
             <ScrollView>
@@ -112,9 +93,7 @@ const WelcomeScreen = () => {
                                     </View>
 
                                     <Text style={styles.name}>{user?.name}</Text>
-                                    <Text style={styles.name}>
-                                        {userDetailsData?.brandName}hj
-                                    </Text>
+                                    <Text style={styles.name}>{userDetails?.brandName}</Text>
                                     {/* <Text style={styles.abcjw}>{userDetails?.address}</Text> */}
                                     <Text style={styles.abcjw}>
                                         {/* {userDetails.userDetails?.city} */}
@@ -140,7 +119,7 @@ const WelcomeScreen = () => {
                     </MarqueeView>
 
                     <View style={styles.Buttonspan}>
-                        <TouchableOpacity onPress={() => navigation.navigate('product')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('editprofile')}>
                             <View style={styles.loginbutton}>
                                 <Text style={styles.logintext}>18KT</Text>
                             </View>

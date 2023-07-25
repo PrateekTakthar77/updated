@@ -1,0 +1,35 @@
+Signup Screen:
+    - register() (AuthContext) (Reducer)
+        - userInfo
+Form Details (REDUX)
+    - ActionCreator (id, userToken) -> SERVE
+    <!-- - useSelector(state => state.userDetails) -->
+
+Component -> Request Action Creator (data, id) -> REQUEST SERVER -> RETURN RESPONSE FROM SERVER
+-> RECEIVED RESPONSE -> SAVE RESPONSE IN STORE -> CHANGE IN STORE -> RERENDER COMPONENT
+
+Redux store
+state = {
+    userDetails: {brandName: 'something'}
+}
+
+FORM DETAILS (Component)
+    - const userDetails = useSelector(state => state.userDetails)
+    - submitDetails(data)
+
+REQUEST ACTION CREATOR
+    updateUserDetailsActionCreator(formDetails, userToken)
+
+REQUEST SERVER (service.js)
+    updateUserDetails(formDetails, userToken)
+
+RETURN RESPONSE (service.js)
+    const serverResponse = {
+        id, name, blah, userDetails:{...}
+    }
+    return serverResponse.userDetails;
+
+STORE SERVER RESPONSE ON STORE
+    - Disptach({data, type: ACTION})
+    - reducer (return action.data)
+

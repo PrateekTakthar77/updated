@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
                 AsyncStorage.setItem('userinfo', JSON.stringify(userInfo));
                 AsyncStorage.setItem('userToken', userInfo.token);
                 console.log('Login API espon', userInfo);
-                await getUserDetails(userInfo?.User?._id);
+                // await getUserDetails(userInfo?.User?._id);
                 setIsLoading(false);
             })
             .catch((e) => {

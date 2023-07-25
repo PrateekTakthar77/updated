@@ -9,7 +9,7 @@ const Splash = ({ navigation }) => {
     useEffect(() => {
         setTimeout(() => {
             navigation.replace('getstarted');
-        }, 200000);
+        }, 200);
     }, []);
 
     return (

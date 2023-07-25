@@ -11,7 +11,6 @@ import {
     ScrollView,
 } from 'react-native';
 import { AuthContext } from './AuthContext';
-import { updateUserDetails } from './FormDetails/fillDetails/FormDetails.service';
 import { fillDetails } from './FormDetails/fillDetails/FormDetails.action-creator';
 import { useSelector, useDispatch } from 'react-redux';
 
