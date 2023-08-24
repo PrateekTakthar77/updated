@@ -16,7 +16,7 @@ export const checkout = async (userToken) => {
         });
         checkout = response.data ? response.data.checkout : {};
     } catch (e) {
-        console.log(e);
+        console.log(`check out error `, e);
     }
     return checkout;
 };

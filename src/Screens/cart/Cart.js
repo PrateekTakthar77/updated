@@ -45,7 +45,7 @@ const Cart = ({ navigation }) => {
     };
 
     const decreaseCount = (item) => {
-        // dispatch(removeFromCart(item));
+        dispatch(removeFromCart(item));
     };
 
     return (
@@ -70,7 +70,7 @@ const Cart = ({ navigation }) => {
                                     <View style={styles.View6}>
                                         <View style={styles.View7}>
                                             <TouchableOpacity
-                                                disabled={true}
+                                                // disabled={true}
                                                 style={styles.View8}
                                                 onPress={() => decreaseCount(cartItem)}
                                             >

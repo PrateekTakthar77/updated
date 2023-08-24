@@ -32,8 +32,6 @@ const FormDetails = ({ navigation }) => {
         longitude: -122.4194,
     });
 
-    // console.log(fillDetails);
-
     useEffect(() => {
         if (!userToken) {
             return;

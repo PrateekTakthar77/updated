@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://jwells-bliss-deploy2.up.railway.app/'
+export const BASE_URL = 'https://bliss-app-backend-production.up.railway.app/';

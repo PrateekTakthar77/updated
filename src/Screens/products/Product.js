@@ -14,7 +14,6 @@ const Product = ({ navigation }) => {
     }, []);
 
     const handlePress = (item) => {
-        // dispatch(setActiveItem(item));
         navigation.navigate('singleproduct', { productId: item.id });
     };
 
